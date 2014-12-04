@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diagnosis and Maintenance</key>
+	<array>
+		<string>Examination &amp; advice (inc. checkup)</string>
+		<string>Radiographs, study casts &amp; photos</string>
+		<string>Prevention</string>
+		<string>Scaling, polishing, marginal correction of fillings</string>
+		<string>Adjustments &amp; easing denture(s)</string>
+		<string>Other diagnosis and maintenance</string>
+	</array>
+	<key>Treatment</key>
+	<array>
+		<string>Non-surgical periodontal treatment</string>
+		<string>Surgical periodontal treatment</string>
+		<string>Permanent fillings &amp; sealant restorations</string>
+		<string>Endodontics</string>
+		<string>Extractions &amp; other oral surgery</string>
+		<string>Occlusal splints (fabricated in the mouth)</string>
+		<string>Relining, rebasing &amp; additions to dentures</string>
+		<string>Other treatment</string>
+	</array>
+	<key>Appliances</key>
+	<array>
+		<string>Veneers, pinlays, inlays, onlays, crowns</string>
+		<string>Bridges</string>
+		<string>Dentures</string>
+		<string>Other appliances</string>
+	</array>
+	<key>Urgent Treatment</key>
+	<array>
+		<string>Urgent treatment</string>
+	</array>
+	<key>Uncategorised</key>
+	<array/>
+</dict>
+</plist>

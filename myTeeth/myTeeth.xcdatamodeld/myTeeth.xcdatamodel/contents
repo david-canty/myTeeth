@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14A389" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Appointment" representedClassName="Appointment" syncable="YES">
+        <attribute name="attended" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="dateTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="eventId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="bill" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bill" inverseName="appointments" inverseEntity="Bill" syncable="YES"/>
+        <relationship name="chargeType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChargeType" inverseName="appointments" inverseEntity="ChargeType" syncable="YES"/>
+        <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TreatmentCourse" inverseName="appointments" inverseEntity="TreatmentCourse" syncable="YES"/>
+        <relationship name="note" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Note" inverseName="appointment" inverseEntity="Note" syncable="YES"/>
+        <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="appointments" inverseEntity="Patient" syncable="YES"/>
+        <relationship name="paymentMethod" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentMethod" inverseName="appointments" inverseEntity="PaymentMethod" syncable="YES"/>
+        <relationship name="paymentType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentType" inverseName="appointments" inverseEntity="PaymentType" syncable="YES"/>
+        <relationship name="teamMember" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TeamMember" inverseName="appointments" inverseEntity="TeamMember" syncable="YES"/>
+        <relationship name="treatmentItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TreatmentItem" inverseName="appointments" inverseEntity="TreatmentItem" syncable="YES"/>
+    </entity>
+    <entity name="Bill" representedClassName="Bill" syncable="YES">
+        <attribute name="amountPaid" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="billAmount" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="bill" inverseEntity="Appointment" syncable="YES"/>
+    </entity>
+    <entity name="ChargeType" representedClassName="ChargeType" syncable="YES">
+        <attribute name="chargeType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="chargeTypeDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="chargeType" inverseEntity="Appointment" syncable="YES"/>
+    </entity>
+    <entity name="DentalPractice" representedClassName="DentalPractice" syncable="YES">
+        <attribute name="contactId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="patients" optional="YES" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="dentalPractice" inverseEntity="Patient" syncable="YES"/>
+        <relationship name="teamMembers" optional="YES" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="TeamMember" inverseName="dentalPractice" inverseEntity="TeamMember" syncable="YES"/>
+    </entity>
+    <entity name="JobTitle" representedClassName="JobTitle" syncable="YES">
+        <attribute name="jobTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="Note" representedClassName="Note" syncable="YES">
+        <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="flagged" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="modified" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="appointment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Appointment" inverseName="note" inverseEntity="Appointment" syncable="YES"/>
+        <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="notes" inverseEntity="Patient" syncable="YES"/>
+    </entity>
+    <entity name="Patient" representedClassName="Patient" syncable="YES">
+        <attribute name="addAppointmentEvents" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="addCheckupEvents" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="appointmentAlert" optional="YES" attributeType="Integer 32" defaultValueString="-1" syncable="YES"/>
+        <attribute name="calendarId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="calendarTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="checkupAlert" optional="YES" attributeType="Integer 32" defaultValueString="-1" syncable="YES"/>
+        <attribute name="checkupEventId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="checkupInterval" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="dateOfBirth" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="otherNames" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="patientTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="patient" inverseEntity="Appointment" syncable="YES"/>
+        <relationship name="dentalPractice" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DentalPractice" inverseName="patients" inverseEntity="DentalPractice" syncable="YES"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Note" inverseName="patient" inverseEntity="Note" syncable="YES"/>
+        <relationship name="teeth" optional="YES" toMany="YES" maxCount="32" deletionRule="Cascade" ordered="YES" destinationEntity="Tooth" inverseName="patient" inverseEntity="Tooth" syncable="YES"/>
+    </entity>
+    <entity name="PaymentMethod" representedClassName="PaymentMethod" syncable="YES">
+        <attribute name="filtered" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="paymentMethod" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="paymentMethodDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="paymentMethod" inverseEntity="Appointment" syncable="YES"/>
+    </entity>
+    <entity name="PaymentType" representedClassName="PaymentType" syncable="YES">
+        <attribute name="filtered" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="paymentType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="paymentTypeDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="paymentType" inverseEntity="Appointment" syncable="YES"/>
+    </entity>
+    <entity name="Salutation" representedClassName="Salutation" syncable="YES">
+        <attribute name="salutation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="TeamMember" representedClassName="TeamMember" syncable="YES">
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="jobTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="otherNames" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teamMemberTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="teamMember" inverseEntity="Appointment" syncable="YES"/>
+        <relationship name="dentalPractice" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DentalPractice" inverseName="teamMembers" inverseEntity="DentalPractice" syncable="YES"/>
+    </entity>
+    <entity name="Tooth" representedClassName="Tooth" syncable="YES">
+        <attribute name="frontImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reference" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="topImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="teeth" inverseEntity="Patient" syncable="YES"/>
+    </entity>
+    <entity name="TreatmentCategory" representedClassName="TreatmentCategory" syncable="YES">
+        <attribute name="categoryName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="treatmentItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TreatmentItem" inverseName="treatmentCategory" inverseEntity="TreatmentItem" syncable="YES"/>
+    </entity>
+    <entity name="TreatmentCourse" representedClassName="TreatmentCourse" syncable="YES">
+        <attribute name="course" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="course" inverseEntity="Appointment" syncable="YES"/>
+    </entity>
+    <entity name="TreatmentItem" representedClassName="TreatmentItem" syncable="YES">
+        <attribute name="itemName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="treatmentItems" inverseEntity="Appointment" syncable="YES"/>
+        <relationship name="treatmentCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TreatmentCategory" inverseName="treatmentItems" inverseEntity="TreatmentCategory" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Appointment" positionX="-13113" positionY="-17820" width="128" height="253"/>
+        <element name="Bill" positionX="-12791" positionY="-17955" width="128" height="103"/>
+        <element name="ChargeType" positionX="-12737" positionY="-17766" width="128" height="103"/>
+        <element name="DentalPractice" positionX="-13196" positionY="-17989" width="128" height="118"/>
+        <element name="JobTitle" positionX="-13509" positionY="-17746" width="128" height="73"/>
+        <element name="Note" positionX="-13446" positionY="-17641" width="128" height="163"/>
+        <element name="Patient" positionX="-13277" positionY="-17836" width="128" height="313"/>
+        <element name="PaymentMethod" positionX="-12710" positionY="-17649" width="128" height="118"/>
+        <element name="PaymentType" positionX="-12735" positionY="-17527" width="128" height="118"/>
+        <element name="Salutation" positionX="-13511" positionY="-17838" width="128" height="73"/>
+        <element name="TeamMember" positionX="-13023" positionY="-18013" width="128" height="163"/>
+        <element name="Tooth" positionX="-13511" positionY="-17991" width="128" height="133"/>
+        <element name="TreatmentCategory" positionX="-12996" positionY="-17431" width="128" height="88"/>
+        <element name="TreatmentCourse" positionX="-13032" positionY="-17530" width="128" height="88"/>
+        <element name="TreatmentItem" positionX="-13169" positionY="-17437" width="128" height="103"/>
+    </elements>
+</model>

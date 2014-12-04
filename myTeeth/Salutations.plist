@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Salutations</key>
+	<array>
+		<string>Dame</string>
+		<string>Dr</string>
+		<string>Lady</string>
+		<string>Lord</string>
+		<string>Madam</string>
+		<string>Master</string>
+		<string>Miss</string>
+		<string>Mistress</string>
+		<string>Mr</string>
+		<string>Mrs</string>
+		<string>Ms</string>
+		<string>Professor</string>
+		<string>Sir</string>
+	</array>
+</dict>
+</plist>

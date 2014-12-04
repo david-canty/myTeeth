@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>JobTitles</key>
+	<array>
+		<string>Dental Nurse</string>
+		<string>Dental Surgeon (General Practitioner)</string>
+		<string>Dental Hygienist</string>
+		<string>Dental Technician</string>
+		<string>Dental Therapist</string>
+		<string>Endodontist</string>
+		<string>Oral Maxillofacial Radiologist</string>
+		<string>Oral Pathologist</string>
+		<string>Orthodontist</string>
+		<string>Pediatric Dentist</string>
+		<string>Periodontist</string>
+		<string>Practice Manager</string>
+		<string>Prosthodontist</string>
+		<string>Public Health Dentist</string>
+		<string>Receptionist</string>
+	</array>
+</dict>
+</plist>

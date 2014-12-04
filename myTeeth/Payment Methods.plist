@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PaymentMethods</key>
+	<array>
+		<dict>
+			<key>Payment Method</key>
+			<string>None (Exempt)</string>
+			<key>Description</key>
+			<string>Your are exempt from all of your dental treatment costs</string>
+		</dict>
+		<dict>
+			<key>Payment Method</key>
+			<string>None (Employer)</string>
+			<key>Description</key>
+			<string>Your employer covers the cost of your dental treatment</string>
+		</dict>
+		<dict>
+			<key>Payment Method</key>
+			<string>Weekly Payment</string>
+			<key>Description</key>
+			<string>You make a regular weekly payment to cover your dental treatment (capitation scheme, cash plan, treatment loan, credit agreement)</string>
+		</dict>
+		<dict>
+			<key>Payment Method</key>
+			<string>Monthly Payment</string>
+			<key>Description</key>
+			<string>You make a regular monthly payment to cover your dental treatment (capitation scheme, cash plan, treatment loan, credit agreement)</string>
+		</dict>
+		<dict>
+			<key>Payment Method</key>
+			<string>Quarterly Payment</string>
+			<key>Description</key>
+			<string>You make a regular quarterly payment to cover your dental treatment (capitation scheme, cash plan, treatment loan, credit agreement)</string>
+		</dict>
+		<dict>
+			<key>Payment Method</key>
+			<string>Annual Payment</string>
+			<key>Description</key>
+			<string>You make a regular annual payment to cover your dental treatment (capitation scheme, cash plan, treatment loan, credit agreement)</string>
+		</dict>
+		<dict>
+			<key>Payment Method</key>
+			<string>Pay per Appointment</string>
+			<key>Description</key>
+			<string>You pay for the treatment you receive at the end of each appointment</string>
+		</dict>
+		<dict>
+			<key>Payment Method</key>
+			<string>Pay per Course of Treatment</string>
+			<key>Description</key>
+			<string>You pay for the treatment you receive at the end of a course of treatment</string>
+		</dict>
+	</array>
+</dict>
+</plist>

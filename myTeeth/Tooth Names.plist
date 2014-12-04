@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Teeth</key>
+	<array>
+		<string>Central Incisor</string>
+		<string>Lateral Incisor</string>
+		<string>Canine (Cuspid)</string>
+		<string>First Premolar (First Bicuspid)</string>
+		<string>Second Premolar (Second Bicuspid)</string>
+		<string>First Molar</string>
+		<string>Second Molar</string>
+		<string>Third Molar (Wisdom)</string>
+	</array>
+</dict>
+</plist>

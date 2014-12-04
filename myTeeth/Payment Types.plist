@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PaymentTypes</key>
+	<array>
+		<dict>
+			<key>Related Payment Methods</key>
+			<array>
+				<string>None (Exempt)</string>
+			</array>
+			<key>Payment Type</key>
+			<string>Exempt</string>
+			<key>Description</key>
+			<string>The state pays for all of your dental treatment but restrictions apply</string>
+		</dict>
+		<dict>
+			<key>Related Payment Methods</key>
+			<array>
+				<string>Pay per Course of Treatment</string>
+				<string>Pay per Appointment</string>
+				<string>Annual Payment</string>
+				<string>Monthly Payment</string>
+				<string>Quarterly Payment</string>
+				<string>Weekly Payment</string>
+			</array>
+			<key>Payment Type</key>
+			<string>Part-Exempt</string>
+			<key>Description</key>
+			<string>The state pays for some of your dental treatment but further restrictions apply</string>
+		</dict>
+		<dict>
+			<key>Related Payment Methods</key>
+			<array>
+				<string>Pay per Course of Treatment</string>
+				<string>Pay per Appointment</string>
+				<string>Annual Payment</string>
+				<string>Quarterly Payment</string>
+				<string>Monthly Payment</string>
+				<string>Weekly Payment</string>
+			</array>
+			<key>Payment Type</key>
+			<string>State</string>
+			<key>Description</key>
+			<string>You pay for all of your dental treatment which is provided by the state</string>
+		</dict>
+		<dict>
+			<key>Related Payment Methods</key>
+			<array>
+				<string>Pay per Course of Treatment</string>
+				<string>Pay per Appointment</string>
+				<string>Weekly Payment</string>
+				<string>Monthly Payment</string>
+				<string>Quarterly Payment</string>
+				<string>Annual Payment</string>
+			</array>
+			<key>Payment Type</key>
+			<string>State and Private</string>
+			<key>Description</key>
+			<string>You pay for all of your dental treatment, part of which is provided by the state and part of which is provided privately</string>
+		</dict>
+		<dict>
+			<key>Related Payment Methods</key>
+			<array>
+				<string>Pay per Course of Treatment</string>
+				<string>Pay per Appointment</string>
+				<string>Weekly Payment</string>
+				<string>Monthly Payment</string>
+				<string>Quarterly Payment</string>
+				<string>Annual Payment</string>
+			</array>
+			<key>Payment Type</key>
+			<string>Private</string>
+			<key>Description</key>
+			<string>You pay for all of your dental treatment which is provided privately</string>
+		</dict>
+		<dict>
+			<key>Related Payment Methods</key>
+			<array>
+				<string>Pay per Course of Treatment</string>
+				<string>Pay per Appointment</string>
+				<string>Weekly Payment</string>
+				<string>Monthly Payment</string>
+				<string>Quarterly Payment</string>
+				<string>Annual Payment</string>
+			</array>
+			<key>Payment Type</key>
+			<string>Personal Health, Medical or Dental Insurance</string>
+			<key>Description</key>
+			<string>You have a personal policy which covers the cost of part or all of your dental treatment</string>
+		</dict>
+		<dict>
+			<key>Related Payment Methods</key>
+			<array>
+				<string>None (Employer)</string>
+			</array>
+			<key>Payment Type</key>
+			<string>Employer Health, Medical or Dental Insurance</string>
+			<key>Description</key>
+			<string>You have a policy where your employer covers the cost of part or all of your dental treatment</string>
+		</dict>
+	</array>
+</dict>
+</plist>

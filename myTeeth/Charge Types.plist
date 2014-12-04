@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ChargeTypes</key>
+	<array>
+		<dict>
+			<key>Charge Type</key>
+			<string>State</string>
+			<key>Description</key>
+			<string>All of your dental treatment is provided by the state</string>
+			<key>Related Payment Types</key>
+			<array>
+				<string>Exempt</string>
+				<string>Part-Exempt</string>
+				<string>State</string>
+				<string>Personal Health, Medical or Dental Insurance</string>
+				<string>Employer Health, Medical or Dental Insurance</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Charge Type</key>
+			<string>Private</string>
+			<key>Description</key>
+			<string>All of your dental treatment is provided privately</string>
+			<key>Related Payment Types</key>
+			<array>
+				<string>Private</string>
+				<string>Personal Health, Medical or Dental Insurance</string>
+				<string>Employer Health, Medical or Dental Insurance</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Charge Type</key>
+			<string>State and Private</string>
+			<key>Description</key>
+			<string>Part of your dental treatment is provided by the state and part is provided privately</string>
+			<key>Related Payment Types</key>
+			<array>
+				<string>Exempt</string>
+				<string>Part-Exempt</string>
+				<string>State and Private</string>
+				<string>Personal Health, Medical or Dental Insurance</string>
+				<string>Employer Health, Medical or Dental Insurance</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
