@@ -2,29 +2,28 @@
 //  PaymentType.h
 //  myTeeth
 //
-//  Created by David Canty on 09/10/2014.
+//  Created by David Canty on 09/12/2014.
 //  Copyright (c) 2014 David Canty. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Appointment;
+@class ChargeType;
 
 @interface PaymentType : NSManagedObject
 
-@property (nonatomic, retain) NSString * paymentType;
-@property (nonatomic, retain) NSString * paymentTypeDescription;
+@property (nonatomic, retain) NSString * typeDescription;
+@property (nonatomic, retain) NSString * typeName;
 @property (nonatomic, retain) NSString * uniqueId;
-@property (nonatomic, retain) NSNumber * filtered;
-@property (nonatomic, retain) NSSet *appointments;
+@property (nonatomic, retain) NSSet *chargeType;
 @end
 
 @interface PaymentType (CoreDataGeneratedAccessors)
 
-- (void)addAppointmentsObject:(Appointment *)value;
-- (void)removeAppointmentsObject:(Appointment *)value;
-- (void)addAppointments:(NSSet *)values;
-- (void)removeAppointments:(NSSet *)values;
+- (void)addChargeTypeObject:(ChargeType *)value;
+- (void)removeChargeTypeObject:(ChargeType *)value;
+- (void)addChargeType:(NSSet *)values;
+- (void)removeChargeType:(NSSet *)values;
 
 @end

@@ -13,5 +13,6 @@
 + (NSUInteger)numberOfPaymentMethods;
 + (void)loadPaymentMethods;
 + (PaymentMethod *)paymentMethodWithName:(NSString *)name;
++ (PaymentMethod *)paymentMethodWithUniqueId:(NSString *)uniqueId;
 
 @end

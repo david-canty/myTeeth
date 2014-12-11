@@ -382,9 +382,9 @@ static NSString *treatmentCategoryTableCellIdentifier = @"TreatmentCategoryTable
     cell.detailTextLabel.font = [UIFont systemFontOfSize:16];
     NSUInteger treatmentItemCount = [[(TreatmentCategory *)managedObject treatmentItems] count];
     if (treatmentItemCount == 1) {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"(%i treatment item)", treatmentItemCount];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"(%lu treatment item)", (unsigned long)treatmentItemCount];
     } else {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"(%i treatment items)", treatmentItemCount];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"(%lu treatment items)", (unsigned long)treatmentItemCount];
     }
 }
 

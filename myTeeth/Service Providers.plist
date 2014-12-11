@@ -2,10 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>ChargeTypes</key>
+	<key>ServiceProviders</key>
 	<array>
 		<dict>
-			<key>Charge Type</key>
+			<key>Service Provider</key>
 			<string>State</string>
 			<key>Description</key>
 			<string>All of your dental treatment is provided by the state</string>
@@ -19,7 +19,7 @@
 			</array>
 		</dict>
 		<dict>
-			<key>Charge Type</key>
+			<key>Service Provider</key>
 			<string>Private</string>
 			<key>Description</key>
 			<string>All of your dental treatment is provided privately</string>
@@ -31,7 +31,7 @@
 			</array>
 		</dict>
 		<dict>
-			<key>Charge Type</key>
+			<key>Service Provider</key>
 			<string>State and Private</string>
 			<key>Description</key>
 			<string>Part of your dental treatment is provided by the state and part is provided privately</string>

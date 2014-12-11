@@ -1,19 +1,19 @@
 //
-//  PaymentType.m
+//  ServiceProvider.m
 //  myTeeth
 //
 //  Created by David Canty on 09/12/2014.
 //  Copyright (c) 2014 David Canty. All rights reserved.
 //
 
-#import "PaymentType.h"
+#import "ServiceProvider.h"
 #import "ChargeType.h"
 
 
-@implementation PaymentType
+@implementation ServiceProvider
 
-@dynamic typeDescription;
-@dynamic typeName;
+@dynamic providerName;
+@dynamic providerDescription;
 @dynamic uniqueId;
 @dynamic chargeType;
 

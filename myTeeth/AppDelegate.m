@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "MasterViewController.h"
 #import "MainViewController.h"
-#import "ChargeType+Utils.h"
+#import "ServiceProvider+Utils.h"
 #import "PaymentType+Utils.h"
 #import "PaymentMethod+Utils.h"
 #import "JobTitle+Utils.h"
@@ -42,10 +42,10 @@
         controller.managedObjectContext = self.managedObjectContext;
     }
     
-    // Load charge types, payment types, payment methods, job titles, and salutations
+    // Load service providers, payment types, payment methods, job titles, and salutations
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        if ([ChargeType numberOfChargeTypes] == 0) {
-            [ChargeType loadChargeTypes];
+        if ([ServiceProvider numberOfServiceProviders] == 0) {
+            [ServiceProvider loadServiceProviders];
         }
         if ([PaymentType numberOfPaymentTypes] == 0) {
             [PaymentType loadPaymentTypes];

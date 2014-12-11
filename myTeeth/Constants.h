@@ -11,6 +11,7 @@ extern NSString * const kNoteMessagePlaceholder;
 extern NSString * const myTeethPatient;
 extern NSString * const myTeethTeamMember;
 extern NSString * const myTeethTreatment;
+extern NSString * const myTeethChargeType;
 extern NSString * const uncategorisedTreatmentCategory;
 extern int const numberOfDefaultTreatmentCategories;
 extern int const numberOfDefaultTreatmentItems;

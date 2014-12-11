@@ -7,7 +7,7 @@
 //
 
 #import "PaymentType+Utils.h"
-#import "ChargeType+Utils.h"
+#import "ServiceProvider+Utils.h"
 #import "PaymentMethod+Utils.h"
 #import "AppDelegate.h"
 #import "Constants.h"
@@ -47,10 +47,10 @@
         [paymentType setUniqueId:uuid];
         
         // Payment type name
-        [paymentType setPaymentType:paymentTypeDetails[@"Payment Type"]];
+        [paymentType setTypeName:paymentTypeDetails[@"Payment Type"]];
         
         // Payment type description
-        [paymentType setPaymentTypeDescription:paymentTypeDetails[@"Description"]];
+        [paymentType setTypeDescription:paymentTypeDetails[@"Description"]];
         
         // Save the context
         NSError *error = nil;
@@ -60,6 +60,40 @@
             abort();
         }
     }
+}
+
++ (PaymentType *)paymentTypeWithUniqueId:(NSString *)uniqueId {
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *moc = appDelegate.managedObjectContext;
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PaymentType" inManagedObjectContext:moc];
+    [request setEntity:entity];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uniqueId == %@", uniqueId];
+    [request setPredicate:predicate];
+    
+    NSError *error;
+    NSArray *array = [moc executeFetchRequest:request error:&error];
+    if (array != nil) {
+        
+        NSUInteger count = [array count]; // May be 0 if the object has been deleted.
+        if (count != 0) {
+            
+            PaymentType *paymentType = array[0];
+            return paymentType;
+            
+        } else {
+            
+            NSLog(@"Error getting payment type with unique id: %@, deleted?", uniqueId);
+        }
+        
+    } else {
+        
+        NSLog(@"Error getting payment type with unique id: %@", uniqueId);
+    }
+    
+    return nil;
 }
 
 @end

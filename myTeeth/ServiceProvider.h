@@ -1,5 +1,5 @@
 //
-//  PaymentMethod.h
+//  ServiceProvider.h
 //  myTeeth
 //
 //  Created by David Canty on 09/12/2014.
@@ -11,15 +11,15 @@
 
 @class ChargeType;
 
-@interface PaymentMethod : NSManagedObject
+@interface ServiceProvider : NSManagedObject
 
-@property (nonatomic, retain) NSString * methodDescription;
-@property (nonatomic, retain) NSString * methodName;
+@property (nonatomic, retain) NSString * providerName;
+@property (nonatomic, retain) NSString * providerDescription;
 @property (nonatomic, retain) NSString * uniqueId;
 @property (nonatomic, retain) NSSet *chargeType;
 @end
 
-@interface PaymentMethod (CoreDataGeneratedAccessors)
+@interface ServiceProvider (CoreDataGeneratedAccessors)
 
 - (void)addChargeTypeObject:(ChargeType *)value;
 - (void)removeChargeTypeObject:(ChargeType *)value;

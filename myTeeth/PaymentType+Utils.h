@@ -12,5 +12,6 @@
 
 + (NSUInteger)numberOfPaymentTypes;
 + (void)loadPaymentTypes;
++ (PaymentType *)paymentTypeWithUniqueId:(NSString *)uniqueId;
 
 @end

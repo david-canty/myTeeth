@@ -2,20 +2,19 @@
 //  PaymentMethod.m
 //  myTeeth
 //
-//  Created by David Canty on 09/10/2014.
+//  Created by David Canty on 09/12/2014.
 //  Copyright (c) 2014 David Canty. All rights reserved.
 //
 
 #import "PaymentMethod.h"
-#import "Appointment.h"
+#import "ChargeType.h"
 
 
 @implementation PaymentMethod
 
-@dynamic paymentMethod;
-@dynamic paymentMethodDescription;
+@dynamic methodDescription;
+@dynamic methodName;
 @dynamic uniqueId;
-@dynamic filtered;
-@dynamic appointments;
+@dynamic chargeType;
 
 @end

@@ -8,16 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class ChargeType;
+
 @protocol ChargeTypeDetailViewControllerDelegate;
 
 @interface ChargeTypeDetailViewController_iPad : UIViewController
 
 @property (weak, nonatomic) id <ChargeTypeDetailViewControllerDelegate> delegate;
-@property (copy, nonatomic) NSString *navigationItemTitleString;
-@property (assign, nonatomic) BOOL isEditing;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) ChargeType *editingChargeType;
 
 @end
 
 @protocol ChargeTypeDetailViewControllerDelegate <NSObject>
-- (void)chargeTypeDetailViewControllerDidFinish:(ChargeTypeDetailViewController_iPad *)controller;
+- (void)chargeTypeDetailViewControllerDidFinishWithChargeType:(ChargeType *)chargeType;
 @end

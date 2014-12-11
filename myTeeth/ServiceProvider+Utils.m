@@ -1,73 +1,73 @@
 //
-//  PaymentMethod+Utils.m
+//  ServiceProvider+Utils.m
 //  myTeeth
 //
-//  Created by David Canty on 31/08/2014.
+//  Created by David Canty on 27/08/2014.
 //  Copyright (c) 2014 David Canty. All rights reserved.
 //
 
-#import "PaymentMethod+Utils.h"
+#import "ServiceProvider+Utils.h"
 #import "AppDelegate.h"
 
-@implementation PaymentMethod (Utils)
+@implementation ServiceProvider (Utils)
 
-+ (NSUInteger)numberOfPaymentMethods {
++ (NSUInteger)numberOfServiceProviders {
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *moc = appDelegate.managedObjectContext;
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:[NSEntityDescription entityForName:@"PaymentMethod" inManagedObjectContext:moc]];
+    [request setEntity:[NSEntityDescription entityForName:@"ServiceProvider" inManagedObjectContext:moc]];
     [request setIncludesSubentities:NO];
     NSError *err;
-    NSUInteger numberOfPaymentMethods = 0;
-    numberOfPaymentMethods = [moc countForFetchRequest:request error:&err];
+    NSUInteger numberOfServiceProviders = 0;
+    numberOfServiceProviders = [moc countForFetchRequest:request error:&err];
     
-    return numberOfPaymentMethods;
+    return numberOfServiceProviders;
 }
 
-+ (void)loadPaymentMethods {
++ (void)loadServiceProviders {
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *moc = appDelegate.managedObjectContext;
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Payment Methods" ofType:@"plist"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Service Providers" ofType:@"plist"];
     NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
-    NSArray *paymentMethods = dict[@"PaymentMethods"];
+    NSArray *serviceProviders = dict[@"ServiceProviders"];
     
-    for (NSDictionary *paymentMethodDetails in paymentMethods) {
+    for (NSDictionary *serviceProviderDetails in serviceProviders) {
         
-        PaymentMethod *paymentMethod = (PaymentMethod *)[NSEntityDescription insertNewObjectForEntityForName:@"PaymentMethod" inManagedObjectContext:moc];
+        ServiceProvider *serviceProvider  = (ServiceProvider *)[NSEntityDescription insertNewObjectForEntityForName:@"ServiceProvider" inManagedObjectContext:moc];
         
         // Unique id
         NSString *uuid = [[NSUUID UUID] UUIDString];
-        [paymentMethod setUniqueId:uuid];
+        [serviceProvider setUniqueId:uuid];
         
-        // Payment method name
-        [paymentMethod setMethodName:paymentMethodDetails[@"Payment Method"]];
+        // Service provider name
+        [serviceProvider setProviderName:serviceProviderDetails[@"Service Provider"]];
         
-        // Payment method description
-        [paymentMethod setMethodDescription:paymentMethodDetails[@"Description"]];
+        // Service provider description
+        [serviceProvider setProviderDescription:serviceProviderDetails[@"Description"]];
         
         // Save the context
         NSError *error = nil;
         if (![moc save:&error]) {
             
-            NSLog(@"Error loading payment methods. Unresolved error %@, %@", error, [error userInfo]);
+            NSLog(@"Error loading service providers. Unresolved error %@, %@", error, [error userInfo]);
             abort();
         }
     }
 }
 
-+ (PaymentMethod *)paymentMethodWithName:(NSString *)name {
++ (ServiceProvider *)serviceProviderWithName:(NSString *)name {
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *moc = appDelegate.managedObjectContext;
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PaymentMethod" inManagedObjectContext:moc];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"ServiceProvider" inManagedObjectContext:moc];
     [request setEntity:entity];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"methodName == %@", name];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"providerName == %@", name];
     [request setPredicate:predicate];
     
     NSError *error;
@@ -77,29 +77,29 @@
         NSUInteger count = [array count]; // May be 0 if the object has been deleted.
         if (count != 0) {
             
-            PaymentMethod *paymentMethod = array[0];
-            return paymentMethod;
+            ServiceProvider *serviceProvider = array[0];
+            return serviceProvider;
             
         } else {
             
-            NSLog(@"Error getting payment method with name: %@, deleted?", name);
+            NSLog(@"Error getting service provider with name: %@, deleted?", name);
         }
         
     } else {
         
-        NSLog(@"Error getting payment method with name: %@", name);
+        NSLog(@"Error getting service provider with name: %@", name);
     }
     
     return nil;
 }
 
-+ (PaymentMethod *)paymentMethodWithUniqueId:(NSString *)uniqueId {
++ (ServiceProvider *)serviceProviderWithUniqueId:(NSString *)uniqueId {
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *moc = appDelegate.managedObjectContext;
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PaymentMethod" inManagedObjectContext:moc];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"ServiceProvider" inManagedObjectContext:moc];
     [request setEntity:entity];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uniqueId == %@", uniqueId];
     [request setPredicate:predicate];
@@ -111,17 +111,17 @@
         NSUInteger count = [array count]; // May be 0 if the object has been deleted.
         if (count != 0) {
             
-            PaymentMethod *paymentMethod = array[0];
-            return paymentMethod;
+            ServiceProvider *serviceProvider = array[0];
+            return serviceProvider;
             
         } else {
             
-            NSLog(@"Error getting payment method with unique id: %@, deleted?", uniqueId);
+            NSLog(@"Error getting service provider with unique id: %@, deleted?", uniqueId);
         }
         
     } else {
         
-        NSLog(@"Error getting payment method with unique id: %@", uniqueId);
+        NSLog(@"Error getting service provider with unique id: %@", uniqueId);
     }
     
     return nil;

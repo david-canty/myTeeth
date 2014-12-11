@@ -20,18 +20,17 @@
 #import "NoteViewController_iPad.h"
 #import "Note+Utils.h"
 #import "ChargeType+Utils.h"
-#import "PaymentType+Utils.h"
-#import "PaymentMethod+Utils.h"
-#import "ChargeTypeViewController_iPad.h"
 #import "AddPatientViewController.h"
 #import "AddTeamMemberViewController.h"
+#import "ChargeTypeDetailViewController_iPad.h"
 #import "AppDelegate.h"
 
-@interface AddAppointmentViewController () <SingleSelectionListViewControllerDelegate, MultipleSelectionListViewControllerDelegate, DateTimeViewControllerDelegate, DurationViewControllerDelegate, NSFetchedResultsControllerDelegate, NoteViewControllerDelegate, ChargeTypeViewControllerDelegate, AddPatientViewControllerDelegate, AddTeamMemberViewControllerDelegate>
+@interface AddAppointmentViewController () <SingleSelectionListViewControllerDelegate, MultipleSelectionListViewControllerDelegate, DateTimeViewControllerDelegate, DurationViewControllerDelegate, NSFetchedResultsControllerDelegate, NoteViewControllerDelegate, AddPatientViewControllerDelegate, AddTeamMemberViewControllerDelegate, ChargeTypeDetailViewControllerDelegate>
 
 @property (strong, nonatomic) AppDelegate *appDelegate;
 @property (strong, nonatomic) NSArray *patientList;
 @property (strong, nonatomic) NSArray *teamMemberList;
+@property (strong, nonatomic) NSArray *chargeTypeList;
 @property (strong, nonatomic) NSArray *treatmentSelectionListItems;
 
 @property (strong, nonatomic) NSDictionary *selectedPatient;
@@ -39,9 +38,7 @@
 @property (strong, nonatomic) NSDate *selectedDate;
 @property (assign, nonatomic) NSTimeInterval selectedDuration;
 @property (strong, nonatomic) NSArray *selectedTreatmentItems;
-@property (strong, nonatomic) ChargeType *selectedChargeType;
-@property (strong, nonatomic) PaymentType *selectedPaymentType;
-@property (strong, nonatomic) PaymentMethod *selectedPaymentMethod;
+@property (strong, nonatomic) NSDictionary *selectedChargeType;
 @property (copy, nonatomic) NSString *noteString;
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *patientCell;
@@ -101,9 +98,8 @@ static NSTimeInterval const kDefaultDuration = 600;
         self.selectedTreatmentItems = selectedTreatmentItems;
         
         // Charge Type
-        self.selectedChargeType = self.editingAppointment.chargeType;
-        self.selectedPaymentType = self.editingAppointment.paymentType;
-        self.selectedPaymentMethod = self.editingAppointment.paymentMethod;
+        self.selectedChargeType = @{@"displayName" : self.editingAppointment.chargeType.typeName,
+                                    @"uniqueId" : self.editingAppointment.chargeType.uniqueId};
         
         // Notes
         self.noteString = self.editingAppointment.note.note;
@@ -156,6 +152,14 @@ static NSTimeInterval const kDefaultDuration = 600;
             [self displaySelectedTeamMember];
         }
         
+        // Default to charge type if only one
+        if ([ChargeType numberOfChargeTypes] == 1) {
+            
+            [self fetchChargeTypes];
+            self.selectedChargeType = self.chargeTypeList[0];
+            [self displaySelectedChargeType];
+        }
+        
         // Default duration
         self.selectedDuration = kDefaultDuration;
         [self displaySelectedDuration];
@@ -191,6 +195,17 @@ static NSTimeInterval const kDefaultDuration = 600;
         }
     }
     
+    if ([identifier isEqualToString:@"ShowSelectChargeTypeView"]) {
+        
+        if ([ChargeType numberOfChargeTypes] == 0) {
+            
+            // No charge types, so add one
+            [self performSegueWithIdentifier:@"ShowAddChargeTypeView" sender:nil];
+            
+            return NO;
+        }
+    }
+    
     return YES;
 }
 
@@ -208,6 +223,14 @@ static NSTimeInterval const kDefaultDuration = 600;
         
         AddTeamMemberViewController *addController = (AddTeamMemberViewController *)segue.destinationViewController;
         addController.navigationItem.title = NSLocalizedString(@"Add Team Member", @"Add Team Member");
+        addController.managedObjectContext = self.managedObjectContext;
+        addController.delegate = self;
+    }
+    
+    if ([[segue identifier] isEqualToString:@"ShowAddChargeTypeView"]) {
+        
+        ChargeTypeDetailViewController_iPad *addController = (ChargeTypeDetailViewController_iPad *)segue.destinationViewController;
+        addController.navigationItem.title = NSLocalizedString(@"Add Charge Type", @"Add Charge Type");
         addController.managedObjectContext = self.managedObjectContext;
         addController.delegate = self;
     }
@@ -297,20 +320,24 @@ static NSTimeInterval const kDefaultDuration = 600;
         multipleSelectionListViewController.delegate = self;
     }
     
-    if ([[segue identifier] isEqualToString:@"ShowChargeTypeView"]) {
+    if ([[segue identifier] isEqualToString:@"ShowSelectChargeTypeView"]) {
         
-        ChargeTypeViewController_iPad *chargeTypeVC = segue.destinationViewController;
-        chargeTypeVC.managedObjectContext = self.managedObjectContext;
-        chargeTypeVC.delegate = self;
+        SingleSelectionListViewController *selectionListViewController = [segue destinationViewController];
+        selectionListViewController.navigationItem.title = NSLocalizedString(@"Charge Type", @"Charge Type");
+        
+        [self fetchChargeTypes];
+        
+        selectionListViewController.selectionList = self.chargeTypeList;
         
         // Pre-select charge type if already selected
         if (self.selectedChargeType != nil) {
             
-            chargeTypeVC.isEditing = YES;
-            chargeTypeVC.selectedChargeType = self.selectedChargeType;
-            chargeTypeVC.selectedPaymentType = self.selectedPaymentType;
-            chargeTypeVC.selectedPaymentMethod = self.selectedPaymentMethod;
+            NSInteger selectedChargeTypeIndex = [self.chargeTypeList indexOfObject:self.selectedChargeType];
+            selectionListViewController.initialSelection = selectedChargeTypeIndex;
         }
+        
+        selectionListViewController.delegate = self;
+        selectionListViewController.sectionHeader = NSLocalizedString(@"Please select a charge type for this appointment", @"Please select a charge type for this appointment");
     }
     
     if ([[segue identifier] isEqualToString:@"ShowNoteView"]) {
@@ -340,6 +367,16 @@ static NSTimeInterval const kDefaultDuration = 600;
     self.selectedTeamMember = @{@"displayName" : [teamMember fullNameWithTitle],
                                 @"uniqueId" : teamMember.uniqueId};;
     [self displaySelectedTeamMember];
+}
+
+- (void)chargeTypeDetailViewControllerDidFinishWithChargeType:(ChargeType *)chargeType {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    // Select added charge type and update UI
+    self.selectedChargeType = @{@"displayName" : [chargeType typeName],
+                                @"uniqueId" : chargeType.uniqueId};;
+    [self displaySelectedChargeType];
 }
 
 - (void)fetchPatients {
@@ -385,6 +422,29 @@ static NSTimeInterval const kDefaultDuration = 600;
         
         NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"displayName" ascending:YES];
         self.teamMemberList = [teamMembers sortedArrayUsingDescriptors:@[descriptor]];
+    }
+}
+
+- (void)fetchChargeTypes {
+    
+    if (self.chargeTypeList == nil) {
+        
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"ChargeType" inManagedObjectContext:self.managedObjectContext];
+        [request setEntity:entity];
+        
+        NSError *error = nil;
+        NSArray *chargeTypeEntities = [self.managedObjectContext executeFetchRequest:request error:&error];
+        NSMutableArray *chargeTypes = [@[] mutableCopy];
+        
+        for (ChargeType *chargeTypeEntity in chargeTypeEntities) {
+            
+            [chargeTypes addObject:@{@"displayName" : chargeTypeEntity.typeName,
+                                     @"uniqueId" : chargeTypeEntity.uniqueId}];
+        }
+        
+        NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"displayName" ascending:YES];
+        self.chargeTypeList = [chargeTypes sortedArrayUsingDescriptors:@[descriptor]];
     }
 }
 
@@ -437,6 +497,12 @@ static NSTimeInterval const kDefaultDuration = 600;
         
         self.selectedTeamMember = selectedItem;
         [self displaySelectedTeamMember];
+    }
+    
+    if ([controller.navigationItem.title isEqualToString:myTeethChargeType]) {
+        
+        self.selectedChargeType = selectedItem;
+        [self displaySelectedChargeType];
     }
 }
 
@@ -557,10 +623,8 @@ static NSTimeInterval const kDefaultDuration = 600;
     NSUInteger index[] = {APPOINTMENT_CHARGES, CHARGE_TYPE};
     NSIndexPath *indexPath = [[NSIndexPath alloc] initWithIndexes:index length:2];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@, %@",
-                                 self.selectedChargeType.chargeType,
-                                 self.selectedPaymentType.paymentType,
-                                 self.selectedPaymentMethod.paymentMethod];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",
+                                 self.selectedChargeType[@"displayName"]];
 }
 
 - (void)displaySelectedTreatmentItems {
@@ -636,17 +700,6 @@ static NSTimeInterval const kDefaultDuration = 600;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)chargeTypeViewControllerDidFinishWithChargeType:(ChargeType *)selectedChargeType paymentType:(PaymentType *)selectedPaymentType paymentMethod:(PaymentMethod *)selectedPaymentMethod {
-    
-    self.selectedChargeType = selectedChargeType;
-    self.selectedPaymentType = selectedPaymentType;
-    self.selectedPaymentMethod = selectedPaymentMethod;
-    
-    [self displaySelectedChargeType];
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 #pragma mark - Add appointment delegate methods
 - (IBAction)cancel:(id)sender {
     
@@ -697,9 +750,8 @@ static NSTimeInterval const kDefaultDuration = 600;
         }
         
         // Charge type
-        [appointment setChargeType:self.selectedChargeType];
-        [appointment setPaymentType:self.selectedPaymentType];
-        [appointment setPaymentMethod:self.selectedPaymentMethod];
+        ChargeType *chargeType = [ChargeType chargeTypeWithUniqueId:self.selectedChargeType[@"uniqueId"]];
+        [appointment setChargeType:chargeType];
         
         // Note
         if (![self.noteString isEqualToString:@""]) {

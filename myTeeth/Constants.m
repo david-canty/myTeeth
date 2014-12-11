@@ -13,6 +13,7 @@ NSString * const kNoteMessagePlaceholder = @"Please enter a note...";
 NSString * const myTeethPatient = @"Patient";
 NSString * const myTeethTeamMember = @"Team Member";
 NSString * const myTeethTreatment = @"Treatment";
+NSString * const myTeethChargeType = @"Charge Type";
 NSString * const uncategorisedTreatmentCategory = @"Uncategorised";
 int const numberOfDefaultTreatmentCategories = 5;
 int const numberOfDefaultTreatmentItems = 19;

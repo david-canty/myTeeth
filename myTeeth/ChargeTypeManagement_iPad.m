@@ -52,10 +52,19 @@ static NSString *kChargeTypeCellIdentifier = @"ChargeTypeCellIdentifier";
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     
     UINavigationController *masterNavigationController = [self.splitViewController.viewControllers objectAtIndex:0];
     [masterNavigationController setToolbarHidden:YES animated:YES];
+    
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,7 +94,8 @@ static NSString *kChargeTypeCellIdentifier = @"ChargeTypeCellIdentifier";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kChargeTypeCellIdentifier];
 
-    
+    ChargeType *chargeType = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = chargeType.typeName;
     
     return cell;
 }
@@ -143,17 +153,6 @@ static NSString *kChargeTypeCellIdentifier = @"ChargeTypeCellIdentifier";
     }
 }
 
-#pragma mark - Table view delegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
-}
-
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    
-    
-}
-
 - (void)addChargeType {
     
     [self performSegueWithIdentifier:@"ShowAddChargeTypeView" sender:nil];
@@ -163,15 +162,23 @@ static NSString *kChargeTypeCellIdentifier = @"ChargeTypeCellIdentifier";
     
     if ([[segue identifier] isEqualToString:@"ShowAddChargeTypeView"]) {
         
-        ChargeTypeDetailViewController_iPad *addController = segue.destinationViewController;
-        addController.navigationItemTitleString = NSLocalizedString(@"Add Charge Type", @"Add Charge Type");
+        ChargeTypeDetailViewController_iPad *addController = (ChargeTypeDetailViewController_iPad *)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        
+        addController.navigationItem.title = NSLocalizedString(@"Add Charge Type", @"Add Charge Type");
+        addController.managedObjectContext = self.managedObjectContext;
         addController.delegate = self;
     }
     
     if ([[segue identifier] isEqualToString:@"ShowEditChargeTypeView"]) {
         
-        ChargeTypeDetailViewController_iPad *editController = segue.destinationViewController;
-        editController.navigationItemTitleString = NSLocalizedString(@"Edit Charge Type", @"Edit Charge Type");
+        ChargeTypeDetailViewController_iPad *editController = (ChargeTypeDetailViewController_iPad *)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        
+        editController.navigationItem.title = NSLocalizedString(@"Edit Charge Type", @"Edit Charge Type");
+        
+        ChargeType *chargeType = [self.fetchedResultsController objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
+        editController.editingChargeType = chargeType;
+        
+        editController.managedObjectContext = self.managedObjectContext;
         editController.delegate = self;
     }
 }
@@ -189,11 +196,11 @@ static NSString *kChargeTypeCellIdentifier = @"ChargeTypeCellIdentifier";
     
     [fetchRequest setFetchBatchSize:10];
     
-    NSSortDescriptor *lastNameSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"chargeType" ascending:YES];
-    NSArray *sortDescriptors = @[lastNameSortDescriptor];
+    NSSortDescriptor *nameSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"typeName" ascending:YES];
+    NSArray *sortDescriptors = @[nameSortDescriptor];
     [fetchRequest setSortDescriptors:sortDescriptors];
     
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
@@ -264,9 +271,10 @@ static NSString *kChargeTypeCellIdentifier = @"ChargeTypeCellIdentifier";
 }
 
 #pragma mark - Charge type detail delegate
-- (void)chargeTypeDetailViewControllerDidFinish:(ChargeTypeDetailViewController_iPad *)controller {
+- (void)chargeTypeDetailViewControllerDidFinishWithChargeType:(ChargeType *)chargeType {
     
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [self.tableView reloadData];
 }
 
 @end

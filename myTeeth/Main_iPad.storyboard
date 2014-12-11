@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="5">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -700,7 +700,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="95E-Vf-hPq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2831" y="-3529"/>
+            <point key="canvasLocation" x="2675" y="-4033"/>
         </scene>
         <!--Team Members-->
         <scene sceneID="X0I-2i-BLQ">
@@ -1147,7 +1147,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="9YH-cX-Vni" kind="push" identifier="ShowChargeTypeView" id="ItP-no-rbn"/>
+                                            <segue destination="eJc-Q2-bFo" kind="push" identifier="ShowSelectChargeTypeView" id="gRV-XD-HjM"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1212,6 +1212,7 @@
                         <outlet property="treatmentCell" destination="TAc-7G-YB2" id="Y1w-7Y-0Qd"/>
                         <segue destination="qpY-6R-P1T" kind="push" identifier="ShowAddTeamMemberView" id="wTs-Kg-5kZ"/>
                         <segue destination="laO-G5-XOT" kind="push" identifier="ShowAddPatientView" id="vzS-KW-FW4"/>
+                        <segue destination="1bw-X6-ZdK" kind="push" identifier="ShowAddChargeTypeView" id="o9p-J1-c0i"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qFN-Nc-Jwc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1996,13 +1997,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChargeTypeCellIdentifier" id="Kcd-o1-urj">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChargeTypeCellIdentifier" textLabel="Vmp-EB-3iW" style="IBUITableViewCellStyleDefault" id="Kcd-o1-urj">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kcd-o1-urj" id="120-A2-p0b">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vmp-EB-3iW">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="KRB-ep-wFO" kind="modal" identifier="ShowEditChargeTypeView" modalPresentationStyle="formSheet" id="DLe-HL-bNK"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -2012,8 +2024,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Charge Types" id="nhw-Gp-WH2"/>
                     <connections>
-                        <segue destination="1bw-X6-ZdK" kind="modal" identifier="ShowAddChargeTypeView" modalPresentationStyle="formSheet" id="TI2-5P-puo"/>
-                        <segue destination="1bw-X6-ZdK" kind="modal" identifier="ShowEditChargeTypeView" modalPresentationStyle="formSheet" id="5de-fh-Z2B"/>
+                        <segue destination="KRB-ep-wFO" kind="modal" identifier="ShowAddChargeTypeView" modalPresentationStyle="formSheet" id="TI2-5P-puo"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZg-id-a4u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2029,36 +2040,101 @@
                         <viewControllerLayoutGuide type="bottom" id="kmv-XJ-RNd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6eC-Js-ylu">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="576"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hoQ-Qk-srK">
-                                <rect key="frame" x="0.0" y="0.0" width="540" height="44"/>
-                                <items>
-                                    <navigationItem id="dFy-bo-iek">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="IXm-ah-32q" userLabel="Cancel">
-                                            <connections>
-                                                <action selector="cancelTapped:" destination="1bw-X6-ZdK" id="7Rc-CJ-6ND"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Done" id="Jik-wM-rX6" userLabel="Done">
-                                            <connections>
-                                                <action selector="doneTapped:" destination="1bw-X6-ZdK" id="6IU-p2-TZB"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6w6-DV-Hk8">
+                                <rect key="frame" x="20" y="20" width="500" height="219"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="219" id="0BD-hA-KvP"/>
+                                    <constraint firstAttribute="width" constant="500" id="hH0-RC-lkV"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChargeTypeTextCellIdentifier" id="BVz-9U-5QZ" customClass="ChargeTypeTextCell">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BVz-9U-5QZ" id="OFc-t1-2TT">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TpK-9F-BoX">
+                                                    <rect key="frame" x="15" y="16" width="91" height="13"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please enter name" adjustsFontSizeToFit="NO" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kjj-oX-lHG" userLabel="Text Field">
+                                                    <rect key="frame" x="114" y="8" width="372" height="30"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" spellCheckingType="yes"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="1bw-X6-ZdK" id="Lpx-3T-RaB"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="TpK-9F-BoX" id="0rQ-rl-gzS"/>
+                                            <outlet property="nameTextField" destination="kjj-oX-lHG" id="up2-nK-QWn"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChargeTypeCellIdentifier" textLabel="FiJ-57-N7r" detailTextLabel="AeY-SD-3Xi" style="IBUITableViewCellStyleValue2" id="xbJ-Pb-uYp">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xbJ-Pb-uYp" id="T7z-bD-bl7">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FiJ-57-N7r">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AeY-SD-3Xi">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="1bw-X6-ZdK" id="jpM-RX-t9B"/>
+                                    <outlet property="delegate" destination="1bw-X6-ZdK" id="6FM-yz-Wbx"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6w6-DV-Hk8" firstAttribute="top" secondItem="51Q-4a-HOp" secondAttribute="bottom" constant="20" id="8jD-oF-iIM"/>
+                            <constraint firstItem="6w6-DV-Hk8" firstAttribute="leading" secondItem="6eC-Js-ylu" secondAttribute="leadingMargin" id="COY-3A-oPN"/>
+                        </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="Cij-2j-ugu">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3F9-QU-sOX">
+                            <connections>
+                                <action selector="cancelTapped:" destination="1bw-X6-ZdK" id="rrG-9Z-bQP"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Z8h-Cu-nKi">
+                            <connections>
+                                <action selector="doneTapped:" destination="1bw-X6-ZdK" id="DEg-ci-MEk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="navigationItem" destination="dFy-bo-iek" id="mwf-Hr-BuD"/>
+                        <outlet property="tableView" destination="6w6-DV-Hk8" id="s70-71-jBB"/>
+                        <segue destination="eJc-Q2-bFo" kind="push" id="F9U-K3-JCU"/>
+                        <segue destination="eJc-Q2-bFo" kind="push" identifier="ShowSelectServiceProviderView" id="rEW-cF-abi"/>
+                        <segue destination="eJc-Q2-bFo" kind="push" identifier="ShowSelectPaymentTypeView" id="tzk-Zs-ecr"/>
+                        <segue destination="eJc-Q2-bFo" kind="push" identifier="ShowSelectPaymentMethodView" id="yGS-VS-36K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NHi-Ex-pBJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4916" y="-4248"/>
+            <point key="canvasLocation" x="5914" y="-4382"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tdy-rW-UCA">
@@ -2174,175 +2250,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qDe-mq-3YQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3027" y="377"/>
-        </scene>
-        <!--Charge Type-->
-        <scene sceneID="TNt-h1-YUa">
-            <objects>
-                <viewController id="9YH-cX-Vni" customClass="ChargeTypeViewController_iPad" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Q4p-ZK-Fj1"/>
-                        <viewControllerLayoutGuide type="bottom" id="DZR-bQ-ArR"/>
-                    </layoutGuides>
-                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="1Rz-nh-yuX">
-                        <rect key="frame" x="0.0" y="64" width="540" height="576"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Charge Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFB-26-TFf">
-                                <rect key="frame" x="20" y="20" width="124" height="22"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyv-oS-buJ" userLabel="Button - Charge Type">
-                                <rect key="frame" x="170" y="9" width="350" height="44"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="&gt;"/>
-                                <connections>
-                                    <segue destination="Q33-Al-T7l" kind="popover" identifier="ShowChargeTypePopover" popoverAnchorView="vyv-oS-buJ" id="DGA-6A-AA6">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please select" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDJ-jF-TTe" userLabel="Label - Charge Type Value">
-                                <rect key="frame" x="221" y="20" width="299" height="22"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-MediumItalic" family="Helvetica Neue" pointSize="14"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4AS-Wx-I2M" userLabel="Divider">
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
-                            </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Payment Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBG-ND-r1b">
-                                <rect key="frame" x="20" y="204" width="124" height="22"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lR2-Iy-BZD" userLabel="Button - Payment Type">
-                                <rect key="frame" x="170" y="193" width="344" height="44"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="&gt;">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Q33-Al-T7l" kind="popover" identifier="ShowPaymentTypePopover" popoverAnchorView="lR2-Iy-BZD" id="J2g-A4-lpW">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please select" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sag-Ji-uL9" userLabel="Label - Payment Type Value">
-                                <rect key="frame" x="221" y="204" width="299" height="22"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-MediumItalic" family="Helvetica Neue" pointSize="14"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2x-7B-hte" userLabel="Text View - Payment Type">
-                                <rect key="frame" x="16" y="234" width="508" height="138"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <attributedString key="attributedText">
-                                    <fragment>
-                                        <string key="content">There are different payment types depending on how you receive your dental treatment. Common forms of payment types are listed below:  • Exempt – the state pays for all of your dental treatment but restrictions apply.  • Part-Exempt – the state pays for some of your dental treatment but further restrictions apply.  • State – you pay for all of your dental treatment provided by the state.  • State and Private – you pay for all of your dental treatment, part of which is provided by the state and part of which is provided privately.  • Private – you pay for all of your dental treatment which is provided privately.  • Personal Health, Medical or Dental Insurance – you have a personal policy which covers the cost of part or all of your dental treatment.  • Employer Health, Medical or Dental Insurance – you have a policy where your employer covers the cost of part or all of your dental treatment.</string>
-                                        <attributes>
-                                            <font key="NSFont" size="14" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nQ2-3V-LXC" userLabel="Divider">
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
-                            </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Payment Method" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TIH-ea-AEG">
-                                <rect key="frame" x="26" y="388" width="124" height="22"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="prF-TN-6Ki" userLabel="Button - Payment Method">
-                                <rect key="frame" x="170" y="377" width="344" height="44"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="&gt;">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Q33-Al-T7l" kind="popover" identifier="ShowPaymentMethodPopover" popoverAnchorView="prF-TN-6Ki" id="YYn-cT-Axv">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please select" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQl-hD-uRx" userLabel="Label - Payment Method Value">
-                                <rect key="frame" x="221" y="388" width="299" height="22"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-MediumItalic" family="Helvetica Neue" pointSize="14"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="HRg-4S-XpI">
-                                <rect key="frame" x="158" y="389" width="20" height="20"/>
-                            </activityIndicatorView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="She-BZ-rt8">
-                                <rect key="frame" x="158" y="205" width="20" height="20"/>
-                            </activityIndicatorView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mXy-g4-kA4">
-                                <rect key="frame" x="158" y="21" width="20" height="20"/>
-                            </activityIndicatorView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Na1-zV-sWw" userLabel="Text View - Payment Method">
-                                <rect key="frame" x="16" y="418" width="508" height="138"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <attributedString key="attributedText">
-                                    <fragment>
-                                        <string key="content">You will normally be offered a variety of methods by which you can pay for your dental treatment. Common payment methods are listed below:  • Weekly Payment – you make a regular weekly payment to cover your dental treatment (capitation scheme, cash plan, treatment loan, credit agreement).  • Monthly Payment – you make a regular monthly payment to cover your dental treatment (capitation scheme, cash plan, treatment loan, credit agreement).  • Quarterly Payment – You make a regular quarterly payment to cover your dental treatment (capitation scheme, cash plan, treatment loan, credit agreement).  • Annual Payment – you make a regular annual payment to cover your dental treatment (capitation scheme, cash plan, treatment loan, credit agreement).  • Pay per Appointment – You pay for the treatment you receive at the end of each appointment.  • Pay per Course of Treatment – you pay for the treatment you receive at the end of a course of treatment.</string>
-                                        <attributes>
-                                            <font key="NSFont" size="14" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obY-Oe-UG4" userLabel="Text View - Charge Type">
-                                <rect key="frame" x="16" y="50" width="508" height="138"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <attributedString key="attributedText">
-                                    <fragment>
-                                        <string key="content">Normally, you will be charged for dental treatment received in one of three ways:  • State – all of your dental treatment is provided by the state.  • Private – all of your dental treatment is provided privately.  • State and Private – part of your dental treatment is provided by the state and part is provided privately.</string>
-                                        <attributes>
-                                            <font key="NSFont" size="14" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Charge Type" id="bw7-Q5-v7L">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="bq8-js-Mpm">
-                            <connections>
-                                <action selector="doneButtonTapped:" destination="9YH-cX-Vni" id="awa-WA-BOu"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="chargeTypeActivityIndicator" destination="mXy-g4-kA4" id="09f-aJ-4yr"/>
-                        <outlet property="chargeTypeButton" destination="vyv-oS-buJ" id="lfs-5Y-mv6"/>
-                        <outlet property="chargeTypeLabel" destination="VDJ-jF-TTe" id="Wg5-gT-l9G"/>
-                        <outlet property="chargeTypeTextView" destination="obY-Oe-UG4" id="3Mn-SI-3ZP"/>
-                        <outlet property="paymentMethodActivityIndicator" destination="HRg-4S-XpI" id="wfA-1n-1cT"/>
-                        <outlet property="paymentMethodButton" destination="prF-TN-6Ki" id="yRX-R1-Oru"/>
-                        <outlet property="paymentMethodLabel" destination="zQl-hD-uRx" id="dWK-93-OhN"/>
-                        <outlet property="paymentMethodTextView" destination="Na1-zV-sWw" id="mwd-xe-Adh"/>
-                        <outlet property="paymentTypeActivityIndicator" destination="She-BZ-rt8" id="NWq-nK-ufr"/>
-                        <outlet property="paymentTypeButton" destination="lR2-Iy-BZD" id="lmA-xR-vaH"/>
-                        <outlet property="paymentTypeLabel" destination="sag-Ji-uL9" id="eUH-H5-Fv6"/>
-                        <outlet property="paymentTypeTextView" destination="p2x-7B-hte" id="Q37-em-fQi"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="j13-7A-yRX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4832" y="812"/>
         </scene>
         <!--Add Treatment Category View Controller-->
         <scene sceneID="p9t-KY-EKE">
@@ -2888,22 +2795,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UTT-co-8aU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2144" y="-3513"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="909-1n-4sh">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4Hj-v6-bxR" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oh5-r9-VW9">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FR0-5c-WMm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2149" y="-4233"/>
+            <point key="canvasLocation" x="1980" y="-4033"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Hjf-9S-ycc">
@@ -2941,6 +2833,24 @@
             </objects>
             <point key="canvasLocation" x="4781" y="-3274"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bJ0-8X-uFC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KRB-ep-wFO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hSh-uO-5nd">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1bw-X6-ZdK" kind="relationship" relationship="rootViewController" id="cFw-a7-rnb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gfN-QL-E7M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5162" y="-4382"/>
+        </scene>
     </scenes>
     <resources>
         <image name="blueDot.png" width="8" height="8"/>
@@ -2958,15 +2868,16 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="UwO-G3-M9o"/>
-        <segue reference="TI2-5P-puo"/>
-        <segue reference="xD0-xt-Qbw"/>
+        <segue reference="GjE-9p-Obf"/>
+        <segue reference="QxN-3o-xYL"/>
         <segue reference="lSt-XP-9YA"/>
+        <segue reference="oI2-QC-b5g"/>
+        <segue reference="xD0-xt-Qbw"/>
+        <segue reference="DLe-HL-bNK"/>
+        <segue reference="o9p-J1-c0i"/>
         <segue reference="vzS-KW-FW4"/>
         <segue reference="wTs-Kg-5kZ"/>
-        <segue reference="sav-PF-aGp"/>
-        <segue reference="YYn-cT-Axv"/>
-        <segue reference="QxN-3o-xYL"/>
-        <segue reference="GjE-9p-Obf"/>
-        <segue reference="oI2-QC-b5g"/>
+        <segue reference="rEW-cF-abi"/>
+        <segue reference="jcx-zG-FvM"/>
     </inferredMetricsTieBreakers>
 </document>
