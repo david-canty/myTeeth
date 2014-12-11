@@ -21,5 +21,10 @@
 @end
 
 @protocol ChargeTypeDetailViewControllerDelegate <NSObject>
+
 - (void)chargeTypeDetailViewControllerDidFinishWithChargeType:(ChargeType *)chargeType;
+
+@optional
+- (void)chargeTypeDetailViewControllerDidCancel;
+
 @end

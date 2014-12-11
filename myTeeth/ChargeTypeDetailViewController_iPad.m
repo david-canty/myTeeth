@@ -12,23 +12,32 @@
 #import "ServiceProvider+Utils.h"
 #import "PaymentType+Utils.h"
 #import "PaymentMethod+Utils.h"
-#import "ChargeTypeTextCell.h"
+#import "ChargeTypeNameCell.h"
+#import "ChargeTypeAmountCell.h"
 #import "Constants.h"
 
-static NSString *kChargeTypeCellIdentifier      = @"ChargeTypeCellIdentifier";
-static NSString *kChargeTypeTextCellIdentifier  = @"ChargeTypeTextCellIdentifier";
+static NSString *kChargeTypeCellIdentifier          = @"ChargeTypeCellIdentifier";
+static NSString *kChargeTypeNameCellIdentifier      = @"ChargeTypeNameCellIdentifier";
+static NSString *kChargeTypeAmountCellIdentifier    = @"ChargeTypeAmountCellIdentifier";
+
+static NSString *kPayPerAppointment                 = @"Pay per Appointment";
+static NSString *kPayPerCourseOfTreatment           = @"Pay per Course of Treatment";
+static NSString *kExempt                            = @"None (Exempt)";
 
 static NSUInteger const kChargeTypeNameRow  = 0;
 static NSUInteger const kServiceProviderRow = 1;
 static NSUInteger const kPaymentTypeRow     = 2;
 static NSUInteger const kPaymentMethodRow   = 3;
+static NSUInteger const kPaymentAmountRow   = 4;
 
-@interface ChargeTypeDetailViewController_iPad () <UITableViewDataSource, UITableViewDelegate, SingleSelectionListViewControllerDelegate>
+@interface ChargeTypeDetailViewController_iPad () <UITableViewDataSource, UITableViewDelegate, SingleSelectionListViewControllerDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *tableRowData;
 
 @property (strong, nonatomic) UITextField *nameTextField;
+@property (strong, nonatomic) UITextField *amountTextField;
+@property (copy, nonatomic) NSString *amountValue;
 
 @property (strong, nonatomic) NSArray *serviceProviderDetails;
 @property (strong, nonatomic) NSArray *serviceProviderListItems;
@@ -65,7 +74,7 @@ static NSUInteger const kPaymentMethodRow   = 3;
                           [@{@"rowTitleString" : @"Payment Method",
                              @"rowDetailString" : @"Please select"} mutableCopy],
                           [@{@"rowTitleString" : @"Payment Amount",
-                             @"rowDetailString" : @"Amount"} mutableCopy]];
+                             @"rowDetailString" : @"None"} mutableCopy]];
     
     [self loadServiceProviderDetails];
     [self loadServiceProviderListItems];
@@ -101,6 +110,9 @@ static NSUInteger const kPaymentMethodRow   = 3;
         NSMutableDictionary *paymentMethodTableRowDict = self.tableRowData[kPaymentMethodRow];
         paymentMethodTableRowDict[@"rowDetailString"] = self.selectedPaymentMethod[@"displayName"];
         
+        // Amount
+        self.amountValue = [NSString stringWithFormat:@"%.2f", [self.editingChargeType.regularAmount floatValue]];
+
     }
 }
 
@@ -132,8 +144,12 @@ static NSUInteger const kPaymentMethodRow   = 3;
     // Persist name text between view transitions
     NSMutableDictionary *typeNameTableRowDict = self.tableRowData[kChargeTypeNameRow];
     typeNameTableRowDict[@"rowDetailString"] = self.nameTextField.text;
-    
     [self.nameTextField resignFirstResponder];
+    
+    if (self.amountTextField) {
+        
+        [self.amountTextField resignFirstResponder];
+    }
     
     [super viewWillDisappear:animated];
 }
@@ -152,6 +168,81 @@ static NSUInteger const kPaymentMethodRow   = 3;
 - (void)keyboardDidHide:(NSNotification *)notification {
     
     [self.nameTextField resignFirstResponder];
+    
+    if (self.amountTextField) {
+        
+        [self.amountTextField resignFirstResponder];
+    }
+}
+
+#pragma mark - Text field delegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    if (textField.tag == 2) { // Amount text field
+        
+        // Only allow numbers with decimal point
+        NSCharacterSet *nonNumberSet = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789."] invertedSet];
+        
+        // Allow backspace
+        if (range.length > 0 && string.length == 0) {
+            
+            return YES;
+        }
+        
+        // Do not allow decimal point at the beggining
+        if (range.location == 0 && [string isEqualToString:@"."]) {
+            
+            return NO;
+        }
+        
+        // Set the text field value manually
+        NSString *newValue = [[textField text] stringByReplacingCharactersInRange:range withString:string];
+        newValue = [[newValue componentsSeparatedByCharactersInSet:nonNumberSet] componentsJoinedByString:@""];
+        
+        // Prevent more than decimal point
+        NSArray *arrayOfStrings = [newValue componentsSeparatedByString:@"."];
+        if ([arrayOfStrings count] > 2 ) {
+            
+            return NO;
+        }
+        
+        // Set text field value
+        textField.text = newValue;
+        
+        // Return NO because we're manually setting the value
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    
+    if (textField.tag == 2) { // Amount text field
+        
+        if ([textField.text isEqualToString:@""]) {
+            
+            // If empty, fill with 0.00
+            textField.text = @"0.00";
+            
+        } else if ([[textField.text substringFromIndex:textField.text.length - 1] isEqualToString:@"."]) {
+            
+            // If amount value has a decimal point at end, add 00
+            textField.text = [NSString stringWithFormat:@"%@00", textField.text];
+            
+        } else if (![textField.text containsString:@"."]) {
+            
+            // If amount has no decimal point, add .00
+            textField.text = [NSString stringWithFormat:@"%@.00", textField.text];
+            
+        } else if ([[textField.text substringWithRange:NSMakeRange(textField.text.length - 2, 1)] isEqualToString:@"."]) {
+            
+            // If amount has a decimal point followed by a single digit, add another 0
+            textField.text = [NSString stringWithFormat:@"%@0", textField.text];
+        }
+    }
+    
+    return YES;
 }
 
 #pragma mark - Load model data
@@ -335,12 +426,11 @@ static NSUInteger const kPaymentMethodRow   = 3;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell;
-    
     NSDictionary *rowData = self.tableRowData[indexPath.row];
     
     if (indexPath.row == kChargeTypeNameRow) {
         
-        ChargeTypeTextCell *nameCell = [tableView dequeueReusableCellWithIdentifier:kChargeTypeTextCellIdentifier forIndexPath:indexPath];
+        ChargeTypeNameCell *nameCell = [tableView dequeueReusableCellWithIdentifier:kChargeTypeNameCellIdentifier forIndexPath:indexPath];
         
         nameCell.nameLabel.text = rowData[@"rowTitleString"];
         nameCell.nameTextField.text = rowData[@"rowDetailString"];
@@ -348,7 +438,8 @@ static NSUInteger const kPaymentMethodRow   = 3;
         
         cell = nameCell;
         
-    } else {
+    } else if (indexPath.row > kChargeTypeNameRow &&
+               indexPath.row < kPaymentAmountRow) {
         
         cell = [tableView dequeueReusableCellWithIdentifier:kChargeTypeCellIdentifier forIndexPath:indexPath];
         
@@ -392,9 +483,78 @@ static NSUInteger const kPaymentMethodRow   = 3;
                 cell.detailTextLabel.textColor = [UIColor blackColor];
             }
         }
-
-    }
+        
+    } else {
     
+        // Enable payment amount row only when payment method has been selected
+        ChargeTypeAmountCell *amountCell = [tableView dequeueReusableCellWithIdentifier:kChargeTypeAmountCellIdentifier forIndexPath:indexPath];
+        
+        amountCell.amountTitleLabel.text = rowData[@"rowTitleString"];
+        amountCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        NSDictionary *paymentMethodRowData = self.tableRowData[kPaymentMethodRow];
+        
+        if ([paymentMethodRowData[@"rowDetailString"] isEqualToString:kPleaseSelect]) {
+            
+            amountCell.userInteractionEnabled = NO;
+            amountCell.amountTextField.hidden = YES;
+            amountCell.amountDetailLabel.hidden = NO;
+            amountCell.amountDetailLabel.textColor = [UIColor lightGrayColor];
+            amountCell.amountDetailLabel.text = @"None";
+
+        } else {
+            
+            // Display amount text field or label
+            amountCell.userInteractionEnabled = YES;
+            
+            if ([paymentMethodRowData[@"rowDetailString"] isEqualToString:kPayPerAppointment]) {
+                
+                amountCell.amountTextField.hidden = YES;
+                amountCell.amountDetailLabel.hidden = NO;
+                amountCell.amountDetailLabel.textColor = [UIColor blackColor];
+                amountCell.amountDetailLabel.text = NSLocalizedString(@"Enter an amount when completing an appointment", @"Appointment amount");
+                
+            } else if ([paymentMethodRowData[@"rowDetailString"] isEqualToString:kPayPerCourseOfTreatment]) {
+                
+                amountCell.amountTextField.hidden = YES;
+                amountCell.amountDetailLabel.hidden = NO;
+                amountCell.amountDetailLabel.textColor = [UIColor blackColor];
+                amountCell.amountDetailLabel.text = NSLocalizedString(@"Enter an amount when completing a course of treatment", @"Appointment course amount");
+                
+            } else {
+                
+                amountCell.amountDetailLabel.hidden = YES;
+                amountCell.amountTextField.hidden = NO;
+                
+                if ([paymentMethodRowData[@"rowDetailString"] isEqualToString:kExempt]) {
+                    
+                    amountCell.amountTextField.text = @"0.00";
+                    amountCell.userInteractionEnabled = NO;
+                    amountCell.amountTextField.textColor = [UIColor lightGrayColor];
+                    
+                } else {
+                    
+                    if ([self.amountValue floatValue] >= 0) {
+                        
+                        amountCell.amountTextField.text = self.amountValue;
+                        
+                    } else {
+                        
+                        amountCell.amountTextField.text = @"0.00";
+                    }
+                    
+                    amountCell.userInteractionEnabled = YES;
+                    amountCell.amountTextField.textColor = [UIColor blackColor];
+
+                }
+                
+                self.amountTextField = amountCell.amountTextField;
+            }
+        }
+        
+        cell = amountCell;
+    }
+
     return cell;
 }
 
@@ -484,7 +644,7 @@ static NSUInteger const kPaymentMethodRow   = 3;
         selectionListViewController.sectionHeader = NSLocalizedString(@"Please select a payment method for this charge type", @"Please select a payment method for this charge type");
         
         // Set section footer text
-        selectionListViewController.sectionFooter = NSLocalizedString(@"You will normally be offered a variety of methods by which you can pay for your dental treatment. Common payment methods are listed below:\n\n• Weekly Payment – you make a regular weekly payment to cover your dental treatment (capitation scheme, cash plan, treatment loan, credit agreement).\n\n• Monthly Payment – you make a regular monthly payment to cover your dental treatment (capitation scheme, cash plan, treatment loan, credit agreement).\n\n• Quarterly Payment – You make a regular quarterly payment to cover your dental treatment (capitation scheme, cash plan, treatment loan, credit agreement).\n\n• Annual Payment – you make a regular annual payment to cover your dental treatment (capitation scheme, cash plan, treatment loan, credit agreement).\n\n• Pay per Appointment – You pay for the treatment you receive at the end of each appointment.\n\n• Pay per Course of Treatment – you pay for the treatment you receive at the end of a course of treatment.", @"Payment method description");
+        selectionListViewController.sectionFooter = NSLocalizedString(@"You will normally be offered a variety of methods by which you can pay for your dental treatment. Common payment methods are listed below:\n\n• Weekly Payment – you make a regular weekly payment to cover your dental treatment (e.g., capitation scheme, cash plan, treatment loan, credit agreement).\n\n• Monthly Payment – you make a regular monthly payment to cover your dental treatment (e.g., capitation scheme, cash plan, treatment loan, credit agreement).\n\n• Quarterly Payment – You make a regular quarterly payment to cover your dental treatment (e.g., capitation scheme, cash plan, treatment loan, credit agreement).\n\n• Annual Payment – you make a regular annual payment to cover your dental treatment (e.g., capitation scheme, cash plan, treatment loan, credit agreement).\n\n• Pay per Appointment – You pay for the treatment you receive at the end of each appointment.\n\n• Pay per Course of Treatment – you pay for the treatment you receive at the end of a course of treatment.", @"Payment method description");
     }
 }
 
@@ -552,6 +712,11 @@ static NSUInteger const kPaymentMethodRow   = 3;
 - (IBAction)cancelTapped:(id)sender {
     
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    if ([self.delegate respondsToSelector:@selector(chargeTypeDetailViewControllerDidCancel)]) {
+        
+        [self.delegate chargeTypeDetailViewControllerDidCancel];
+    }
 }
 
 - (IBAction)doneTapped:(id)sender {
@@ -600,6 +765,15 @@ static NSUInteger const kPaymentMethodRow   = 3;
         isValidated = NO;
     }
     
+    if (!self.amountTextField.isHidden) {
+        
+        if ([self.amountTextField.text isEqualToString:@""]) {
+            
+            [self wobbleView:self.amountTextField];
+            isValidated = NO;
+        }
+    }
+    
     if (isValidated) {
         
         // Save charge type
@@ -626,6 +800,15 @@ static NSUInteger const kPaymentMethodRow   = 3;
         chargeType.paymentType = [PaymentType paymentTypeWithUniqueId:self.selectedPaymentType[@"uniqueId"]];
         
         chargeType.paymentMethod = [PaymentMethod paymentMethodWithUniqueId:self.selectedPaymentMethod[@"uniqueId"]];
+        
+        if (self.amountTextField != nil && !self.amountTextField.isHidden) {
+            
+            chargeType.regularAmount = [NSNumber numberWithFloat:[self.amountTextField.text floatValue]];
+            
+        } else {
+            
+            chargeType.regularAmount = @-1;
+        }
         
         // Save the context.
         NSError *error = nil;

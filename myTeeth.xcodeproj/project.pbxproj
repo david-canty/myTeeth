@@ -10,14 +10,15 @@
 		1F07EFA9196F16C000128021 /* TeamMember+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F07EFA8196F16C000128021 /* TeamMember+Utils.m */; };
 		1F0EA3191A2773E500FF7A31 /* Tooth.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0EA3181A2773E500FF7A31 /* Tooth.m */; };
 		1F1FFDFE1A378A3E00B96563 /* PaymentMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1FFDFD1A378A3E00B96563 /* PaymentMethod.m */; };
-		1F1FFE011A378D8800B96563 /* ChargeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1FFE001A378D8800B96563 /* ChargeType.m */; };
 		1F1FFE041A378D8900B96563 /* PaymentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1FFE031A378D8900B96563 /* PaymentType.m */; };
+		1F20706E1A39AC690040BFA3 /* ChargeTypeAmountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F20706D1A39AC690040BFA3 /* ChargeTypeAmountCell.m */; };
 		1F20FDFF18E9EA06006A3408 /* MultipleSelectionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F20FDFC18E9EA06006A3408 /* MultipleSelectionListViewController.m */; };
 		1F20FE0018E9EA06006A3408 /* SingleSelectionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F20FDFE18E9EA06006A3408 /* SingleSelectionListViewController.m */; };
 		1F20FE0418E9EAC7006A3408 /* DefaultTreatmentCategoriesAndItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F20FE0118E9EAC7006A3408 /* DefaultTreatmentCategoriesAndItems.plist */; };
 		1F20FE0518E9EAC7006A3408 /* Job Titles.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F20FE0218E9EAC7006A3408 /* Job Titles.plist */; };
 		1F20FE0618E9EAC7006A3408 /* Salutations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F20FE0318E9EAC7006A3408 /* Salutations.plist */; };
-		1F220B2C1A389AA10015AEB3 /* ChargeTypeTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F220B2B1A389AA10015AEB3 /* ChargeTypeTextCell.m */; };
+		1F220B2C1A389AA10015AEB3 /* ChargeTypeNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F220B2B1A389AA10015AEB3 /* ChargeTypeNameCell.m */; };
+		1F27AC1C1A39CEE200C0A003 /* ChargeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F27AC1B1A39CEE200C0A003 /* ChargeType.m */; };
 		1F2B50201A0F97AC00E1D1AC /* Salutation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2B501F1A0F97AC00E1D1AC /* Salutation.m */; };
 		1F2B50231A0F97AD00E1D1AC /* JobTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2B50221A0F97AD00E1D1AC /* JobTitle.m */; };
 		1F2B50261A0F98EC00E1D1AC /* JobTitle+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2B50251A0F98EC00E1D1AC /* JobTitle+Utils.m */; };
@@ -241,10 +242,10 @@
 		1F0EA3181A2773E500FF7A31 /* Tooth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tooth.m; sourceTree = "<group>"; };
 		1F1FFDFC1A378A3E00B96563 /* PaymentMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentMethod.h; sourceTree = "<group>"; };
 		1F1FFDFD1A378A3E00B96563 /* PaymentMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentMethod.m; sourceTree = "<group>"; };
-		1F1FFDFF1A378D8800B96563 /* ChargeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeType.h; sourceTree = "<group>"; };
-		1F1FFE001A378D8800B96563 /* ChargeType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeType.m; sourceTree = "<group>"; };
 		1F1FFE021A378D8900B96563 /* PaymentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentType.h; sourceTree = "<group>"; };
 		1F1FFE031A378D8900B96563 /* PaymentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentType.m; sourceTree = "<group>"; };
+		1F20706C1A39AC690040BFA3 /* ChargeTypeAmountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeTypeAmountCell.h; sourceTree = "<group>"; };
+		1F20706D1A39AC690040BFA3 /* ChargeTypeAmountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeTypeAmountCell.m; sourceTree = "<group>"; };
 		1F20FDFB18E9EA06006A3408 /* MultipleSelectionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultipleSelectionListViewController.h; sourceTree = "<group>"; };
 		1F20FDFC18E9EA06006A3408 /* MultipleSelectionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultipleSelectionListViewController.m; sourceTree = "<group>"; };
 		1F20FDFD18E9EA06006A3408 /* SingleSelectionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleSelectionListViewController.h; sourceTree = "<group>"; };
@@ -252,8 +253,10 @@
 		1F20FE0118E9EAC7006A3408 /* DefaultTreatmentCategoriesAndItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultTreatmentCategoriesAndItems.plist; sourceTree = "<group>"; };
 		1F20FE0218E9EAC7006A3408 /* Job Titles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Job Titles.plist"; sourceTree = "<group>"; };
 		1F20FE0318E9EAC7006A3408 /* Salutations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Salutations.plist; sourceTree = "<group>"; };
-		1F220B2A1A389AA10015AEB3 /* ChargeTypeTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeTypeTextCell.h; sourceTree = "<group>"; };
-		1F220B2B1A389AA10015AEB3 /* ChargeTypeTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeTypeTextCell.m; sourceTree = "<group>"; };
+		1F220B2A1A389AA10015AEB3 /* ChargeTypeNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeTypeNameCell.h; sourceTree = "<group>"; };
+		1F220B2B1A389AA10015AEB3 /* ChargeTypeNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeTypeNameCell.m; sourceTree = "<group>"; };
+		1F27AC1A1A39CEE200C0A003 /* ChargeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeType.h; sourceTree = "<group>"; };
+		1F27AC1B1A39CEE200C0A003 /* ChargeType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeType.m; sourceTree = "<group>"; };
 		1F2B501E1A0F97AC00E1D1AC /* Salutation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Salutation.h; sourceTree = "<group>"; };
 		1F2B501F1A0F97AC00E1D1AC /* Salutation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Salutation.m; sourceTree = "<group>"; };
 		1F2B50211A0F97AD00E1D1AC /* JobTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobTitle.h; sourceTree = "<group>"; };
@@ -827,8 +830,8 @@
 				1F98355E19B346CF00AF93E5 /* Note.m */,
 				1F98356319B346CF00AF93E5 /* Bill.h */,
 				1F98356419B346CF00AF93E5 /* Bill.m */,
-				1F1FFDFF1A378D8800B96563 /* ChargeType.h */,
-				1F1FFE001A378D8800B96563 /* ChargeType.m */,
+				1F27AC1A1A39CEE200C0A003 /* ChargeType.h */,
+				1F27AC1B1A39CEE200C0A003 /* ChargeType.m */,
 				1F59CE071A372161007AB5C0 /* ServiceProvider.h */,
 				1F59CE081A372161007AB5C0 /* ServiceProvider.m */,
 				1F1FFE021A378D8900B96563 /* PaymentType.h */,
@@ -869,8 +872,10 @@
 				1F98CC1F19AD04610021896D /* ChargeTypeManagement_iPad.m */,
 				1F98491819AF524800C20CBA /* ChargeTypeDetailViewController_iPad.h */,
 				1F98491919AF524800C20CBA /* ChargeTypeDetailViewController_iPad.m */,
-				1F220B2A1A389AA10015AEB3 /* ChargeTypeTextCell.h */,
-				1F220B2B1A389AA10015AEB3 /* ChargeTypeTextCell.m */,
+				1F220B2A1A389AA10015AEB3 /* ChargeTypeNameCell.h */,
+				1F220B2B1A389AA10015AEB3 /* ChargeTypeNameCell.m */,
+				1F20706C1A39AC690040BFA3 /* ChargeTypeAmountCell.h */,
+				1F20706D1A39AC690040BFA3 /* ChargeTypeAmountCell.m */,
 			);
 			name = "Charge Type Management";
 			sourceTree = "<group>";
@@ -1345,7 +1350,7 @@
 				1F2B50201A0F97AC00E1D1AC /* Salutation.m in Sources */,
 				1F978227193506E200136268 /* SingleSelectionPopoverContentViewController.m in Sources */,
 				1FA9DDB91A211AAF00BF300E /* SettingsViewController.m in Sources */,
-				1F220B2C1A389AA10015AEB3 /* ChargeTypeTextCell.m in Sources */,
+				1F220B2C1A389AA10015AEB3 /* ChargeTypeNameCell.m in Sources */,
 				556468C0180443910060016F /* MainViewController.m in Sources */,
 				1F2B50261A0F98EC00E1D1AC /* JobTitle+Utils.m in Sources */,
 				1F59CE091A372161007AB5C0 /* ServiceProvider.m in Sources */,
@@ -1357,11 +1362,11 @@
 				1F98563B19AA65C100D94256 /* NoteViewController_iPad.m in Sources */,
 				1F20FDFF18E9EA06006A3408 /* MultipleSelectionListViewController.m in Sources */,
 				1FA1885118EC98A500AD313E /* AddPatientViewController.m in Sources */,
-				1F1FFE011A378D8800B96563 /* ChargeType.m in Sources */,
 				1F80D3391A247D5500213092 /* DateOfBirthViewController.m in Sources */,
 				55E2B6FC18041F8000360759 /* AppDelegate.m in Sources */,
 				551840BD18661448001B58C3 /* Constants.m in Sources */,
 				1FA19E3B19799A95006ADDB1 /* TreatmentCategory.m in Sources */,
+				1F20706E1A39AC690040BFA3 /* ChargeTypeAmountCell.m in Sources */,
 				552E95C0180AA41C00EC706C /* NoteDetailViewController.m in Sources */,
 				1F98357719B34D8000AF93E5 /* PaymentMethod+Utils.m in Sources */,
 				1F07EFA9196F16C000128021 /* TeamMember+Utils.m in Sources */,
@@ -1380,6 +1385,7 @@
 				1FA19E3219799A95006ADDB1 /* TreatmentItem.m in Sources */,
 				5529E1D218C242A2008C9625 /* ToothCell.m in Sources */,
 				1F39B46A1A1E59F000F1AEDC /* DentalPractice+Utils.m in Sources */,
+				1F27AC1C1A39CEE200C0A003 /* ChargeType.m in Sources */,
 				1F97109418EDDD4D0008BAC0 /* DurationViewController.m in Sources */,
 				1FB09A721A1CA72B004501F2 /* Tooth+Utils.m in Sources */,
 				1FA1885218EC98A500AD313E /* PatientViewController.m in Sources */,

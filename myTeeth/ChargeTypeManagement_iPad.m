@@ -271,6 +271,11 @@ static NSString *kChargeTypeCellIdentifier = @"ChargeTypeCellIdentifier";
 }
 
 #pragma mark - Charge type detail delegate
+- (void)chargeTypeDetailViewControllerDidCancel {
+    
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
 - (void)chargeTypeDetailViewControllerDidFinishWithChargeType:(ChargeType *)chargeType {
     
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];

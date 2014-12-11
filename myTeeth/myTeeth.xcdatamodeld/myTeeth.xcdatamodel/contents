@@ -21,6 +21,7 @@
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="bill" inverseEntity="Appointment" syncable="YES"/>
     </entity>
     <entity name="ChargeType" representedClassName="ChargeType" syncable="YES">
+        <attribute name="regularAmount" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="typeName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="chargeType" inverseEntity="Appointment" syncable="YES"/>
@@ -129,7 +130,7 @@
     <elements>
         <element name="Appointment" positionX="-13113" positionY="-17820" width="128" height="223"/>
         <element name="Bill" positionX="-12872" positionY="-17874" width="128" height="103"/>
-        <element name="ChargeType" positionX="-12915" positionY="-17671" width="128" height="133"/>
+        <element name="ChargeType" positionX="-12915" positionY="-17685" width="128" height="148"/>
         <element name="DentalPractice" positionX="-13196" positionY="-17989" width="128" height="118"/>
         <element name="JobTitle" positionX="-13509" positionY="-17746" width="128" height="73"/>
         <element name="Note" positionX="-13446" positionY="-17641" width="128" height="163"/>

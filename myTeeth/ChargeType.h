@@ -2,7 +2,7 @@
 //  ChargeType.h
 //  myTeeth
 //
-//  Created by David Canty on 09/12/2014.
+//  Created by David Canty on 11/12/2014.
 //  Copyright (c) 2014 David Canty. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSString * typeName;
 @property (nonatomic, retain) NSString * uniqueId;
+@property (nonatomic, retain) NSNumber * regularAmount;
 @property (nonatomic, retain) NSSet *appointments;
 @property (nonatomic, retain) PaymentMethod *paymentMethod;
 @property (nonatomic, retain) PaymentType *paymentType;

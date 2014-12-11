@@ -1,5 +1,5 @@
 //
-//  ChargeTypeTextCell.h
+//  ChargeTypeNameCell.h
 //  myTeeth
 //
 //  Created by David Canty on 10/12/2014.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChargeTypeTextCell : UITableViewCell
+@interface ChargeTypeNameCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;

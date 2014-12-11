@@ -1,14 +1,14 @@
 //
-//  ChargeTypeTextCell.m
+//  ChargeTypeAmountCell.m
 //  myTeeth
 //
-//  Created by David Canty on 10/12/2014.
+//  Created by David Canty on 11/12/2014.
 //  Copyright (c) 2014 David Canty. All rights reserved.
 //
 
-#import "ChargeTypeTextCell.h"
+#import "ChargeTypeAmountCell.h"
 
-@implementation ChargeTypeTextCell
+@implementation ChargeTypeAmountCell
 
 - (void)awakeFromNib {
     // Initialization code
