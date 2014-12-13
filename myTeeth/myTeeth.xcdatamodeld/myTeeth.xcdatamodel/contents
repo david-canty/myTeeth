@@ -6,7 +6,7 @@
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="eventId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
-        <relationship name="bill" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bill" inverseName="appointments" inverseEntity="Bill" syncable="YES"/>
+        <relationship name="bill" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Bill" inverseName="appointment" inverseEntity="Bill" syncable="YES"/>
         <relationship name="chargeType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChargeType" inverseName="appointments" inverseEntity="ChargeType" syncable="YES"/>
         <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TreatmentCourse" inverseName="appointments" inverseEntity="TreatmentCourse" syncable="YES"/>
         <relationship name="note" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Note" inverseName="appointment" inverseEntity="Note" syncable="YES"/>
@@ -17,8 +17,10 @@
     <entity name="Bill" representedClassName="Bill" syncable="YES">
         <attribute name="amountPaid" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="billAmount" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="isPaid" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
-        <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="bill" inverseEntity="Appointment" syncable="YES"/>
+        <relationship name="appointment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Appointment" inverseName="bill" inverseEntity="Appointment" syncable="YES"/>
+        <relationship name="paymentTransactions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PaymentTransaction" inverseName="bill" inverseEntity="PaymentTransaction" syncable="YES"/>
     </entity>
     <entity name="ChargeType" representedClassName="ChargeType" syncable="YES">
         <attribute name="regularAmount" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -76,7 +78,12 @@
         <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="chargeType" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChargeType" inverseName="paymentMethod" inverseEntity="ChargeType" syncable="YES"/>
     </entity>
-    <entity name="PaymentTransaction" syncable="YES"/>
+    <entity name="PaymentTransaction" representedClassName="PaymentTransaction" syncable="YES">
+        <attribute name="transactionAmount" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="transactionDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="bill" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bill" inverseName="paymentTransactions" inverseEntity="Bill" syncable="YES"/>
+    </entity>
     <entity name="PaymentType" representedClassName="PaymentType" syncable="YES">
         <attribute name="typeDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="typeName" optional="YES" attributeType="String" syncable="YES"/>
@@ -117,7 +124,7 @@
         <relationship name="treatmentItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TreatmentItem" inverseName="treatmentCategory" inverseEntity="TreatmentItem" syncable="YES"/>
     </entity>
     <entity name="TreatmentCourse" representedClassName="TreatmentCourse" syncable="YES">
-        <attribute name="course" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="courseName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="course" inverseEntity="Appointment" syncable="YES"/>
     </entity>
@@ -129,21 +136,21 @@
     </entity>
     <elements>
         <element name="Appointment" positionX="-13113" positionY="-17820" width="128" height="223"/>
-        <element name="Bill" positionX="-12872" positionY="-17874" width="128" height="103"/>
-        <element name="ChargeType" positionX="-12915" positionY="-17685" width="128" height="148"/>
-        <element name="DentalPractice" positionX="-13196" positionY="-17989" width="128" height="118"/>
-        <element name="JobTitle" positionX="-13509" positionY="-17746" width="128" height="73"/>
-        <element name="Note" positionX="-13446" positionY="-17641" width="128" height="163"/>
+        <element name="Bill" positionX="-12825" positionY="-17923" width="128" height="133"/>
+        <element name="ChargeType" positionX="-12825" positionY="-17775" width="128" height="148"/>
+        <element name="DentalPractice" positionX="-13257" positionY="-18081" width="128" height="118"/>
+        <element name="JobTitle" positionX="-12888" positionY="-18054" width="128" height="73"/>
+        <element name="Note" positionX="-13077" positionY="-17523" width="128" height="163"/>
         <element name="Patient" positionX="-13277" positionY="-17836" width="128" height="313"/>
-        <element name="PaymentMethod" positionX="-12710" positionY="-17815" width="128" height="103"/>
-        <element name="PaymentTransaction" positionX="-12906" positionY="-17748" width="128" height="43"/>
-        <element name="PaymentType" positionX="-12665" positionY="-17685" width="128" height="103"/>
-        <element name="Salutation" positionX="-13511" positionY="-17838" width="128" height="73"/>
-        <element name="ServiceProvider" positionX="-12692" positionY="-17515" width="128" height="103"/>
-        <element name="TeamMember" positionX="-13023" positionY="-18013" width="128" height="163"/>
-        <element name="Tooth" positionX="-13511" positionY="-17991" width="128" height="133"/>
-        <element name="TreatmentCategory" positionX="-13347" positionY="-17422" width="128" height="88"/>
-        <element name="TreatmentCourse" positionX="-13016" positionY="-17521" width="128" height="88"/>
-        <element name="TreatmentItem" positionX="-13169" positionY="-17437" width="128" height="103"/>
+        <element name="PaymentMethod" positionX="-12636" positionY="-17860" width="128" height="103"/>
+        <element name="PaymentTransaction" positionX="-12636" positionY="-18004" width="128" height="103"/>
+        <element name="PaymentType" positionX="-12636" positionY="-17739" width="128" height="103"/>
+        <element name="Salutation" positionX="-12888" positionY="-18162" width="128" height="73"/>
+        <element name="ServiceProvider" positionX="-12638" positionY="-17613" width="128" height="103"/>
+        <element name="TeamMember" positionX="-13041" positionY="-18081" width="128" height="163"/>
+        <element name="Tooth" positionX="-13275" positionY="-17476" width="128" height="133"/>
+        <element name="TreatmentCategory" positionX="-12699" positionY="-17467" width="128" height="88"/>
+        <element name="TreatmentCourse" positionX="-12825" positionY="-17602" width="128" height="88"/>
+        <element name="TreatmentItem" positionX="-12870" positionY="-17482" width="128" height="103"/>
     </elements>
 </model>

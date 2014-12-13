@@ -131,13 +131,18 @@ static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifi
     // If appointment date and time has passed, mark appointment as attended
     if ([appointment.dateTime compare:[NSDate date]] == NSOrderedAscending) {
         
-        [appointment setAttended:@YES];
+        // Request to create bill if payment method is pay per appointment or pay per course of treatment
+        // if ...
+        [self requestBillForAppointment:appointment atIndexPath:indexPath withTickButton:(UIButton *)sender];
         
-        NSError *error = nil;
-        if (![self.managedObjectContext save:&error]) {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
+        // else ... (plus use this in create bill alert, too)
+        /*[appointment setAttended:@YES];
+         
+         NSError *error = nil;
+         if (![self.managedObjectContext save:&error]) {
+         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+         abort();
+         }*/
         
     } else {
         
@@ -205,6 +210,61 @@ static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifi
         
         [self presentViewController:alertController animated:YES completion:nil];
     }
+}
+
+- (void)requestBillForAppointment:(Appointment *)appointment atIndexPath:(NSIndexPath *)indexPath withTickButton:(UIButton *)tickButton {
+    
+    // Prompt to create bill
+    NSString *alertMessage = @"The payment method for this appointment indicates that you pay per appointment or per course of treatment. If you know the cost of your treatment, you can can create a bill now. If you do not yet know the cost or you wish to create a bill later, you can do so in Treatment History.";
+    
+    // Create alert controller
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Create Bill"
+                                                                             message:alertMessage
+                                                                      preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    // Position alert popover
+    AppointmentCell *appointmentCell = (AppointmentCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    alertController.popoverPresentationController.sourceView = appointmentCell;
+    CGRect popoverRect = CGRectMake(appointmentCell.frame.size.width / 2,
+                                    0,
+                                    0,
+                                    appointmentCell.frame.size.height);
+    alertController.popoverPresentationController.sourceRect = popoverRect;
+    alertController.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp | UIPopoverArrowDirectionDown;
+    
+    UIAlertAction *createBillNowAction = [UIAlertAction actionWithTitle:@"Create Bill Now" style:UIAlertActionStyleDefault
+                                                                    handler:^(UIAlertAction * action) {
+                                                                        
+                                                                        // Create bill
+                                                                        // show payment transaction UI...
+                                                                        
+                                                                    }];
+    [alertController addAction:createBillNowAction];
+    
+    UIAlertAction *createBillLaterAction = [UIAlertAction actionWithTitle:@"Create Bill Later" style:UIAlertActionStyleDefault
+                                                                   handler:^(UIAlertAction * action) {
+                                                                       
+                                                                       // Mark appointment complete
+                                                                       [appointment setAttended:@YES];
+                                                                       
+                                                                       NSError *error = nil;
+                                                                       if (![self.managedObjectContext save:&error]) {
+                                                                           NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                                                                           abort();
+                                                                       }
+                                                                       
+                                                                   }];
+    [alertController addAction:createBillLaterAction];
+    
+    // Handle dismissing popever by tapping outside
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+        // Cancel appointment completion
+        [appointmentCell setCellTickButtonSelectedState:NO];
+        
+    }]];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

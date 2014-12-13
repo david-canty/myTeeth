@@ -51,9 +51,9 @@
 		1F3D61421A212348003B25D1 /* btn_reminders.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3D613C1A212348003B25D1 /* btn_reminders.png */; };
 		1F3D61431A212348003B25D1 /* btn_reminders@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3D613D1A212348003B25D1 /* btn_reminders@2x.png */; };
 		1F3D61441A212348003B25D1 /* btn_reminders@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3D613E1A212348003B25D1 /* btn_reminders@3x.png */; };
+		1F582C1A1A3CA2B100421F78 /* TreatmentCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F582C191A3CA2B100421F78 /* TreatmentCourse.m */; };
 		1F59CE091A372161007AB5C0 /* ServiceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F59CE081A372161007AB5C0 /* ServiceProvider.m */; };
 		1F59CE0F1A3721D8007AB5C0 /* ChargeType+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F59CE0E1A3721D8007AB5C0 /* ChargeType+Utils.m */; };
-		1F59CE121A372E30007AB5C0 /* Appointment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F59CE111A372E30007AB5C0 /* Appointment.m */; };
 		1F6EFDCE1A272EB20012E18B /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6EFDCD1A272EB20012E18B /* Patient.m */; };
 		1F7B614D1A30B8CD001ACD9E /* btn_reception.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7B614A1A30B8CD001ACD9E /* btn_reception.png */; };
 		1F7B614E1A30B8CD001ACD9E /* btn_reception@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7B614B1A30B8CD001ACD9E /* btn_reception@2x.png */; };
@@ -80,7 +80,6 @@
 		1F979F2B1983F06800CF3990 /* TreatmentItem+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F979F2A1983F06800CF3990 /* TreatmentItem+Utils.m */; };
 		1F97AFE819A90B9B00C58FF2 /* Appointment+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F97AFE719A90B9B00C58FF2 /* Appointment+Utils.m */; };
 		1F98355F19B346CF00AF93E5 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F98355E19B346CF00AF93E5 /* Note.m */; };
-		1F98356519B346CF00AF93E5 /* Bill.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F98356419B346CF00AF93E5 /* Bill.m */; };
 		1F98357419B34D6800AF93E5 /* PaymentType+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F98357319B34D6800AF93E5 /* PaymentType+Utils.m */; };
 		1F98357719B34D8000AF93E5 /* PaymentMethod+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F98357619B34D8000AF93E5 /* PaymentMethod+Utils.m */; };
 		1F98491A19AF524800C20CBA /* ChargeTypeDetailViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F98491919AF524800C20CBA /* ChargeTypeDetailViewController_iPad.m */; };
@@ -95,7 +94,6 @@
 		1FA12EB5191E521500D5951D /* Patient+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA12EB4191E521500D5951D /* Patient+Utils.m */; };
 		1FA1885118EC98A500AD313E /* AddPatientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA1884E18EC98A500AD313E /* AddPatientViewController.m */; };
 		1FA1885218EC98A500AD313E /* PatientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA1885018EC98A500AD313E /* PatientViewController.m */; };
-		1FA19E2F19799A95006ADDB1 /* TreatmentCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA19E2E19799A95006ADDB1 /* TreatmentCourse.m */; };
 		1FA19E3219799A95006ADDB1 /* TreatmentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA19E3119799A95006ADDB1 /* TreatmentItem.m */; };
 		1FA19E3B19799A95006ADDB1 /* TreatmentCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA19E3A19799A95006ADDB1 /* TreatmentCategory.m */; };
 		1FA19E4719799CCE006ADDB1 /* TeamMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA19E4619799CCE006ADDB1 /* TeamMember.m */; };
@@ -121,6 +119,9 @@
 		1FBBBA2B1A2BA4FF001BD85C /* btn_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBBBA281A2BA4FF001BD85C /* btn_settings.png */; };
 		1FBBBA2C1A2BA4FF001BD85C /* btn_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBBBA291A2BA4FF001BD85C /* btn_settings@2x.png */; };
 		1FBBBA2D1A2BA4FF001BD85C /* btn_settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBBBA2A1A2BA4FF001BD85C /* btn_settings@3x.png */; };
+		1FC41B211A3CA81F00B823AE /* Appointment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC41B201A3CA81F00B823AE /* Appointment.m */; };
+		1FC41B271A3CA9DB00B823AE /* PaymentTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC41B261A3CA9DB00B823AE /* PaymentTransaction.m */; };
+		1FC41B2A1A3CAB0900B823AE /* Bill.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC41B291A3CAB0900B823AE /* Bill.m */; };
 		1FF690A01A27896E008202DE /* LL1_front.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FF690581A27896E008202DE /* LL1_front.png */; };
 		1FF690A11A27896E008202DE /* LL1_front@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FF690591A27896E008202DE /* LL1_front@2x.png */; };
 		1FF690A21A27896E008202DE /* LL1_front@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FF6905A1A27896E008202DE /* LL1_front@3x.png */; };
@@ -294,12 +295,12 @@
 		1F3D613C1A212348003B25D1 /* btn_reminders.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_reminders.png; sourceTree = "<group>"; };
 		1F3D613D1A212348003B25D1 /* btn_reminders@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_reminders@2x.png"; sourceTree = "<group>"; };
 		1F3D613E1A212348003B25D1 /* btn_reminders@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_reminders@3x.png"; sourceTree = "<group>"; };
+		1F582C181A3CA2B100421F78 /* TreatmentCourse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreatmentCourse.h; sourceTree = "<group>"; };
+		1F582C191A3CA2B100421F78 /* TreatmentCourse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreatmentCourse.m; sourceTree = "<group>"; };
 		1F59CE071A372161007AB5C0 /* ServiceProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceProvider.h; sourceTree = "<group>"; };
 		1F59CE081A372161007AB5C0 /* ServiceProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceProvider.m; sourceTree = "<group>"; };
 		1F59CE0D1A3721D8007AB5C0 /* ChargeType+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ChargeType+Utils.h"; sourceTree = "<group>"; };
 		1F59CE0E1A3721D8007AB5C0 /* ChargeType+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ChargeType+Utils.m"; sourceTree = "<group>"; };
-		1F59CE101A372E30007AB5C0 /* Appointment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appointment.h; sourceTree = "<group>"; };
-		1F59CE111A372E30007AB5C0 /* Appointment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appointment.m; sourceTree = "<group>"; };
 		1F6EFDCC1A272EB20012E18B /* Patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patient.h; sourceTree = "<group>"; };
 		1F6EFDCD1A272EB20012E18B /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
 		1F7B614A1A30B8CD001ACD9E /* btn_reception.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_reception.png; sourceTree = "<group>"; };
@@ -345,8 +346,6 @@
 		1F97AFE719A90B9B00C58FF2 /* Appointment+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Appointment+Utils.m"; sourceTree = "<group>"; };
 		1F98355D19B346CF00AF93E5 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
 		1F98355E19B346CF00AF93E5 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
-		1F98356319B346CF00AF93E5 /* Bill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bill.h; sourceTree = "<group>"; };
-		1F98356419B346CF00AF93E5 /* Bill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bill.m; sourceTree = "<group>"; };
 		1F98357219B34D6800AF93E5 /* PaymentType+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PaymentType+Utils.h"; sourceTree = "<group>"; };
 		1F98357319B34D6800AF93E5 /* PaymentType+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PaymentType+Utils.m"; sourceTree = "<group>"; };
 		1F98357519B34D8000AF93E5 /* PaymentMethod+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PaymentMethod+Utils.h"; sourceTree = "<group>"; };
@@ -374,8 +373,6 @@
 		1FA1884E18EC98A500AD313E /* AddPatientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPatientViewController.m; sourceTree = "<group>"; };
 		1FA1884F18EC98A500AD313E /* PatientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientViewController.h; sourceTree = "<group>"; };
 		1FA1885018EC98A500AD313E /* PatientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientViewController.m; sourceTree = "<group>"; };
-		1FA19E2D19799A95006ADDB1 /* TreatmentCourse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreatmentCourse.h; sourceTree = "<group>"; };
-		1FA19E2E19799A95006ADDB1 /* TreatmentCourse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreatmentCourse.m; sourceTree = "<group>"; };
 		1FA19E3019799A95006ADDB1 /* TreatmentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreatmentItem.h; sourceTree = "<group>"; };
 		1FA19E3119799A95006ADDB1 /* TreatmentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreatmentItem.m; sourceTree = "<group>"; };
 		1FA19E3919799A95006ADDB1 /* TreatmentCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreatmentCategory.h; sourceTree = "<group>"; };
@@ -408,6 +405,12 @@
 		1FBBBA281A2BA4FF001BD85C /* btn_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_settings.png; sourceTree = "<group>"; };
 		1FBBBA291A2BA4FF001BD85C /* btn_settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_settings@2x.png"; sourceTree = "<group>"; };
 		1FBBBA2A1A2BA4FF001BD85C /* btn_settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_settings@3x.png"; sourceTree = "<group>"; };
+		1FC41B1F1A3CA81F00B823AE /* Appointment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appointment.h; sourceTree = "<group>"; };
+		1FC41B201A3CA81F00B823AE /* Appointment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appointment.m; sourceTree = "<group>"; };
+		1FC41B251A3CA9DB00B823AE /* PaymentTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentTransaction.h; sourceTree = "<group>"; };
+		1FC41B261A3CA9DB00B823AE /* PaymentTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentTransaction.m; sourceTree = "<group>"; };
+		1FC41B281A3CAB0900B823AE /* Bill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bill.h; sourceTree = "<group>"; };
+		1FC41B291A3CAB0900B823AE /* Bill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bill.m; sourceTree = "<group>"; };
 		1FF690581A27896E008202DE /* LL1_front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LL1_front.png; sourceTree = "<group>"; };
 		1FF690591A27896E008202DE /* LL1_front@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LL1_front@2x.png"; sourceTree = "<group>"; };
 		1FF6905A1A27896E008202DE /* LL1_front@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LL1_front@3x.png"; sourceTree = "<group>"; };
@@ -812,14 +815,18 @@
 			children = (
 				1FBB5D5B1A1E22820003CDF0 /* DentalPractice.h */,
 				1FBB5D5C1A1E22820003CDF0 /* DentalPractice.m */,
-				1F59CE101A372E30007AB5C0 /* Appointment.h */,
-				1F59CE111A372E30007AB5C0 /* Appointment.m */,
+				1FC41B1F1A3CA81F00B823AE /* Appointment.h */,
+				1FC41B201A3CA81F00B823AE /* Appointment.m */,
+				1FC41B281A3CAB0900B823AE /* Bill.h */,
+				1FC41B291A3CAB0900B823AE /* Bill.m */,
+				1FC41B251A3CA9DB00B823AE /* PaymentTransaction.h */,
+				1FC41B261A3CA9DB00B823AE /* PaymentTransaction.m */,
 				1FA19E3019799A95006ADDB1 /* TreatmentItem.h */,
 				1FA19E3119799A95006ADDB1 /* TreatmentItem.m */,
 				1FA19E3919799A95006ADDB1 /* TreatmentCategory.h */,
 				1FA19E3A19799A95006ADDB1 /* TreatmentCategory.m */,
-				1FA19E2D19799A95006ADDB1 /* TreatmentCourse.h */,
-				1FA19E2E19799A95006ADDB1 /* TreatmentCourse.m */,
+				1F582C181A3CA2B100421F78 /* TreatmentCourse.h */,
+				1F582C191A3CA2B100421F78 /* TreatmentCourse.m */,
 				1FA19E4519799CCE006ADDB1 /* TeamMember.h */,
 				1FA19E4619799CCE006ADDB1 /* TeamMember.m */,
 				1F6EFDCC1A272EB20012E18B /* Patient.h */,
@@ -828,8 +835,6 @@
 				1F0EA3181A2773E500FF7A31 /* Tooth.m */,
 				1F98355D19B346CF00AF93E5 /* Note.h */,
 				1F98355E19B346CF00AF93E5 /* Note.m */,
-				1F98356319B346CF00AF93E5 /* Bill.h */,
-				1F98356419B346CF00AF93E5 /* Bill.m */,
 				1F27AC1A1A39CEE200C0A003 /* ChargeType.h */,
 				1F27AC1B1A39CEE200C0A003 /* ChargeType.m */,
 				1F59CE071A372161007AB5C0 /* ServiceProvider.h */,
@@ -1372,11 +1377,10 @@
 				1F07EFA9196F16C000128021 /* TeamMember+Utils.m in Sources */,
 				1F9725E818EB491000165184 /* TeamMemberController.m in Sources */,
 				1FBB5D5D1A1E22820003CDF0 /* DentalPractice.m in Sources */,
-				1FA19E2F19799A95006ADDB1 /* TreatmentCourse.m in Sources */,
 				1F1FFE041A378D8900B96563 /* PaymentType.m in Sources */,
+				1FC41B2A1A3CAB0900B823AE /* Bill.m in Sources */,
 				1F947C9419311D26000C24E5 /* ToothDetailViewController.m in Sources */,
 				1F9725E718EB491000165184 /* AddTeamMemberViewController.m in Sources */,
-				1F98356519B346CF00AF93E5 /* Bill.m in Sources */,
 				1F9C333618F7100D00BA1347 /* NoteDetailViewControllerPhone.m in Sources */,
 				1F98357419B34D6800AF93E5 /* PaymentType+Utils.m in Sources */,
 				1FA12EB5191E521500D5951D /* Patient+Utils.m in Sources */,
@@ -1404,15 +1408,17 @@
 				1F97AFE819A90B9B00C58FF2 /* Appointment+Utils.m in Sources */,
 				1F98CC1D19ACFEBA0021896D /* Note+Utils.m in Sources */,
 				1FB2AC7B1A2DCE7200D1AE1D /* ToothReferenceViewController.m in Sources */,
+				1F582C1A1A3CA2B100421F78 /* TreatmentCourse.m in Sources */,
 				55E2B6F818041F8000360759 /* main.m in Sources */,
 				1F9710AF18EDEC3B0008BAC0 /* AddTreatmentItemViewController.m in Sources */,
 				1F6EFDCE1A272EB20012E18B /* Patient.m in Sources */,
 				1F59CE0F1A3721D8007AB5C0 /* ChargeType+Utils.m in Sources */,
 				1F9710A718EDE4D40008BAC0 /* AddTreatmentCategoryViewController.m in Sources */,
 				1F98355F19B346CF00AF93E5 /* Note.m in Sources */,
-				1F59CE121A372E30007AB5C0 /* Appointment.m in Sources */,
+				1FC41B211A3CA81F00B823AE /* Appointment.m in Sources */,
 				1F903A4618F1B12A00E09C3B /* NoteDetailViewControllerPad.m in Sources */,
 				1F979F2B1983F06800CF3990 /* TreatmentItem+Utils.m in Sources */,
+				1FC41B271A3CA9DB00B823AE /* PaymentTransaction.m in Sources */,
 				1F98EDBC19AE661B00D2487F /* ServiceProvider+Utils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

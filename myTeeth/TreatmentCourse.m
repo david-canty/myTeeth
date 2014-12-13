@@ -2,7 +2,7 @@
 //  TreatmentCourse.m
 //  myTeeth
 //
-//  Created by David Canty on 18/07/2014.
+//  Created by David Canty on 13/12/2014.
 //  Copyright (c) 2014 David Canty. All rights reserved.
 //
 
@@ -12,7 +12,7 @@
 
 @implementation TreatmentCourse
 
-@dynamic course;
+@dynamic courseName;
 @dynamic uniqueId;
 @dynamic appointments;
 

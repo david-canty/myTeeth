@@ -2,7 +2,7 @@
 //  TreatmentCourse.h
 //  myTeeth
 //
-//  Created by David Canty on 18/07/2014.
+//  Created by David Canty on 13/12/2014.
 //  Copyright (c) 2014 David Canty. All rights reserved.
 //
 
@@ -13,7 +13,7 @@
 
 @interface TreatmentCourse : NSManagedObject
 
-@property (nonatomic, retain) NSString * course;
+@property (nonatomic, retain) NSString * courseName;
 @property (nonatomic, retain) NSString * uniqueId;
 @property (nonatomic, retain) NSSet *appointments;
 @end

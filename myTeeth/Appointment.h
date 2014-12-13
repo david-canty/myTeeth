@@ -2,7 +2,7 @@
 //  Appointment.h
 //  myTeeth
 //
-//  Created by David Canty on 09/12/2014.
+//  Created by David Canty on 13/12/2014.
 //  Copyright (c) 2014 David Canty. All rights reserved.
 //
 
@@ -19,12 +19,12 @@
 @property (nonatomic, retain) NSString * eventId;
 @property (nonatomic, retain) NSString * uniqueId;
 @property (nonatomic, retain) Bill *bill;
+@property (nonatomic, retain) ChargeType *chargeType;
 @property (nonatomic, retain) TreatmentCourse *course;
 @property (nonatomic, retain) Note *note;
 @property (nonatomic, retain) Patient *patient;
 @property (nonatomic, retain) TeamMember *teamMember;
 @property (nonatomic, retain) NSSet *treatmentItems;
-@property (nonatomic, retain) ChargeType *chargeType;
 @end
 
 @interface Appointment (CoreDataGeneratedAccessors)

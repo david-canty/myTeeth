@@ -2,7 +2,7 @@
 //  Appointment.m
 //  myTeeth
 //
-//  Created by David Canty on 09/12/2014.
+//  Created by David Canty on 13/12/2014.
 //  Copyright (c) 2014 David Canty. All rights reserved.
 //
 
@@ -24,11 +24,11 @@
 @dynamic eventId;
 @dynamic uniqueId;
 @dynamic bill;
+@dynamic chargeType;
 @dynamic course;
 @dynamic note;
 @dynamic patient;
 @dynamic teamMember;
 @dynamic treatmentItems;
-@dynamic chargeType;
 
 @end
