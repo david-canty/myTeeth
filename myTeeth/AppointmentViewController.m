@@ -13,11 +13,12 @@
 #import "AppointmentCell.h"
 #import "TeamMember+Utils.h"
 #import "AddAppointmentViewController.h"
+#import "BillViewController.h"
 #import "AppDelegate.h"
 
 static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifier";
 
-@interface AppointmentViewController () <NSFetchedResultsControllerDelegate, AddAppointmentViewControllerDelegate>
+@interface AppointmentViewController () <NSFetchedResultsControllerDelegate, AddAppointmentViewControllerDelegate, BillViewControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) Appointment *selectedAppointment;
@@ -215,7 +216,7 @@ static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifi
 - (void)requestBillForAppointment:(Appointment *)appointment atIndexPath:(NSIndexPath *)indexPath withTickButton:(UIButton *)tickButton {
     
     // Prompt to create bill
-    NSString *alertMessage = @"The payment method for this appointment indicates that you pay per appointment or per course of treatment. If you know the cost of your treatment, you can can create a bill now. If you do not yet know the cost or you wish to create a bill later, you can do so in Treatment History.";
+    NSString *alertMessage = @"The payment method for this appointment indicates that you pay per appointment or per course of treatment. If you know the cost of your treatment, you can can create a bill now. If you do not yet know the cost, or you wish to create a bill later, you can do so in Treatment History.";
     
     // Create alert controller
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Create Bill"
@@ -236,7 +237,7 @@ static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifi
                                                                     handler:^(UIAlertAction * action) {
                                                                         
                                                                         // Create bill
-                                                                        // show payment transaction UI...
+                                                                        [self performSegueWithIdentifier:@"ShowBillView" sender:nil];
                                                                         
                                                                     }];
     [alertController addAction:createBillNowAction];
@@ -462,6 +463,14 @@ static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifi
         controller.managedObjectContext = self.managedObjectContext;
         controller.delegate = self;
     }
+    
+    if ([[segue identifier] isEqualToString:@"ShowBillView"]) {
+    
+        BillViewController *billViewController = (BillViewController *)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        billViewController.navigationItem.title = NSLocalizedString(@"Create Bill", @"Create Bill");
+        billViewController.managedObjectContext = self.managedObjectContext;
+        billViewController.delegate = self;
+    }
 }
 
 #pragma mark - Add appointment delegate
@@ -481,6 +490,17 @@ static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifi
         [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Bill delegate
+- (void)billViewControllerDidCancel {
+    
+    
+}
+
+- (void)billViewControllerDidFinish {
+    
+    
 }
 
 @end
