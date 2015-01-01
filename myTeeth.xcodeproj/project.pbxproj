@@ -11,6 +11,7 @@
 		1F0EA3191A2773E500FF7A31 /* Tooth.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0EA3181A2773E500FF7A31 /* Tooth.m */; };
 		1F1FFDFE1A378A3E00B96563 /* PaymentMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1FFDFD1A378A3E00B96563 /* PaymentMethod.m */; };
 		1F1FFE041A378D8900B96563 /* PaymentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1FFE031A378D8900B96563 /* PaymentType.m */; };
+		1F200AD31A46D965008B6C2E /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F200AD21A46D965008B6C2E /* Country.m */; };
 		1F20706E1A39AC690040BFA3 /* ChargeTypeAmountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F20706D1A39AC690040BFA3 /* ChargeTypeAmountCell.m */; };
 		1F20FDFF18E9EA06006A3408 /* MultipleSelectionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F20FDFC18E9EA06006A3408 /* MultipleSelectionListViewController.m */; };
 		1F20FE0018E9EA06006A3408 /* SingleSelectionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F20FDFE18E9EA06006A3408 /* SingleSelectionListViewController.m */; };
@@ -18,11 +19,13 @@
 		1F20FE0518E9EAC7006A3408 /* Job Titles.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F20FE0218E9EAC7006A3408 /* Job Titles.plist */; };
 		1F20FE0618E9EAC7006A3408 /* Salutations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F20FE0318E9EAC7006A3408 /* Salutations.plist */; };
 		1F220B2C1A389AA10015AEB3 /* ChargeTypeNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F220B2B1A389AA10015AEB3 /* ChargeTypeNameCell.m */; };
-		1F27AC1C1A39CEE200C0A003 /* ChargeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F27AC1B1A39CEE200C0A003 /* ChargeType.m */; };
+		1F23BFD11A45AAEC00822167 /* Country+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F23BFD01A45AAEC00822167 /* Country+Utils.m */; };
+		1F26D8F71A45A2E500E1B666 /* Locales.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F26D8F61A45A2E500E1B666 /* Locales.plist */; };
 		1F2B50201A0F97AC00E1D1AC /* Salutation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2B501F1A0F97AC00E1D1AC /* Salutation.m */; };
 		1F2B50231A0F97AD00E1D1AC /* JobTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2B50221A0F97AD00E1D1AC /* JobTitle.m */; };
 		1F2B50261A0F98EC00E1D1AC /* JobTitle+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2B50251A0F98EC00E1D1AC /* JobTitle+Utils.m */; };
 		1F2B50291A0F990E00E1D1AC /* Salutation+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2B50281A0F990E00E1D1AC /* Salutation+Utils.m */; };
+		1F2C27A41A40CA29005266D6 /* CurrencySelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2C27A31A40CA29005266D6 /* CurrencySelectionViewController.m */; };
 		1F327B771A277D250029C697 /* UL1_front.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F327B5F1A277D250029C697 /* UL1_front.png */; };
 		1F327B781A277D250029C697 /* UL1_front@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F327B601A277D250029C697 /* UL1_front@2x.png */; };
 		1F327B791A277D250029C697 /* UL1_front@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F327B611A277D250029C697 /* UL1_front@3x.png */; };
@@ -116,6 +119,7 @@
 		1FB335A01A1D26E1007B5475 /* ui_tick_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB335991A1D26E1007B5475 /* ui_tick_on.png */; };
 		1FB335A11A1D26E1007B5475 /* ui_tick_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB3359A1A1D26E1007B5475 /* ui_tick_on@2x.png */; };
 		1FB335A21A1D26E1007B5475 /* ui_tick_on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB3359B1A1D26E1007B5475 /* ui_tick_on@3x.png */; };
+		1FB987901A55DB36003FAC5D /* ChargeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9878F1A55DB36003FAC5D /* ChargeType.m */; };
 		1FBB5D5D1A1E22820003CDF0 /* DentalPractice.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB5D5C1A1E22820003CDF0 /* DentalPractice.m */; };
 		1FBBBA2B1A2BA4FF001BD85C /* btn_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBBBA281A2BA4FF001BD85C /* btn_settings.png */; };
 		1FBBBA2C1A2BA4FF001BD85C /* btn_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBBBA291A2BA4FF001BD85C /* btn_settings@2x.png */; };
@@ -246,6 +250,8 @@
 		1F1FFDFD1A378A3E00B96563 /* PaymentMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentMethod.m; sourceTree = "<group>"; };
 		1F1FFE021A378D8900B96563 /* PaymentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentType.h; sourceTree = "<group>"; };
 		1F1FFE031A378D8900B96563 /* PaymentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentType.m; sourceTree = "<group>"; };
+		1F200AD11A46D965008B6C2E /* Country.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
+		1F200AD21A46D965008B6C2E /* Country.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
 		1F20706C1A39AC690040BFA3 /* ChargeTypeAmountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeTypeAmountCell.h; sourceTree = "<group>"; };
 		1F20706D1A39AC690040BFA3 /* ChargeTypeAmountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeTypeAmountCell.m; sourceTree = "<group>"; };
 		1F20FDFB18E9EA06006A3408 /* MultipleSelectionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultipleSelectionListViewController.h; sourceTree = "<group>"; };
@@ -257,8 +263,9 @@
 		1F20FE0318E9EAC7006A3408 /* Salutations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Salutations.plist; sourceTree = "<group>"; };
 		1F220B2A1A389AA10015AEB3 /* ChargeTypeNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeTypeNameCell.h; sourceTree = "<group>"; };
 		1F220B2B1A389AA10015AEB3 /* ChargeTypeNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeTypeNameCell.m; sourceTree = "<group>"; };
-		1F27AC1A1A39CEE200C0A003 /* ChargeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeType.h; sourceTree = "<group>"; };
-		1F27AC1B1A39CEE200C0A003 /* ChargeType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeType.m; sourceTree = "<group>"; };
+		1F23BFCF1A45AAEC00822167 /* Country+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Country+Utils.h"; sourceTree = "<group>"; };
+		1F23BFD01A45AAEC00822167 /* Country+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Country+Utils.m"; sourceTree = "<group>"; };
+		1F26D8F61A45A2E500E1B666 /* Locales.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Locales.plist; sourceTree = "<group>"; };
 		1F2B501E1A0F97AC00E1D1AC /* Salutation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Salutation.h; sourceTree = "<group>"; };
 		1F2B501F1A0F97AC00E1D1AC /* Salutation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Salutation.m; sourceTree = "<group>"; };
 		1F2B50211A0F97AD00E1D1AC /* JobTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobTitle.h; sourceTree = "<group>"; };
@@ -267,6 +274,8 @@
 		1F2B50251A0F98EC00E1D1AC /* JobTitle+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JobTitle+Utils.m"; sourceTree = "<group>"; };
 		1F2B50271A0F990E00E1D1AC /* Salutation+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Salutation+Utils.h"; sourceTree = "<group>"; };
 		1F2B50281A0F990E00E1D1AC /* Salutation+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Salutation+Utils.m"; sourceTree = "<group>"; };
+		1F2C27A21A40CA29005266D6 /* CurrencySelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencySelectionViewController.h; sourceTree = "<group>"; };
+		1F2C27A31A40CA29005266D6 /* CurrencySelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencySelectionViewController.m; sourceTree = "<group>"; };
 		1F327B5F1A277D250029C697 /* UL1_front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UL1_front.png; sourceTree = "<group>"; };
 		1F327B601A277D250029C697 /* UL1_front@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UL1_front@2x.png"; sourceTree = "<group>"; };
 		1F327B611A277D250029C697 /* UL1_front@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UL1_front@3x.png"; sourceTree = "<group>"; };
@@ -403,6 +412,8 @@
 		1FB335991A1D26E1007B5475 /* ui_tick_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_tick_on.png; sourceTree = "<group>"; };
 		1FB3359A1A1D26E1007B5475 /* ui_tick_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ui_tick_on@2x.png"; sourceTree = "<group>"; };
 		1FB3359B1A1D26E1007B5475 /* ui_tick_on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ui_tick_on@3x.png"; sourceTree = "<group>"; };
+		1FB9878E1A55DB36003FAC5D /* ChargeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeType.h; sourceTree = "<group>"; };
+		1FB9878F1A55DB36003FAC5D /* ChargeType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeType.m; sourceTree = "<group>"; };
 		1FBB5D5B1A1E22820003CDF0 /* DentalPractice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DentalPractice.h; sourceTree = "<group>"; };
 		1FBB5D5C1A1E22820003CDF0 /* DentalPractice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DentalPractice.m; sourceTree = "<group>"; };
 		1FBBBA281A2BA4FF001BD85C /* btn_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_settings.png; sourceTree = "<group>"; };
@@ -597,6 +608,8 @@
 			children = (
 				1FA9DDB71A211AAF00BF300E /* SettingsViewController.h */,
 				1FA9DDB81A211AAF00BF300E /* SettingsViewController.m */,
+				1F2C27A21A40CA29005266D6 /* CurrencySelectionViewController.h */,
+				1F2C27A31A40CA29005266D6 /* CurrencySelectionViewController.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -838,10 +851,10 @@
 				1F0EA3181A2773E500FF7A31 /* Tooth.m */,
 				1F98355D19B346CF00AF93E5 /* Note.h */,
 				1F98355E19B346CF00AF93E5 /* Note.m */,
-				1F27AC1A1A39CEE200C0A003 /* ChargeType.h */,
-				1F27AC1B1A39CEE200C0A003 /* ChargeType.m */,
 				1F59CE071A372161007AB5C0 /* ServiceProvider.h */,
 				1F59CE081A372161007AB5C0 /* ServiceProvider.m */,
+				1FB9878E1A55DB36003FAC5D /* ChargeType.h */,
+				1FB9878F1A55DB36003FAC5D /* ChargeType.m */,
 				1F1FFE021A378D8900B96563 /* PaymentType.h */,
 				1F1FFE031A378D8900B96563 /* PaymentType.m */,
 				1F1FFDFC1A378A3E00B96563 /* PaymentMethod.h */,
@@ -850,6 +863,8 @@
 				1F2B50221A0F97AD00E1D1AC /* JobTitle.m */,
 				1F2B501E1A0F97AC00E1D1AC /* Salutation.h */,
 				1F2B501F1A0F97AC00E1D1AC /* Salutation.m */,
+				1F200AD11A46D965008B6C2E /* Country.h */,
+				1F200AD21A46D965008B6C2E /* Country.m */,
 				1FF34E15196DCC24003CC6C7 /* Categories */,
 			);
 			name = "Model Objects";
@@ -946,6 +961,8 @@
 				1FB09A711A1CA72B004501F2 /* Tooth+Utils.m */,
 				1F39B4681A1E59F000F1AEDC /* DentalPractice+Utils.h */,
 				1F39B4691A1E59F000F1AEDC /* DentalPractice+Utils.m */,
+				1F23BFCF1A45AAEC00822167 /* Country+Utils.h */,
+				1F23BFD01A45AAEC00822167 /* Country+Utils.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -960,6 +977,7 @@
 				1FA5B50419B22E1900586A88 /* Service Providers.plist */,
 				1FA5B50619B2332700586A88 /* Payment Types.plist */,
 				1F9B3ADA19B24A7C00ADE26E /* Payment Methods.plist */,
+				1F26D8F61A45A2E500E1B666 /* Locales.plist */,
 			);
 			name = plists;
 			sourceTree = "<group>";
@@ -1326,6 +1344,7 @@
 				1FF690E11A27896E008202DE /* UR6_front@3x.png in Resources */,
 				1FF690B21A27896E008202DE /* LL7_front.png in Resources */,
 				1F327B7D1A277D250029C697 /* UL3_front.png in Resources */,
+				1F26D8F71A45A2E500E1B666 /* Locales.plist in Resources */,
 				1FF690BC1A27896E008202DE /* LR2_front@2x.png in Resources */,
 				1FB2AC801A2DD23100D1AE1D /* img_tooth_reference@2x.png in Resources */,
 				1F327B8B1A277D250029C697 /* UL7_front@3x.png in Resources */,
@@ -1381,9 +1400,11 @@
 				552E95C0180AA41C00EC706C /* NoteDetailViewController.m in Sources */,
 				1F98357719B34D8000AF93E5 /* PaymentMethod+Utils.m in Sources */,
 				1F07EFA9196F16C000128021 /* TeamMember+Utils.m in Sources */,
+				1FB987901A55DB36003FAC5D /* ChargeType.m in Sources */,
 				1F9725E818EB491000165184 /* TeamMemberController.m in Sources */,
 				1FBB5D5D1A1E22820003CDF0 /* DentalPractice.m in Sources */,
 				1F1FFE041A378D8900B96563 /* PaymentType.m in Sources */,
+				1F200AD31A46D965008B6C2E /* Country.m in Sources */,
 				1FC41B2A1A3CAB0900B823AE /* Bill.m in Sources */,
 				1F947C9419311D26000C24E5 /* ToothDetailViewController.m in Sources */,
 				1F9725E718EB491000165184 /* AddTeamMemberViewController.m in Sources */,
@@ -1395,7 +1416,6 @@
 				1FA19E3219799A95006ADDB1 /* TreatmentItem.m in Sources */,
 				5529E1D218C242A2008C9625 /* ToothCell.m in Sources */,
 				1F39B46A1A1E59F000F1AEDC /* DentalPractice+Utils.m in Sources */,
-				1F27AC1C1A39CEE200C0A003 /* ChargeType.m in Sources */,
 				1F97109418EDDD4D0008BAC0 /* DurationViewController.m in Sources */,
 				1FB09A721A1CA72B004501F2 /* Tooth+Utils.m in Sources */,
 				1FA1885218EC98A500AD313E /* PatientViewController.m in Sources */,
@@ -1405,6 +1425,7 @@
 				1F97109218EDDD4D0008BAC0 /* AddAppointmentViewController.m in Sources */,
 				1F9710B018EDEC3B0008BAC0 /* TreatmentItemsViewController.m in Sources */,
 				1FA19E4719799CCE006ADDB1 /* TeamMember.m in Sources */,
+				1F23BFD11A45AAEC00822167 /* Country+Utils.m in Sources */,
 				1F979F281983F04800CF3990 /* TreatmentCategory+Utils.m in Sources */,
 				1F97109318EDDD4D0008BAC0 /* DateTimeViewController.m in Sources */,
 				1F0EA3191A2773E500FF7A31 /* Tooth.m in Sources */,
@@ -1412,6 +1433,7 @@
 				1F1FFDFE1A378A3E00B96563 /* PaymentMethod.m in Sources */,
 				1F9C5FF219F0435100405093 /* AppointmentViewController.m in Sources */,
 				1F97AFE819A90B9B00C58FF2 /* Appointment+Utils.m in Sources */,
+				1F2C27A41A40CA29005266D6 /* CurrencySelectionViewController.m in Sources */,
 				1F98CC1D19ACFEBA0021896D /* Note+Utils.m in Sources */,
 				1FB2AC7B1A2DCE7200D1AE1D /* ToothReferenceViewController.m in Sources */,
 				1F582C1A1A3CA2B100421F78 /* TreatmentCourse.m in Sources */,

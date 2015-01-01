@@ -37,7 +37,8 @@ static NSUInteger const kPaymentAmountRow   = 4;
 
 @property (strong, nonatomic) UITextField *nameTextField;
 @property (strong, nonatomic) UITextField *amountTextField;
-@property (copy, nonatomic) NSString *amountValue;
+@property (strong, nonatomic) NSDecimalNumber *amountValue;
+@property (strong, nonatomic) NSLocale *defaultsLocale;
 
 @property (strong, nonatomic) NSArray *serviceProviderDetails;
 @property (strong, nonatomic) NSArray *serviceProviderListItems;
@@ -111,8 +112,13 @@ static NSUInteger const kPaymentAmountRow   = 4;
         paymentMethodTableRowDict[@"rowDetailString"] = self.selectedPaymentMethod[@"displayName"];
         
         // Amount
-        self.amountValue = [NSString stringWithFormat:@"%.2f", [self.editingChargeType.regularAmount floatValue]];
+        NSDecimalNumber *amountValue = [[NSDecimalNumber alloc] init];
+        amountValue = self.editingChargeType.regularAmount;
+        self.amountValue = amountValue;
 
+        // Get default locale from user defaults
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        self.defaultsLocale = [NSLocale localeWithLocaleIdentifier:[defaults objectForKey:@"DefaultLocaleId"]];
     }
 }
 
@@ -180,36 +186,57 @@ static NSUInteger const kPaymentAmountRow   = 4;
     
     if (textField.tag == 2) { // Amount text field
         
-        // Only allow numbers with decimal point
-        NSCharacterSet *nonNumberSet = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789."] invertedSet];
-        
         // Allow backspace
         if (range.length > 0 && string.length == 0) {
             
             return YES;
         }
         
-        // Do not allow decimal point at the beggining
-        if (range.location == 0 && [string isEqualToString:@"."]) {
+        // Set up number formatter and get decimal separator
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        numberFormatter.locale = self.defaultsLocale;
+        NSString *localeDecimalSeparator = numberFormatter.decimalSeparator;
+        
+        // Prevent more than decimal separator
+        if ([string isEqualToString:localeDecimalSeparator]) {
             
-            return NO;
+            NSArray *arrayOfStrings = [textField.text componentsSeparatedByString:localeDecimalSeparator];
+            if ([arrayOfStrings count] > 1) {
+
+                return NO;
+            }
+            
+            // Allow first decimal separator
+            return YES;
         }
         
-        // Set the text field value manually
-        NSString *newValue = [[textField text] stringByReplacingCharactersInRange:range withString:string];
-        newValue = [[newValue componentsSeparatedByCharactersInSet:nonNumberSet] componentsJoinedByString:@""];
+        // Only allow numbers and decimal separator
+        NSString *allowedCharacters = [NSString stringWithFormat:@"0123456789%@", localeDecimalSeparator];
+        NSCharacterSet *nonNumberSet = [[NSCharacterSet characterSetWithCharactersInString:allowedCharacters] invertedSet];
         
-        // Prevent more than decimal point
-        NSArray *arrayOfStrings = [newValue componentsSeparatedByString:@"."];
-        if ([arrayOfStrings count] > 2 ) {
-            
-            return NO;
-        }
+        // First number formatter without group separator
+        numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+        numberFormatter.formatterBehavior = NSNumberFormatterBehavior10_4;
+        numberFormatter.usesGroupingSeparator = NO;
+        numberFormatter.maximumFractionDigits = 2;
+        NSString *amountString = [[textField text] stringByReplacingCharactersInRange:range withString:string];
+        amountString = [[amountString componentsSeparatedByCharactersInSet:nonNumberSet] componentsJoinedByString:@""];
         
-        // Set text field value
-        textField.text = newValue;
+        //NSDecimalNumber *localizedAmountNumber = [NSDecimalNumber decimalNumberWithString:amountString locale:defaultsLocale];
         
-        // Return NO because we're manually setting the value
+        // not localizedStringWithFormat??? just string? is this breaking formatter?
+        //NSString *localizedAmountString = [NSString localizedStringWithFormat:@"%@", [localizedAmountNumber stringValue]];
+        
+        NSDecimalNumber *amount = (NSDecimalNumber *)[numberFormatter numberFromString:amountString];
+        self.amountValue = amount;
+        //NSNumber *amount = [numberFormatter numberFromString:amountString];
+        textField.text = [numberFormatter stringFromNumber:amount];
+        
+        // Second number formatter with group separator
+        // ...
+        //numberFormatter.usesGroupingSeparator = YES;
+        //NSString *amountString = [textField.text stringByReplacingOccurrencesOfString:@"," withString:@""];
+        
         return NO;
     }
     
@@ -218,29 +245,29 @@ static NSUInteger const kPaymentAmountRow   = 4;
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
     
-    if (textField.tag == 2) { // Amount text field
-        
-        if ([textField.text isEqualToString:@""]) {
-            
-            // If empty, fill with 0.00
-            textField.text = @"0.00";
-            
-        } else if ([[textField.text substringFromIndex:textField.text.length - 1] isEqualToString:@"."]) {
-            
-            // If amount value has a decimal point at end, add 00
-            textField.text = [NSString stringWithFormat:@"%@00", textField.text];
-            
-        } else if (![textField.text containsString:@"."]) {
-            
-            // If amount has no decimal point, add .00
-            textField.text = [NSString stringWithFormat:@"%@.00", textField.text];
-            
-        } else if ([[textField.text substringWithRange:NSMakeRange(textField.text.length - 2, 1)] isEqualToString:@"."]) {
-            
-            // If amount has a decimal point followed by a single digit, add another 0
-            textField.text = [NSString stringWithFormat:@"%@0", textField.text];
-        }
-    }
+//    if (textField.tag == 2) { // Amount text field
+//        
+//        if ([textField.text isEqualToString:@""]) {
+//            
+//            // If empty, fill with 0.00
+//            textField.text = @"0.00";
+//            
+//        } else if ([[textField.text substringFromIndex:textField.text.length - 1] isEqualToString:@"."]) {
+//            
+//            // If amount value has a decimal point at end, add 00
+//            textField.text = [NSString stringWithFormat:@"%@00", textField.text];
+//            
+//        } else if (![textField.text containsString:@"."]) {
+//            
+//            // If amount has no decimal point, add .00
+//            textField.text = [NSString stringWithFormat:@"%@.00", textField.text];
+//            
+//        } else if ([[textField.text substringWithRange:NSMakeRange(textField.text.length - 2, 1)] isEqualToString:@"."]) {
+//            
+//            // If amount has a decimal point followed by a single digit, add another 0
+//            textField.text = [NSString stringWithFormat:@"%@0", textField.text];
+//        }
+//    }
     
     return YES;
 }
@@ -528,20 +555,22 @@ static NSUInteger const kPaymentAmountRow   = 4;
                 
                 if ([paymentMethodRowData[@"rowDetailString"] isEqualToString:kExempt]) {
                     
-                    amountCell.amountTextField.text = @"0.00";
+                    amountCell.amountTextField.text = @"";
                     amountCell.userInteractionEnabled = NO;
                     amountCell.amountTextField.textColor = [UIColor lightGrayColor];
                     
                 } else {
                     
-                    if ([self.amountValue floatValue] >= 0) {
-                        
-                        amountCell.amountTextField.text = self.amountValue;
-                        
-                    } else {
-                        
-                        amountCell.amountTextField.text = @"0.00";
-                    }
+                    // Format amount value
+                    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+                    numberFormatter.locale = self.defaultsLocale;
+                    numberFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
+                    numberFormatter.formatterBehavior = NSNumberFormatterBehavior10_4;
+                    numberFormatter.usesGroupingSeparator = YES;
+                    numberFormatter.maximumFractionDigits = 2;
+                    numberFormatter.minimumFractionDigits = 2;
+                    
+                    amountCell.amountTextField.text = [numberFormatter stringFromNumber:self.amountValue];
                     
                     amountCell.userInteractionEnabled = YES;
                     amountCell.amountTextField.textColor = [UIColor blackColor];
@@ -803,11 +832,11 @@ static NSUInteger const kPaymentAmountRow   = 4;
         
         if (self.amountTextField != nil && !self.amountTextField.isHidden) {
             
-            chargeType.regularAmount = [NSNumber numberWithFloat:[self.amountTextField.text floatValue]];
+            chargeType.regularAmount = self.amountValue;
             
         } else {
             
-            chargeType.regularAmount = @-1;
+            chargeType.regularAmount = (NSDecimalNumber *)[NSDecimalNumber numberWithInt:-1];
         }
         
         // Save the context.

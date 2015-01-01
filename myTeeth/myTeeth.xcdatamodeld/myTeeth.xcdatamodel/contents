@@ -23,13 +23,20 @@
         <relationship name="paymentTransactions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PaymentTransaction" inverseName="bill" inverseEntity="PaymentTransaction" syncable="YES"/>
     </entity>
     <entity name="ChargeType" representedClassName="ChargeType" syncable="YES">
-        <attribute name="regularAmount" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="regularAmount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="typeName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="chargeType" inverseEntity="Appointment" syncable="YES"/>
         <relationship name="paymentMethod" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentMethod" inverseName="chargeType" inverseEntity="PaymentMethod" syncable="YES"/>
         <relationship name="paymentType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentType" inverseName="chargeType" inverseEntity="PaymentType" syncable="YES"/>
         <relationship name="serviceProvider" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ServiceProvider" inverseName="chargeType" inverseEntity="ServiceProvider" syncable="YES"/>
+    </entity>
+    <entity name="Country" representedClassName="Country" syncable="YES">
+        <attribute name="countryCurrency" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="countryLanguage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="countryLocale" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="countryName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="DentalPractice" representedClassName="DentalPractice" syncable="YES">
         <attribute name="contactId" optional="YES" attributeType="String" syncable="YES"/>
@@ -138,6 +145,7 @@
         <element name="Appointment" positionX="-13113" positionY="-17820" width="128" height="223"/>
         <element name="Bill" positionX="-12825" positionY="-17923" width="128" height="133"/>
         <element name="ChargeType" positionX="-12825" positionY="-17775" width="128" height="148"/>
+        <element name="Country" positionX="-12692" positionY="-18162" width="128" height="118"/>
         <element name="DentalPractice" positionX="-13257" positionY="-18081" width="128" height="118"/>
         <element name="JobTitle" positionX="-12888" positionY="-18054" width="128" height="73"/>
         <element name="Note" positionX="-13077" positionY="-17523" width="128" height="163"/>

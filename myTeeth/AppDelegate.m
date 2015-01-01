@@ -61,6 +61,10 @@
         }
     });
     
+    // Register default locale id
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults registerDefaults:@{@"DefaultLocaleId" : @"en_GB"}];
+    
     return YES;
 }
 

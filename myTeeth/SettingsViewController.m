@@ -7,8 +7,12 @@
 //
 
 #import "SettingsViewController.h"
+#import "CurrencySelectionViewController.h"
+#import "Country+Utils.h"
 
 @interface SettingsViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *currencyDetailLabel;
 
 - (IBAction)doneButtonTapped:(id)sender;
 
@@ -23,21 +27,35 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    // Display selected currency
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *selectedLocaleId = [defaults objectForKey:@"DefaultLocaleId"];
+    Country *selectedCountry = [Country countryWithLocale:selectedLocaleId];
+    self.currencyDetailLabel.text = [NSString stringWithFormat:@"%@ (%@) (%@)",
+                                     selectedCountry.countryName,
+                                     selectedCountry.countryLanguage,
+                                     selectedCountry.countryCurrency];
+    
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     
     [super didReceiveMemoryWarning];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ([[segue identifier] isEqualToString:@"ShowCurrencyList"]) {
+        
+        CurrencySelectionViewController *controller = (CurrencySelectionViewController *)[segue destinationViewController];
+        controller.navigationItem.title = NSLocalizedString(@"Select Currency", @"Select Currency");
+    }
 }
-*/
 
+#pragma mark - Button actions
 - (IBAction)doneButtonTapped:(id)sender {
 
     [self dismissViewControllerAnimated:YES completion:nil];

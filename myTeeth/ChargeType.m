@@ -2,8 +2,8 @@
 //  ChargeType.m
 //  myTeeth
 //
-//  Created by David Canty on 11/12/2014.
-//  Copyright (c) 2014 David Canty. All rights reserved.
+//  Created by David Canty on 01/01/2015.
+//  Copyright (c) 2015 David Canty. All rights reserved.
 //
 
 #import "ChargeType.h"
@@ -15,9 +15,9 @@
 
 @implementation ChargeType
 
+@dynamic regularAmount;
 @dynamic typeName;
 @dynamic uniqueId;
-@dynamic regularAmount;
 @dynamic appointments;
 @dynamic paymentMethod;
 @dynamic paymentType;
