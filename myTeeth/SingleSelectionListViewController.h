@@ -19,6 +19,7 @@
 @property NSInteger initialSelection;
 @property (nonatomic, strong) NSString *sectionHeader;
 @property (nonatomic, strong) NSString *sectionFooter;
+@property (nonatomic, assign) BOOL autoReturnAfterSelection;
 
 - (IBAction)done:(id)sender;
 

@@ -7,10 +7,22 @@
 //
 
 #import "BillViewController.h"
+#import "Bill.h"
+#import "PaymentTransaction.h"
 
-@interface BillViewController ()
+static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIdentifier";
 
+@interface BillViewController () <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UITextField *billAmountTextField;
+@property (weak, nonatomic) IBOutlet UILabel *amountPaidLabel;
+@property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *fullyPaidSegmentedControl;
+@property (weak, nonatomic) IBOutlet UITextField *paymentTransactionTextField;
+@property (weak, nonatomic) IBOutlet UITableView *transactionHistoryTableView;
+
+- (IBAction)fullyPaidTapped:(UISegmentedControl *)sender;
+- (IBAction)addTransactionTapped:(id)sender;
 - (IBAction)cancelTapped:(id)sender;
 - (IBAction)doneTapped:(id)sender;
 
@@ -25,14 +37,37 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
+#pragma mark - Transaction History table view
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return 0;
 }
 
+- (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section {
+    
+    return 0;
+}
 
-#pragma mark - Bar button actions
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:paymentTransactionCellIdentifier];
+    
+    
+    
+    return cell;
+}
+
+#pragma mark - Button actions
+- (IBAction)fullyPaidTapped:(UISegmentedControl *)sender {
+    
+    
+}
+
+- (IBAction)addTransactionTapped:(id)sender {
+    
+    
+}
+
 - (IBAction)cancelTapped:(id)sender {
 
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -47,9 +82,9 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
-    if ([self.delegate respondsToSelector:@selector(billViewControllerDidFinish)]) {
+    if ([self.delegate respondsToSelector:@selector(billViewControllerDidFinishWithBill:)]) {
         
-        [self.delegate billViewControllerDidFinish];
+        [self.delegate billViewControllerDidFinishWithBill:nil];
     }
 }
 

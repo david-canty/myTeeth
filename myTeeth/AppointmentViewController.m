@@ -498,7 +498,7 @@ static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifi
     
 }
 
-- (void)billViewControllerDidFinish {
+- (void)billViewControllerDidFinishWithBill:(Bill *)bill {
     
     
 }

@@ -17,6 +17,7 @@ static NSString *kSelectionListCellIdentifier = @"SelectionListCellIdentifier";
     [super awakeFromNib];
     _initialSelection = -1;
     _selectionList = [@[] mutableCopy];
+    self.autoReturnAfterSelection = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -129,6 +130,11 @@ static NSString *kSelectionListCellIdentifier = @"SelectionListCellIdentifier";
         
         NSUInteger newIndex[] = {0, newRow};
         _lastIndexPath = [[NSIndexPath alloc] initWithIndexes:newIndex length:2];
+    }
+    
+    if (self.autoReturnAfterSelection) {
+        
+        [self done:nil];
     }
 }
 

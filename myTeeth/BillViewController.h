@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class Bill;
+
 @protocol BillViewControllerDelegate;
 
 @interface BillViewController : UIViewController
@@ -19,5 +21,5 @@
 
 @protocol BillViewControllerDelegate <NSObject>
 - (void)billViewControllerDidCancel;
-- (void)billViewControllerDidFinish;
+- (void)billViewControllerDidFinishWithBill:(Bill *)bill;
 @end
