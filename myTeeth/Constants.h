@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 David Canty. All rights reserved.
 //
 
+extern NSString * const kAppVersion;
+
 extern NSString * const kNoteTitlePlaceholder;
 extern NSString * const kNoteMessagePlaceholder;
 extern NSString * const myTeethPatient;

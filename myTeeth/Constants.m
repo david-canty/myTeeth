@@ -8,6 +8,8 @@
 
 #import "Constants.h"
 
+NSString * const kAppVersion = @"myTeeth Version 2.0";
+
 NSString * const kNoteTitlePlaceholder = @"Please enter a title...";
 NSString * const kNoteMessagePlaceholder = @"Please enter a note...";
 NSString * const myTeethPatient = @"Patient";
