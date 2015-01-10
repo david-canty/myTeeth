@@ -18,6 +18,7 @@ static NSString *kCurrencyCellIdentifier = @"CurrencyCellIdentifier";
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSUserDefaults *userDefaults;
 @property (copy, nonatomic) NSString *selectedLocaleId;
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -31,19 +32,35 @@ static NSString *kCurrencyCellIdentifier = @"CurrencyCellIdentifier";
     self.managedObjectContext = appDelegate.managedObjectContext;
     
     self.userDefaults = [NSUserDefaults standardUserDefaults];
-    if ([self.userDefaults objectForKey:@"CountryModelObjectsCreated"] == nil) {
-        
-        [self createCountryModelObjects];
-    }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
+    
+    if ([self.userDefaults objectForKey:@"CountryModelObjectsCreated"] == nil) {
+    
+        self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleGray];
+        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
+        [[self navigationItem] setRightBarButtonItem:barButton];
+        [self.activityIndicator startAnimating];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            [self createCountryModelObjects];
+        });
+
+    } else {
+        
+        [self scrollToSelectedCountry];
+    }
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)scrollToSelectedCountry {
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.selectedLocaleId = [defaults objectForKey:@"DefaultLocaleId"];
@@ -53,11 +70,6 @@ static NSString *kCurrencyCellIdentifier = @"CurrencyCellIdentifier";
 }
 
 - (void)createCountryModelObjects {
-    
-    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleGray];
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
-    [[self navigationItem] setRightBarButtonItem:barButton];
-    [activityIndicator startAnimating];
     
     NSString *localesPList = [[NSBundle mainBundle]  pathForResource:@"Locales" ofType:@"plist"];
     NSArray *localeIDs = [[NSArray alloc] initWithContentsOfFile:localesPList];
@@ -94,8 +106,21 @@ static NSString *kCurrencyCellIdentifier = @"CurrencyCellIdentifier";
     [self.userDefaults setObject:@"CountryModelObjectsCreated" forKey:@"CountryModelObjectsCreated"];
     [self.userDefaults synchronize];
     
-    [activityIndicator stopAnimating];
-    [[self navigationItem] setRightBarButtonItem:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        NSError *error;
+        if (![[self fetchedResultsController] performFetch:&error]) {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+        
+        [self.tableView reloadData];
+        
+        [self scrollToSelectedCountry];
+        
+        [self.activityIndicator stopAnimating];
+        [[self navigationItem] setRightBarButtonItem:nil];
+    });
 }
 
 #pragma mark - Table view data source
@@ -119,12 +144,15 @@ static NSString *kCurrencyCellIdentifier = @"CurrencyCellIdentifier";
     NSString *textLabelString = @"";
     if (country.countryName != nil) {
         
-        textLabelString = [NSString stringWithFormat:@"%@ | ", country.countryName];
+        textLabelString = [NSString stringWithFormat:@"%@ - ", country.countryName];
     }
     
+    NSLocale *countryLocale = [[NSLocale alloc] initWithLocaleIdentifier: country.countryLocale];
+    NSString *countryCurrencySymbol = [countryLocale objectForKey:NSLocaleCurrencySymbol];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", country.countryCurrency, countryCurrencySymbol];
+    
     textLabelString = [textLabelString stringByAppendingString:[NSString stringWithFormat:@"%@", country.countryLanguage]];
-    cell.textLabel.text = textLabelString;
-    cell.detailTextLabel.text = country.countryCurrency;
+    cell.detailTextLabel.text = textLabelString;
     
     cell.accessoryType = ([country.countryLocale isEqualToString:self.selectedLocaleId]) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     

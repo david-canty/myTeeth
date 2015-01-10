@@ -119,6 +119,7 @@
 		1FB335A01A1D26E1007B5475 /* ui_tick_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB335991A1D26E1007B5475 /* ui_tick_on.png */; };
 		1FB335A11A1D26E1007B5475 /* ui_tick_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB3359A1A1D26E1007B5475 /* ui_tick_on@2x.png */; };
 		1FB335A21A1D26E1007B5475 /* ui_tick_on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB3359B1A1D26E1007B5475 /* ui_tick_on@3x.png */; };
+		1FB906BB1A5F143000ADD00B /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB906BA1A5F143000ADD00B /* InfoViewController.m */; };
 		1FB987901A55DB36003FAC5D /* ChargeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9878F1A55DB36003FAC5D /* ChargeType.m */; };
 		1FBB5D5D1A1E22820003CDF0 /* DentalPractice.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB5D5C1A1E22820003CDF0 /* DentalPractice.m */; };
 		1FBBBA2B1A2BA4FF001BD85C /* btn_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBBBA281A2BA4FF001BD85C /* btn_settings.png */; };
@@ -412,6 +413,8 @@
 		1FB335991A1D26E1007B5475 /* ui_tick_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_tick_on.png; sourceTree = "<group>"; };
 		1FB3359A1A1D26E1007B5475 /* ui_tick_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ui_tick_on@2x.png"; sourceTree = "<group>"; };
 		1FB3359B1A1D26E1007B5475 /* ui_tick_on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ui_tick_on@3x.png"; sourceTree = "<group>"; };
+		1FB906B91A5F143000ADD00B /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		1FB906BA1A5F143000ADD00B /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		1FB9878E1A55DB36003FAC5D /* ChargeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeType.h; sourceTree = "<group>"; };
 		1FB9878F1A55DB36003FAC5D /* ChargeType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeType.m; sourceTree = "<group>"; };
 		1FBB5D5B1A1E22820003CDF0 /* DentalPractice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DentalPractice.h; sourceTree = "<group>"; };
@@ -610,6 +613,8 @@
 				1FA9DDB81A211AAF00BF300E /* SettingsViewController.m */,
 				1F2C27A21A40CA29005266D6 /* CurrencySelectionViewController.h */,
 				1F2C27A31A40CA29005266D6 /* CurrencySelectionViewController.m */,
+				1FB906B91A5F143000ADD00B /* InfoViewController.h */,
+				1FB906BA1A5F143000ADD00B /* InfoViewController.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1377,6 +1382,7 @@
 			files = (
 				55E2B70B18041F8000360759 /* DetailViewController.m in Sources */,
 				1F2B50201A0F97AC00E1D1AC /* Salutation.m in Sources */,
+				1FB906BB1A5F143000ADD00B /* InfoViewController.m in Sources */,
 				1F978227193506E200136268 /* SingleSelectionPopoverContentViewController.m in Sources */,
 				1FA9DDB91A211AAF00BF300E /* SettingsViewController.m in Sources */,
 				1F220B2C1A389AA10015AEB3 /* ChargeTypeNameCell.m in Sources */,

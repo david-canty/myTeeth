@@ -472,6 +472,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="T6i-NC-Ub1" kind="push" identifier="ShowInfoView" id="RF2-jx-rZ3"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="ixZ-FI-irn" style="IBUITableViewCellStyleDefault" id="zEM-tN-MYo">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -509,6 +512,57 @@
             </objects>
             <point key="canvasLocation" x="2350" y="-3353"/>
         </scene>
+        <!--Info View Controller-->
+        <scene sceneID="1ww-Ss-Ydg">
+            <objects>
+                <viewController id="T6i-NC-Ub1" customClass="InfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Q0X-2S-gT1"/>
+                        <viewControllerLayoutGuide type="bottom" id="oc5-gL-g1k"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ec7-mN-9U3">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="576"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ne5-cV-Jbh" userLabel="Info Text View">
+                                <rect key="frame" x="20" y="20" width="500" height="508"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="508" id="KfH-PR-gjg"/>
+                                    <constraint firstAttribute="width" constant="500" id="sgh-PE-cMU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hW3-qc-J1h" userLabel="Version Label">
+                                <rect key="frame" x="20" y="536" width="500" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Irg-QM-9gt"/>
+                                    <constraint firstAttribute="width" constant="500" id="tbq-Eo-U4g"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ne5-cV-Jbh" firstAttribute="top" secondItem="Q0X-2S-gT1" secondAttribute="bottom" constant="20" id="7wO-ew-JK3"/>
+                            <constraint firstAttribute="centerX" secondItem="Ne5-cV-Jbh" secondAttribute="centerX" id="D2e-Gf-7a0"/>
+                            <constraint firstAttribute="centerX" secondItem="hW3-qc-J1h" secondAttribute="centerX" id="Dnq-0P-pmD"/>
+                            <constraint firstItem="hW3-qc-J1h" firstAttribute="top" secondItem="Ne5-cV-Jbh" secondAttribute="bottom" constant="8" id="d67-Es-S5P"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="CQM-iz-jDS"/>
+                    <connections>
+                        <outlet property="infoTextView" destination="Ne5-cV-Jbh" id="dwX-Nh-vdY"/>
+                        <outlet property="versionLabel" destination="hW3-qc-J1h" id="V3Z-ao-l43"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yP6-zD-g9A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3027" y="-4106"/>
+        </scene>
         <!--Currency Selection View Controller-->
         <scene sceneID="kRk-oI-DZ4">
             <objects>
@@ -525,7 +579,7 @@
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Huf-1a-XOH">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>

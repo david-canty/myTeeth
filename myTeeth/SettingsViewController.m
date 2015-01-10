@@ -10,7 +10,7 @@
 
 #import "SettingsViewController.h"
 #import "CurrencySelectionViewController.h"
-#import "Country+Utils.h"
+#import "InfoViewController.h"
 #import "Constants.h"
 
 static NSUInteger kContactTableRow = 2;
@@ -37,11 +37,14 @@ static NSUInteger kContactTableRow = 2;
     // Display selected currency
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *selectedLocaleId = [defaults objectForKey:@"DefaultLocaleId"];
-    Country *selectedCountry = [Country countryWithLocale:selectedLocaleId];
-    self.currencyDetailLabel.text = [NSString stringWithFormat:@"%@ (%@) (%@)",
-                                     selectedCountry.countryName,
-                                     selectedCountry.countryLanguage,
-                                     selectedCountry.countryCurrency];
+    
+    NSLocale *selectedLocale = [NSLocale localeWithLocaleIdentifier:selectedLocaleId];
+    NSString *currencyString = [selectedLocale objectForKey:NSLocaleCurrencyCode];
+    NSString *currencySymbol = [selectedLocale objectForKey:NSLocaleCurrencySymbol];
+    
+    self.currencyDetailLabel.text = [NSString stringWithFormat:@"%@ %@",
+                                     currencyString,
+                                     currencySymbol];
     
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
@@ -52,6 +55,12 @@ static NSUInteger kContactTableRow = 2;
         
         CurrencySelectionViewController *controller = (CurrencySelectionViewController *)[segue destinationViewController];
         controller.navigationItem.title = NSLocalizedString(@"Select Currency", @"Select Currency");
+    }
+    
+    if ([[segue identifier] isEqualToString:@"ShowInfoView"]) {
+        
+        InfoViewController *controller = (InfoViewController *)[segue destinationViewController];
+        controller.navigationItem.title = NSLocalizedString(@"Info", @"Info");
     }
 }
 
@@ -114,6 +123,7 @@ static NSUInteger kContactTableRow = 2;
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 #pragma mark - Button actions
