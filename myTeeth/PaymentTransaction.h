@@ -2,8 +2,8 @@
 //  PaymentTransaction.h
 //  myTeeth
 //
-//  Created by David Canty on 13/12/2014.
-//  Copyright (c) 2014 David Canty. All rights reserved.
+//  Created by David Canty on 11/01/2015.
+//  Copyright (c) 2015 David Canty. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -13,9 +13,9 @@
 
 @interface PaymentTransaction : NSManagedObject
 
-@property (nonatomic, retain) NSString * uniqueId;
-@property (nonatomic, retain) NSNumber * transactionAmount;
+@property (nonatomic, retain) NSDecimalNumber * transactionAmount;
 @property (nonatomic, retain) NSDate * transactionDate;
+@property (nonatomic, retain) NSString * uniqueId;
 @property (nonatomic, retain) Bill *bill;
 
 @end

@@ -2,8 +2,8 @@
 //  Bill.h
 //  myTeeth
 //
-//  Created by David Canty on 13/12/2014.
-//  Copyright (c) 2014 David Canty. All rights reserved.
+//  Created by David Canty on 11/01/2015.
+//  Copyright (c) 2015 David Canty. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -13,10 +13,10 @@
 
 @interface Bill : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * amountPaid;
-@property (nonatomic, retain) NSNumber * billAmount;
-@property (nonatomic, retain) NSString * uniqueId;
+@property (nonatomic, retain) NSDecimalNumber * amountPaid;
+@property (nonatomic, retain) NSDecimalNumber * billAmount;
 @property (nonatomic, retain) NSNumber * isPaid;
+@property (nonatomic, retain) NSString * uniqueId;
 @property (nonatomic, retain) Appointment *appointment;
 @property (nonatomic, retain) NSSet *paymentTransactions;
 @end

@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) id <BillViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) Bill *editingBill;
 
 @end
 

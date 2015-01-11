@@ -495,12 +495,14 @@ static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifi
 #pragma mark - Bill delegate
 - (void)billViewControllerDidCancel {
     
-    
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)billViewControllerDidFinishWithBill:(Bill *)bill {
     
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     
+    // Set appointment - bill relationship
 }
 
 @end

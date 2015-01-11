@@ -2,8 +2,8 @@
 //  Bill.m
 //  myTeeth
 //
-//  Created by David Canty on 13/12/2014.
-//  Copyright (c) 2014 David Canty. All rights reserved.
+//  Created by David Canty on 11/01/2015.
+//  Copyright (c) 2015 David Canty. All rights reserved.
 //
 
 #import "Bill.h"
@@ -15,8 +15,8 @@
 
 @dynamic amountPaid;
 @dynamic billAmount;
-@dynamic uniqueId;
 @dynamic isPaid;
+@dynamic uniqueId;
 @dynamic appointment;
 @dynamic paymentTransactions;
 
