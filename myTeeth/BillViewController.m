@@ -45,16 +45,6 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
     
     [super viewDidLoad];
     
-    if (self.editingBill) {
-        
-        self.bill = self.editingBill;
-        
-        
-    } else {
-        
-        self.bill = (Bill *)[NSEntityDescription insertNewObjectForEntityForName:@"Bill" inManagedObjectContext:self.managedObjectContext];
-    }
-    
     self.paymentTransactions = [@[] mutableCopy];
     
     // Get default locale from user defaults
@@ -79,6 +69,37 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
     } else {
         
         self.localeDecimalSeparator = @""; // e.g., Japanese YEN
+    }
+
+    
+    if (self.editingBill) {
+        
+        self.bill = self.editingBill;
+        
+        
+    } else {
+        
+        self.bill = (Bill *)[NSEntityDescription insertNewObjectForEntityForName:@"Bill" inManagedObjectContext:self.managedObjectContext];
+        
+        self.billAmountValue = (NSDecimalNumber *)[NSDecimalNumber numberWithDouble:0];
+        self.paymentTransactionAmountValue = (NSDecimalNumber *)[NSDecimalNumber numberWithDouble:0];
+        
+        if (![self.localeDecimalSeparator isEqualToString:@""]) { // Has a decimal separator
+            
+            NSString *zeroString = [NSString stringWithFormat:@"0%@00", self.localeDecimalSeparator];
+            
+            self.billAmountTextField.text = zeroString;
+            self.paymentTransactionTextField.text = zeroString;
+            self.amountPaidLabel.text = zeroString;
+            self.balanceLabel.text = zeroString;
+            
+        } else {
+         
+            self.billAmountTextField.text = @"0";
+            self.paymentTransactionTextField.text = @"0";
+            self.amountPaidLabel.text = @"0";
+            self.balanceLabel.text = @"0";
+        }
     }
 }
 
@@ -191,15 +212,23 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
 #pragma mark - Button actions
 - (IBAction)fullyPaidTapped:(UISegmentedControl *)sender {
     
+    //if bill amount > 0
+    
     // Create transaction for full amount
     NSString *billAmountString = self.billAmountTextField.text;
     
     NSNumberFormatter *billAmountNumberFormatter = [[NSNumberFormatter alloc] init];
-    [billAmountNumberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSNumber *billAmountNumber = [billAmountNumberFormatter numberFromString:billAmountString];
+    billAmountNumberFormatter.locale = self.defaultsLocale;
+    billAmountNumberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    billAmountNumberFormatter.formatterBehavior = NSNumberFormatterBehavior10_4;
+    billAmountNumberFormatter.usesGroupingSeparator = YES;
+    billAmountNumberFormatter.maximumFractionDigits = 2;
+    billAmountNumberFormatter.minimumFractionDigits = 2;
     
-    //if bill amount > 0
+    NSDecimalNumber *billAmountNumber = (NSDecimalNumber *)[billAmountNumberFormatter numberFromString:billAmountString];
     
+    billAmountNumberFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
+    self.amountPaidLabel.text = [billAmountNumberFormatter stringFromNumber:billAmountNumber];
 }
 
 - (IBAction)addTransactionTapped:(id)sender {
@@ -246,6 +275,17 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
         
         [self.delegate billViewControllerDidFinishWithBill:self.bill];
     }
+}
+
+- (void)wobbleView:(UIView *)viewToWobble {
+    
+    CAKeyframeAnimation *wobble = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+    wobble.values = @[[NSValue valueWithCATransform3D:CATransform3DMakeTranslation(-5.0f, 0.0f, 0.0f)],
+                      [NSValue valueWithCATransform3D:CATransform3DMakeTranslation(5.0f, 0.0f, 0.0f)]];
+    wobble.autoreverses = YES;
+    wobble.repeatCount = 2.0f;
+    wobble.duration = 0.10f;
+    [viewToWobble.layer addAnimation:wobble forKey:nil];
 }
 
 @end
