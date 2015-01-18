@@ -22,7 +22,7 @@
 
     [super viewDidLoad];
     
-    NSString *infoString = NSLocalizedString(@"Thank you for downloading and using myTeeth.\n\nPlease get in touch if you would like to suggest a new feature or improvement to myTeeth, or if you have discovered a bug.\n\nAll feedback from your experience using the app is valuable, appreciated and will help with future versions of myTeeth.", @"Info text");
+    NSString *infoString = NSLocalizedString(@"Thank you for downloading and using myTeeth.\n\nPlease get in touch if you would like to suggest a new feature or improvement to myTeeth, or if you have discovered a bug.\n\nAll feedback from your experience using the app is valuable, appreciated and will help with future versions of myTeeth.\n\nIf you like myTeeth, rate it on the App Store now!", @"Info text");
     
     self.infoTextView.text = infoString;
     
