@@ -14,6 +14,11 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
 
 @interface BillViewController () <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *billAmountTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *amountPaidTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *balanceTitleLabel;
+
+
 @property (weak, nonatomic) IBOutlet UITextField *billAmountTextField;
 @property (weak, nonatomic) IBOutlet UILabel *amountPaidLabel;
 @property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
@@ -25,8 +30,8 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
 @property (strong, nonatomic) Bill *bill;
 @property (strong, nonatomic) NSMutableArray *paymentTransactions;
 
-@property (strong, nonatomic) NSDecimalNumber *billAmountValue;
-@property (strong, nonatomic) NSDecimalNumber *billPaidValue;
+@property (strong, nonatomic) NSDecimalNumber *billAmount;
+@property (strong, nonatomic) NSDecimalNumber *amountPaid;
 @property (strong, nonatomic) NSDecimalNumber *paymentTransactionAmountValue;
 
 @property (strong, nonatomic) NSLocale *defaultsLocale;
@@ -63,6 +68,17 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
     self.numberFormatter.minimumFractionDigits = 0;
     self.localeCurrencySymbol = self.numberFormatter.currencySymbol;
     
+    // Add currency symbol to title labels
+    self.billAmountTitleLabel.text = [NSString stringWithFormat:@"%@ %@",
+                                      self.billAmountTitleLabel.text,
+                                      self.localeCurrencySymbol];
+    self.amountPaidTitleLabel.text = [NSString stringWithFormat:@"%@ %@",
+                                      self.amountPaidTitleLabel.text,
+                                      self.localeCurrencySymbol];
+    self.balanceTitleLabel.text = [NSString stringWithFormat:@"%@ %@",
+                                      self.balanceTitleLabel.text,
+                                      self.localeCurrencySymbol];
+    
     // Ensure decimal separator has a value
     if (self.numberFormatter.decimalSeparator != nil) {
         
@@ -72,7 +88,6 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
         
         self.localeDecimalSeparator = @""; // e.g., Japanese YEN
     }
-
     
     if (self.editingBill) {
         
@@ -83,8 +98,9 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
         
         self.bill = (Bill *)[NSEntityDescription insertNewObjectForEntityForName:@"Bill" inManagedObjectContext:self.managedObjectContext];
         
-        self.billAmountValue = (NSDecimalNumber *)[NSDecimalNumber numberWithDouble:0];
-        self.paymentTransactionAmountValue = (NSDecimalNumber *)[NSDecimalNumber numberWithDouble:0];
+        self.billAmount = (NSDecimalNumber *)[NSDecimalNumber numberWithDouble:0.0];
+        self.paymentTransactionAmountValue = (NSDecimalNumber *)[NSDecimalNumber numberWithDouble:0.0];
+        self.amountPaid = (NSDecimalNumber *)[NSDecimalNumber numberWithDouble:0.0];
         
         if (![self.localeDecimalSeparator isEqualToString:@""]) { // Has a decimal separator
             
@@ -128,10 +144,15 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
 #pragma mark - Text field delegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
-    return NO;
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+#warning - need to prevent negative balance when changing bill amount to less than it was after fully paid
+#warning - need to allow second 0 after decimal separator
+#warning - if enter digit then . followed by 0, it deletes .
     
     // Only allow numbers and decimal separator
     NSString *allowedCharacters = [NSString stringWithFormat:@"0123456789%@", self.localeDecimalSeparator];
@@ -181,7 +202,8 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
             [self enableFields];
         }
         
-        self.billAmountValue = amount;
+        [self updateAmountPaidAndBalance];
+        
         return NO;
         
     } else if (textField.tag == 3) { // Payment transaction text field
@@ -193,38 +215,79 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
     return YES;
 }
 
+- (void)updateAmountPaidAndBalance {
+    
+    // We have a bill amount value so update balance
+    NSString *billAmountString = self.billAmountTextField.text;
+    self.billAmount = [NSDecimalNumber decimalNumberWithString:billAmountString];
+    
+    NSString *paidAmountString = self.amountPaidLabel.text;
+    self.amountPaid = [NSDecimalNumber decimalNumberWithString:paidAmountString];
+    
+    NSDecimalNumber *balanceAmount = [self.billAmount decimalNumberBySubtracting:self.amountPaid];
+    self.numberFormatter.minimumFractionDigits = 2;
+    self.balanceLabel.text = [self.numberFormatter stringFromNumber:balanceAmount];
+    
+    // Check if bill is still paid up
+    if ([balanceAmount compare:[NSDecimalNumber zero]] ==  NSOrderedDescending) {
+        
+        // Set fully paid control to No
+        self.fullyPaidSegmentedControl.selectedSegmentIndex = 1;
+        
+        // Enable fields
+        [self enableFields];
+        
+    } else {
+        
+        // Set fully paid control to Yes
+        self.fullyPaidSegmentedControl.selectedSegmentIndex = 0;
+        
+        // Disable fields
+        [self disableFields];
+    }
+}
+
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    
+    if (textField == self.billAmountTextField) {
         
-    if (![self.localeDecimalSeparator isEqualToString:@""]) { // Has a decimal separator
-        
-        if ([textField.text isEqualToString:@""]) {
+        if (![self.localeDecimalSeparator isEqualToString:@""]) { // Has a decimal separator
             
-            // If empty, fill with 0.00
-            textField.text = [NSString stringWithFormat:@"0%@00", self.localeDecimalSeparator];
+            if ([textField.text isEqualToString:@""]) {
+                
+                // If empty, fill with 0.00
+                textField.text = [NSString stringWithFormat:@"0%@00", self.localeDecimalSeparator];
+                
+            } else if ([[textField.text substringFromIndex:textField.text.length - 1] isEqualToString:self.localeDecimalSeparator]) {
+                
+                // If amount value has a decimal point at end, add 00
+                textField.text = [NSString stringWithFormat:@"%@00", textField.text];
+                
+            } else if (![textField.text containsString:self.localeDecimalSeparator]) {
+                
+                // If amount has no decimal point, add .00
+                textField.text = [NSString stringWithFormat:@"%@%@00", textField.text, self.localeDecimalSeparator];
+                
+            } else if ([[textField.text substringWithRange:NSMakeRange(textField.text.length - 2, 1)] isEqualToString:self.localeDecimalSeparator]) {
+                
+                // If amount has a decimal point followed by a single digit, add another 0
+                textField.text = [NSString stringWithFormat:@"%@0", textField.text];
+                
+            } else {
+                
+                // We have a bill amount value so update balance
+                [self updateAmountPaidAndBalance];
+            }
             
-        } else if ([[textField.text substringFromIndex:textField.text.length - 1] isEqualToString:self.localeDecimalSeparator]) {
+        } else { // Has no decimal separator
             
-            // If amount value has a decimal point at end, add 00
-            textField.text = [NSString stringWithFormat:@"%@00", textField.text];
-            
-        } else if (![textField.text containsString:self.localeDecimalSeparator]) {
-            
-            // If amount has no decimal point, add .00
-            textField.text = [NSString stringWithFormat:@"%@%@00", textField.text, self.localeDecimalSeparator];
-            
-        } else if ([[textField.text substringWithRange:NSMakeRange(textField.text.length - 2, 1)] isEqualToString:self.localeDecimalSeparator]) {
-            
-            // If amount has a decimal point followed by a single digit, add another 0
-            textField.text = [NSString stringWithFormat:@"%@0", textField.text];
+            if ([textField.text isEqualToString:@""]) {
+                
+                // If empty, fill with 0
+                textField.text = @"0";
+            }
         }
-        
-    } else { // Has no decimal separator
-        
-        if ([textField.text isEqualToString:@""]) {
-            
-            // If empty, fill with 0
-            textField.text = @"0";
-        }
+
     }
     
     return YES;
@@ -254,12 +317,16 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
         PaymentTransaction *transaction = self.paymentTransactions[indexPath.row];
         NSDecimalNumber *transactionAmount = transaction.transactionAmount;
         
+        self.numberFormatter.minimumFractionDigits = 2;
+        
         // Update amount paid
-        // amount paid - transaction amount // need to use billPaidValue
+        self.amountPaid = [self.amountPaid decimalNumberBySubtracting:transactionAmount];
+        self.amountPaidLabel.text = [self.numberFormatter stringFromNumber:self.amountPaid];
         
         // Update balance
-        // Bill amount - amount paid
-        
+        self.billAmount = [NSDecimalNumber decimalNumberWithDecimal:[self.billAmount decimalValue]];
+        NSDecimalNumber *balance = [self.billAmount decimalNumberBySubtracting:self.amountPaid];
+        self.balanceLabel.text = [self.numberFormatter stringFromNumber:balance];
         
         // Set fully paid control to No
         self.fullyPaidSegmentedControl.selectedSegmentIndex = 1;
@@ -303,56 +370,43 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
 
 #pragma mark - Button actions
 - (IBAction)fullyPaidTapped:(UISegmentedControl *)sender {
-    
+
     NSInteger selectedSegment = sender.selectedSegmentIndex;
     
     if (selectedSegment == 0) {
         
         // Create transaction for full amount or to make up to fully paid
         NSString *billAmountString = self.billAmountTextField.text;
-        
-        NSNumberFormatter *billAmountNumberFormatter = [[NSNumberFormatter alloc] init];
-        billAmountNumberFormatter.locale = self.defaultsLocale;
-        billAmountNumberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-        billAmountNumberFormatter.formatterBehavior = NSNumberFormatterBehavior10_4;
-        billAmountNumberFormatter.usesGroupingSeparator = YES;
-        billAmountNumberFormatter.maximumFractionDigits = 2;
-        billAmountNumberFormatter.minimumFractionDigits = 2;
-        
-        NSDecimalNumber *billAmountNumber = (NSDecimalNumber *)[billAmountNumberFormatter numberFromString:billAmountString];
-        
-        billAmountNumberFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
+        self.billAmount = [NSDecimalNumber decimalNumberWithString:billAmountString];
         
         // Calculate balance to pay
         NSString *paidAmountString = self.amountPaidLabel.text;
-        NSDecimalNumber *paidAmountNumber = (NSDecimalNumber *)[billAmountNumberFormatter numberFromString:paidAmountString];
+        self.amountPaid = [NSDecimalNumber decimalNumberWithString:paidAmountString];
         
-        double balanceAmount = [billAmountNumber doubleValue] - [paidAmountNumber doubleValue];
+        NSDecimalNumber *balanceAmount = [self.billAmount decimalNumberBySubtracting:self.amountPaid];
         
-        if (balanceAmount > 0) {
+        if ([balanceAmount compare:[NSDecimalNumber zero]] ==  NSOrderedDescending) {
             
-            NSDecimalNumber *decimalBalanceAmount = (NSDecimalNumber *)[NSDecimalNumber numberWithDouble:balanceAmount];
+            // Add transaction
+            [self addPaymentTransactionForAmount:balanceAmount];
             
             // Set amount paid label
-            self.amountPaidLabel.text = [billAmountNumberFormatter stringFromNumber:billAmountNumber];
+            self.numberFormatter.minimumFractionDigits = 2;
+            self.amountPaidLabel.text = [self.numberFormatter stringFromNumber:self.billAmount];
             
             // Set balance label
             if (![self.localeDecimalSeparator isEqualToString:@""]) { // Has a decimal separator
                 
-                self.balanceLabel.text = [billAmountNumberFormatter stringFromNumber:@0];
+                self.balanceLabel.text = [self.numberFormatter stringFromNumber:@0];
                 
             } else {
                 
                 self.balanceLabel.text = @"0";
             }
-            
-            // Add transaction
-            [self addPaymentTransactionForAmount:decimalBalanceAmount];
         }
         
         // Disable fields
         [self disableFields];
-        self.fullyPaidSegmentedControl.enabled = YES;
         [self.billAmountTextField resignFirstResponder];
         [self.paymentTransactionTextField resignFirstResponder];
         
@@ -382,6 +436,9 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
     // Add transaction to working array and reload transaction history table
     [self.paymentTransactions addObject:paymentTransaction];
     [self.transactionHistoryTableView reloadData];
+    
+    // Update amount paid
+    self.amountPaid = [self.amountPaid decimalNumberByAdding:transactionAmount];
 }
 
 - (IBAction)addTransactionTapped:(id)sender {

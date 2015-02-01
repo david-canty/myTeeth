@@ -1820,7 +1820,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCa-Be-RfU" userLabel="Amount Paid Value">
-                                <rect key="frame" x="149" y="60" width="375" height="20"/>
+                                <rect key="frame" x="157" y="60" width="367" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1832,7 +1832,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUX-bX-ANM" userLabel="Balance Value">
-                                <rect key="frame" x="149" y="100" width="375" height="20"/>
+                                <rect key="frame" x="157" y="100" width="367" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1886,7 +1886,7 @@
                                 <rect key="frame" x="149" y="220" width="375" height="336"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PaymentTransactionCellIdentifier" textLabel="75C-Mp-l7y" detailTextLabel="cvE-oi-3W7" style="IBUITableViewCellStyleValue1" id="3IN-wD-F8n">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="PaymentTransactionCellIdentifier" textLabel="75C-Mp-l7y" detailTextLabel="cvE-oi-3W7" style="IBUITableViewCellStyleValue1" id="3IN-wD-F8n">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3IN-wD-F8n" id="hJg-Ql-2gQ">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1932,8 +1932,11 @@
                     <connections>
                         <outlet property="addTransactionButton" destination="cj8-4h-19G" id="h4N-e9-C6a"/>
                         <outlet property="amountPaidLabel" destination="NCa-Be-RfU" id="gei-oX-Pjd"/>
+                        <outlet property="amountPaidTitleLabel" destination="4kx-jn-4Ub" id="41C-3e-rDO"/>
                         <outlet property="balanceLabel" destination="uUX-bX-ANM" id="cEc-4g-zWZ"/>
+                        <outlet property="balanceTitleLabel" destination="b5Y-wf-Dew" id="Cwd-zv-ttM"/>
                         <outlet property="billAmountTextField" destination="XxC-Ti-8IW" id="lG1-QC-VSS"/>
+                        <outlet property="billAmountTitleLabel" destination="OKG-ei-4ro" id="vKb-9u-keh"/>
                         <outlet property="fullyPaidSegmentedControl" destination="bGe-yB-tEz" id="KOy-fW-Nj9"/>
                         <outlet property="paymentTransactionTextField" destination="zeY-g6-hAk" id="3M9-YX-Lvd"/>
                         <outlet property="transactionHistoryTableView" destination="DWY-bo-WZt" id="2h9-Zg-dMm"/>
