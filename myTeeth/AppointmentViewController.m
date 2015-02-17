@@ -496,13 +496,17 @@ static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifi
 - (void)billViewControllerDidCancel {
     
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    
+    // Reset check box
+    
 }
 
 - (void)billViewControllerDidFinishWithBill:(Bill *)bill {
     
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     
-    // Set appointment - bill relationship
+    // Set appointment - bill relationship and save context
+    
 }
 
 @end

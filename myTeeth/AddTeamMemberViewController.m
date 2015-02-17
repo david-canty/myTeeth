@@ -21,7 +21,6 @@
 @interface AddTeamMemberViewController () <UITextFieldDelegate, SingleSelectionPopoverContentViewControllerDelegate>
 
 @property (strong, nonatomic) SingleSelectionPopoverContentViewController *singleSelectionPopoverVC;
-@property (strong, nonatomic) UIPopoverController *singleSelectionPopoverController;
 
 @property (strong, nonatomic) JobTitle *selectedJobTitle;
 @property (strong, nonatomic) Salutation *selectedSalutation;
@@ -105,10 +104,6 @@
         }
         
         self.singleSelectionPopoverVC.delegate = self;
-        
-        // Store reference to popover for dismissal after item is selected
-        self.singleSelectionPopoverController = [(UIStoryboardPopoverSegue *)segue popoverController];
-        
     }
     
     if ([[segue identifier] isEqualToString:@"ShowTeamMemberSalutationPopover"]) {
@@ -129,9 +124,6 @@
         }
         
         self.singleSelectionPopoverVC.delegate = self;
-        
-        // Store reference to popover for dismissal after item is selected
-        self.singleSelectionPopoverController = [(UIStoryboardPopoverSegue *)segue popoverController];
     }
 }
 
@@ -194,7 +186,7 @@
         self.jobTitle.text = self.selectedJobTitle.jobTitle;
     }
     
-    [self.singleSelectionPopoverController dismissPopoverAnimated:YES];
+    [self.singleSelectionPopoverVC dismissViewControllerAnimated:YES completion:nil];
     self.returnedFromPopover = YES;
 }
 

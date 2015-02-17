@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@class Bill;
+#import "Bill.h"
 
 @protocol BillViewControllerDelegate;
 
@@ -16,7 +15,7 @@
 
 @property (weak, nonatomic) id <BillViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) Bill *editingBill;
+@property (strong, nonatomic) Bill *bill;
 
 @end
 

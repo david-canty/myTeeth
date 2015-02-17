@@ -27,7 +27,6 @@
 @interface AddPatientViewController () <UITextFieldDelegate, SingleSelectionPopoverContentViewControllerDelegate, SingleSelectionListViewControllerDelegate, DateOfBirthViewControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) SingleSelectionPopoverContentViewController *singleSelectionPopoverVC;
-@property (strong, nonatomic) UIPopoverController *singleSelectionPopoverController;
 @property (strong, nonatomic) AppDelegate *appDelegate;
 
 @property (strong, nonatomic) Salutation *selectedSalutation;
@@ -455,9 +454,6 @@
         
         self.singleSelectionPopoverVC.delegate = self;
         
-        // Store reference to popover for dismissal after item is selected
-        self.singleSelectionPopoverController = [(UIStoryboardPopoverSegue *)segue popoverController];
-        
     } else if ([[segue identifier] isEqualToString:@"ShowDateOfBirthView"]) {
         
         DateOfBirthViewController *dateOfBirthController = [segue destinationViewController];
@@ -582,7 +578,7 @@
         self.patientTitle.text = self.selectedSalutation.salutation;
     }
     
-    [self.singleSelectionPopoverController dismissPopoverAnimated:YES];
+    [self.singleSelectionPopoverVC dismissViewControllerAnimated:YES completion:nil];
     self.returnedFromPopoverOrView = YES;
 }
 

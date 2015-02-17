@@ -120,9 +120,9 @@
 		1FB335A11A1D26E1007B5475 /* ui_tick_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB3359A1A1D26E1007B5475 /* ui_tick_on@2x.png */; };
 		1FB335A21A1D26E1007B5475 /* ui_tick_on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB3359B1A1D26E1007B5475 /* ui_tick_on@3x.png */; };
 		1FB906BB1A5F143000ADD00B /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB906BA1A5F143000ADD00B /* InfoViewController.m */; };
+		1FB92B121A93AD6D00861EB0 /* Bill.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB92B111A93AD6D00861EB0 /* Bill.m */; };
 		1FB987901A55DB36003FAC5D /* ChargeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9878F1A55DB36003FAC5D /* ChargeType.m */; };
 		1FBB5D5D1A1E22820003CDF0 /* DentalPractice.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB5D5C1A1E22820003CDF0 /* DentalPractice.m */; };
-		1FBB6DBB1A62C4F500AE06D9 /* Bill.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB6DBA1A62C4F500AE06D9 /* Bill.m */; };
 		1FBB6DBE1A62C4F500AE06D9 /* PaymentTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB6DBD1A62C4F500AE06D9 /* PaymentTransaction.m */; };
 		1FBBBA2B1A2BA4FF001BD85C /* btn_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBBBA281A2BA4FF001BD85C /* btn_settings.png */; };
 		1FBBBA2C1A2BA4FF001BD85C /* btn_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBBBA291A2BA4FF001BD85C /* btn_settings@2x.png */; };
@@ -415,12 +415,12 @@
 		1FB3359B1A1D26E1007B5475 /* ui_tick_on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ui_tick_on@3x.png"; sourceTree = "<group>"; };
 		1FB906B91A5F143000ADD00B /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
 		1FB906BA1A5F143000ADD00B /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
+		1FB92B101A93AD6D00861EB0 /* Bill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bill.h; sourceTree = "<group>"; };
+		1FB92B111A93AD6D00861EB0 /* Bill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bill.m; sourceTree = "<group>"; };
 		1FB9878E1A55DB36003FAC5D /* ChargeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeType.h; sourceTree = "<group>"; };
 		1FB9878F1A55DB36003FAC5D /* ChargeType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeType.m; sourceTree = "<group>"; };
 		1FBB5D5B1A1E22820003CDF0 /* DentalPractice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DentalPractice.h; sourceTree = "<group>"; };
 		1FBB5D5C1A1E22820003CDF0 /* DentalPractice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DentalPractice.m; sourceTree = "<group>"; };
-		1FBB6DB91A62C4F500AE06D9 /* Bill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bill.h; sourceTree = "<group>"; };
-		1FBB6DBA1A62C4F500AE06D9 /* Bill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bill.m; sourceTree = "<group>"; };
 		1FBB6DBC1A62C4F500AE06D9 /* PaymentTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentTransaction.h; sourceTree = "<group>"; };
 		1FBB6DBD1A62C4F500AE06D9 /* PaymentTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentTransaction.m; sourceTree = "<group>"; };
 		1FBBBA281A2BA4FF001BD85C /* btn_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_settings.png; sourceTree = "<group>"; };
@@ -838,8 +838,8 @@
 				1FBB5D5C1A1E22820003CDF0 /* DentalPractice.m */,
 				1FC41B1F1A3CA81F00B823AE /* Appointment.h */,
 				1FC41B201A3CA81F00B823AE /* Appointment.m */,
-				1FBB6DB91A62C4F500AE06D9 /* Bill.h */,
-				1FBB6DBA1A62C4F500AE06D9 /* Bill.m */,
+				1FB92B101A93AD6D00861EB0 /* Bill.h */,
+				1FB92B111A93AD6D00861EB0 /* Bill.m */,
 				1FBB6DBC1A62C4F500AE06D9 /* PaymentTransaction.h */,
 				1FBB6DBD1A62C4F500AE06D9 /* PaymentTransaction.m */,
 				1FA19E3019799A95006ADDB1 /* TreatmentItem.h */,
@@ -1398,6 +1398,7 @@
 				1F20FDFF18E9EA06006A3408 /* MultipleSelectionListViewController.m in Sources */,
 				1F4A68951A3DDCAF004D79E8 /* BillViewController.m in Sources */,
 				1FA1885118EC98A500AD313E /* AddPatientViewController.m in Sources */,
+				1FB92B121A93AD6D00861EB0 /* Bill.m in Sources */,
 				1F80D3391A247D5500213092 /* DateOfBirthViewController.m in Sources */,
 				55E2B6FC18041F8000360759 /* AppDelegate.m in Sources */,
 				551840BD18661448001B58C3 /* Constants.m in Sources */,
@@ -1405,7 +1406,6 @@
 				1F20706E1A39AC690040BFA3 /* ChargeTypeAmountCell.m in Sources */,
 				552E95C0180AA41C00EC706C /* NoteDetailViewController.m in Sources */,
 				1F98357719B34D8000AF93E5 /* PaymentMethod+Utils.m in Sources */,
-				1FBB6DBB1A62C4F500AE06D9 /* Bill.m in Sources */,
 				1F07EFA9196F16C000128021 /* TeamMember+Utils.m in Sources */,
 				1FB987901A55DB36003FAC5D /* ChargeType.m in Sources */,
 				1F9725E818EB491000165184 /* TeamMemberController.m in Sources */,
@@ -1587,6 +1587,7 @@
 				INFOPLIST_FILE = "myTeeth/myTeeth-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1603,6 +1604,7 @@
 				INFOPLIST_FILE = "myTeeth/myTeeth-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

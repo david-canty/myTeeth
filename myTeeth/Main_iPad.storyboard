@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -19,7 +19,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="13" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1348" y="-1777"/>
+            <point key="canvasLocation" x="285" y="-1154"/>
         </scene>
         <!--Detail-->
         <scene sceneID="16">
@@ -30,10 +30,10 @@
                         <viewControllerLayoutGuide type="bottom" id="ZZ3-H6-2xu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="26">
-                        <rect key="frame" x="0.0" y="64" width="703" height="704"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="QWc-HB-Hio" userLabel="Teeth Table View">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="QWc-HB-Hio" userLabel="Teeth Table View">
                                 <rect key="frame" x="20" y="20" width="663" height="226"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -61,10 +61,13 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="0Ue-sO-9fI" kind="modal" identifier="ShowToothDetailView" trigger="accessoryAction" modalPresentationStyle="formSheet" id="317-Hq-lCL"/>
+                                            <segue destination="0Ue-sO-9fI" kind="presentation" identifier="ShowToothDetailView" trigger="accessoryAction" modalPresentationStyle="formSheet" id="317-Hq-lCL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="20" y="20" width="663" height="58"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="4" id="RlJ-0Z-4jc"/>
                                     <outlet property="delegate" destination="4" id="PM0-WI-L47"/>
@@ -122,13 +125,16 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <variation key="widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="20" y="136" width="663" height="150"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="4" id="BXk-hn-pyO"/>
                                     <outlet property="delegate" destination="4" id="h08-Jr-xxW"/>
                                 </connections>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="LowerTeethCollectionView" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cf5-Eu-AJW" userLabel="Lower Teeth Collection View">
-                                <rect key="frame" x="20" y="490" width="663" height="150"/>
+                                <rect key="frame" x="20" y="322" width="663" height="150"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="663" id="axy-Yd-95c"/>
@@ -185,7 +191,7 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lower Teeth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwJ-0z-dv7">
-                                <rect key="frame" x="251" y="462" width="200" height="20"/>
+                                <rect key="frame" x="251" y="294" width="200" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="5rp-tg-5w0"/>
                                     <constraint firstAttribute="height" constant="20" id="fmu-WR-yEg"/>
@@ -194,7 +200,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upper Teeth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFy-lQ-Fiv">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Upper Teeth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFy-lQ-Fiv">
                                 <rect key="frame" x="251" y="276" width="200" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="Sex-eB-z8g"/>
@@ -203,20 +209,23 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="251" y="108" width="200" height="20"/>
+                                </variation>
                             </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s3C-eI-m1C">
-                                <rect key="frame" x="0.0" y="660" width="703" height="44"/>
+                                <rect key="frame" x="0.0" y="492" width="600" height="44"/>
                                 <items>
                                     <barButtonItem image="btn_patient.png" id="in3-2o-eOX" userLabel="Patient Button">
                                         <connections>
-                                            <segue destination="s2g-34-WB9" kind="popover" identifier="ShowPatientPopover" popoverAnchorBarButtonItem="in3-2o-eOX" id="LuX-Rj-Jz2">
+                                            <segue destination="s2g-34-WB9" kind="popoverPresentation" identifier="ShowPatientPopover" popoverAnchorBarButtonItem="in3-2o-eOX" id="LuX-Rj-Jz2">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem image="btn_teeth.png" id="L5L-e6-n7U" userLabel="Tooth Reference Button">
                                         <connections>
-                                            <segue destination="E1g-jZ-fqv" kind="modal" identifier="ShowToothReferenceView" modalPresentationStyle="formSheet" id="NpK-dq-b47"/>
+                                            <segue destination="E1g-jZ-fqv" kind="presentation" identifier="ShowToothReferenceView" modalPresentationStyle="formSheet" id="NpK-dq-b47"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -261,7 +270,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-435.5" y="2296"/>
+            <point key="canvasLocation" x="-453" y="1129"/>
         </scene>
         <!--Tooth Reference-->
         <scene sceneID="RVd-zC-4qG">
@@ -272,7 +281,7 @@
                         <viewControllerLayoutGuide type="bottom" id="nsM-bI-MMb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FHo-eP-2dh">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="576"/>
+                        <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_tooth_reference.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZH8-Zv-DhV">
@@ -382,7 +391,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ug-ZW-tDI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-152" y="3287"/>
+            <point key="canvasLocation" x="93" y="2409"/>
         </scene>
         <!--Tooth Detail View Controller-->
         <scene sceneID="plM-xk-edC">
@@ -393,7 +402,7 @@
                         <viewControllerLayoutGuide type="bottom" id="yKp-ho-QbV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PyP-zQ-gYB">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -407,7 +416,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yf7-9J-gSR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1092" y="2089"/>
+            <point key="canvasLocation" x="1285" y="1432"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="18">
@@ -423,14 +432,14 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-721" y="-367"/>
+            <point key="canvasLocation" x="-628" y="-1176"/>
         </scene>
         <!--Settings-->
         <scene sceneID="16e-EW-dde">
             <objects>
                 <tableViewController id="dVB-PZ-Nan" customClass="SettingsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Rgw-Ie-QVM">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -456,7 +465,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="1bp-rB-xpK" kind="push" identifier="ShowCurrencyList" id="9dc-Fg-QUB"/>
+                                            <segue destination="1bp-rB-xpK" kind="show" identifier="ShowCurrencyList" id="9dc-Fg-QUB"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0fe-RD-B4A" style="IBUITableViewCellStyleDefault" id="DPr-AY-8bw">
@@ -473,7 +482,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="T6i-NC-Ub1" kind="push" identifier="ShowInfoView" id="RF2-jx-rZ3"/>
+                                            <segue destination="T6i-NC-Ub1" kind="show" identifier="ShowInfoView" id="RF2-jx-rZ3"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="ixZ-FI-irn" style="IBUITableViewCellStyleDefault" id="zEM-tN-MYo">
@@ -510,7 +519,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12L-oO-Wfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2350" y="-3353"/>
+            <point key="canvasLocation" x="683" y="-3317"/>
         </scene>
         <!--Info View Controller-->
         <scene sceneID="1ww-Ss-Ydg">
@@ -521,11 +530,11 @@
                         <viewControllerLayoutGuide type="bottom" id="oc5-gL-g1k"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ec7-mN-9U3">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="576"/>
+                        <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ne5-cV-Jbh" userLabel="Info Text View">
-                                <rect key="frame" x="20" y="20" width="500" height="508"/>
+                                <rect key="frame" x="50" y="20" width="500" height="508"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="508" id="KfH-PR-gjg"/>
                                     <constraint firstAttribute="width" constant="500" id="sgh-PE-cMU"/>
@@ -534,7 +543,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hW3-qc-J1h" userLabel="Version Label">
-                                <rect key="frame" x="20" y="536" width="500" height="20"/>
+                                <rect key="frame" x="50" y="536" width="500" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Irg-QM-9gt"/>
                                     <constraint firstAttribute="width" constant="500" id="tbq-Eo-U4g"/>
@@ -561,14 +570,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yP6-zD-g9A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3027" y="-4106"/>
+            <point key="canvasLocation" x="1492" y="-3165"/>
         </scene>
         <!--Currency Selection View Controller-->
         <scene sceneID="kRk-oI-DZ4">
             <objects>
                 <tableViewController id="1bp-rB-xpK" customClass="CurrencySelectionViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9a4-UO-DTY">
-                        <rect key="frame" x="0.0" y="44" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -602,14 +611,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0sn-Rs-eJa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3027" y="-3353"/>
+            <point key="canvasLocation" x="1556" y="-3909"/>
         </scene>
         <!--Master-->
         <scene sceneID="24">
             <objects>
                 <tableViewController title="Master" clearsSelectionOnViewWillAppear="NO" id="19" customClass="MasterViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="20">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -651,7 +660,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="uGo-1j-e9P" kind="push" identifier="ShowTeamMemberView" id="EU3-64-4dG"/>
+                                            <segue destination="uGo-1j-e9P" kind="show" identifier="ShowTeamMemberView" id="EU3-64-4dG"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReceptionPatientDetailsCell" textLabel="ZcQ-Du-Rhu" style="IBUITableViewCellStyleDefault" id="m6f-TG-fAK">
@@ -672,7 +681,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="shW-CA-Wsj" kind="push" identifier="ShowPatientView" id="FjX-Ys-UwX"/>
+                                            <segue destination="shW-CA-Wsj" kind="show" identifier="ShowPatientView" id="FjX-Ys-UwX"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -697,7 +706,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="IPZ-qb-HfI" kind="modal" identifier="ShowAddAppointmentView" modalPresentationStyle="formSheet" id="UwO-G3-M9o"/>
+                                            <segue destination="IPZ-qb-HfI" kind="presentation" identifier="ShowAddAppointmentView" modalPresentationStyle="formSheet" id="UwO-G3-M9o"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReceptionScheduledAppointmentsCell" textLabel="PvY-j7-tgA" style="IBUITableViewCellStyleDefault" id="kjw-kl-bB5">
@@ -718,7 +727,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="Pln-Ej-fLC" kind="push" identifier="ShowAppointmentView" id="5aB-3a-EsK"/>
+                                            <segue destination="Pln-Ej-fLC" kind="show" identifier="ShowAppointmentView" id="5aB-3a-EsK"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -761,7 +770,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="uOc-kS-UKt" kind="push" identifier="ShowTreatmentCategoriesItemsView" id="nJv-wd-kul"/>
+                                            <segue destination="uOc-kS-UKt" kind="show" identifier="ShowTreatmentCategoriesItemsView" id="nJv-wd-kul"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -804,7 +813,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="xrn-XX-ZlF" kind="push" identifier="ShowChargeTypeManagement" id="4If-Eg-4su"/>
+                                            <segue destination="xrn-XX-ZlF" kind="show" identifier="ShowChargeTypeManagement" id="4If-Eg-4su"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -829,7 +838,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="KPH-m2-H1E" kind="push" identifier="ShowNotesView" id="hbS-1k-FX8"/>
+                                            <segue destination="KPH-m2-H1E" kind="show" identifier="ShowNotesView" id="hbS-1k-FX8"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -843,7 +852,7 @@
                     <navigationItem key="navigationItem" title="Reception" id="40">
                         <barButtonItem key="leftBarButtonItem" image="btn_settings.png" id="sFw-hY-dSq" userLabel="Settings Button">
                             <connections>
-                                <segue destination="1Hi-EC-Ijs" kind="modal" identifier="ShowSettingsView" modalPresentationStyle="formSheet" id="15G-ZK-EKw"/>
+                                <segue destination="1Hi-EC-Ijs" kind="presentation" identifier="ShowSettingsView" modalPresentationStyle="formSheet" id="15G-ZK-EKw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -854,14 +863,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="23" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3292" y="-2613"/>
+            <point key="canvasLocation" x="1107" y="-1524"/>
         </scene>
         <!--Team Members-->
         <scene sceneID="X0I-2i-BLQ">
             <objects>
                 <tableViewController id="uGo-1j-e9P" customClass="TeamMemberViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uSe-sm-avd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -892,20 +901,20 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Team Members" id="qHM-YS-b1Q"/>
                     <connections>
-                        <segue destination="vDH-xE-6YH" kind="modal" identifier="ShowAddTeamMemberView" modalPresentationStyle="formSheet" id="mDE-kH-kVr"/>
-                        <segue destination="vDH-xE-6YH" kind="modal" identifier="ShowEditTeamMemberView" modalPresentationStyle="formSheet" id="oI2-QC-b5g"/>
+                        <segue destination="vDH-xE-6YH" kind="presentation" identifier="ShowAddTeamMemberView" modalPresentationStyle="formSheet" id="mDE-kH-kVr"/>
+                        <segue destination="vDH-xE-6YH" kind="presentation" identifier="ShowEditTeamMemberView" modalPresentationStyle="formSheet" id="oI2-QC-b5g"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNa-Lu-2ta" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5159" y="-2269"/>
+            <point key="canvasLocation" x="2126" y="-1402"/>
         </scene>
         <!--Patients-->
         <scene sceneID="gWX-pi-rEV">
             <objects>
                 <tableViewController id="shW-CA-Wsj" customClass="PatientViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="PAP-zR-P77">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -934,20 +943,20 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Patients" id="27N-Oz-ABR"/>
                     <connections>
-                        <segue destination="ehb-jY-Q4h" kind="modal" identifier="ShowAddPatientView" modalPresentationStyle="formSheet" id="qM8-XH-b9T"/>
-                        <segue destination="ehb-jY-Q4h" kind="modal" identifier="ShowEditPatientView" modalPresentationStyle="formSheet" id="xD0-xt-Qbw"/>
+                        <segue destination="ehb-jY-Q4h" kind="presentation" identifier="ShowAddPatientView" modalPresentationStyle="formSheet" id="qM8-XH-b9T"/>
+                        <segue destination="ehb-jY-Q4h" kind="presentation" identifier="ShowEditPatientView" modalPresentationStyle="formSheet" id="xD0-xt-Qbw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKH-dj-QOk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2675" y="-1343"/>
+            <point key="canvasLocation" x="2569" y="-2235"/>
         </scene>
         <!--Add Team Member View Controller-->
         <scene sceneID="dhH-bq-b9k">
             <objects>
                 <tableViewController id="qpY-6R-P1T" customClass="AddTeamMemberViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="gz5-yU-EGd">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -978,7 +987,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Q33-Al-T7l" kind="popover" identifier="ShowTeamMemberSalutationPopover" popoverAnchorView="Kpc-Hf-TUm" id="AkX-O7-3c9">
+                                            <segue destination="Q33-Al-T7l" kind="popoverPresentation" identifier="ShowTeamMemberSalutationPopover" popoverAnchorView="Kpc-Hf-TUm" id="AkX-O7-3c9">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
                                             </segue>
                                         </connections>
@@ -1080,7 +1089,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Q33-Al-T7l" kind="popover" identifier="ShowTeamMemberJobTitlePopover" popoverAnchorView="QKU-OF-fVN" id="jcx-zG-FvM">
+                                            <segue destination="Q33-Al-T7l" kind="popoverPresentation" identifier="ShowTeamMemberJobTitlePopover" popoverAnchorView="QKU-OF-fVN" id="jcx-zG-FvM">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
                                             </segue>
                                         </connections>
@@ -1115,14 +1124,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WUf-BT-5et" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6334" y="-2331"/>
+            <point key="canvasLocation" x="3572" y="-1394"/>
         </scene>
         <!--Add Appointment View Controller-->
         <scene sceneID="acY-Vs-NWC">
             <objects>
                 <tableViewController id="j9I-Z7-hMv" customClass="AddAppointmentViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="uCj-hH-CTI">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -1153,7 +1162,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="eJc-Q2-bFo" kind="push" identifier="ShowSelectPatientView" id="NoC-l5-1GF"/>
+                                            <segue destination="eJc-Q2-bFo" kind="show" identifier="ShowSelectPatientView" id="NoC-l5-1GF"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell tag="1" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AppointmentTeamMemberCell" textLabel="gkm-34-q1q" detailTextLabel="x6x-p0-PRh" style="IBUITableViewCellStyleSubtitle" id="xKu-eL-1MQ">
@@ -1181,7 +1190,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="eJc-Q2-bFo" kind="push" identifier="ShowSelectTeamMemberView" id="tee-20-bE9"/>
+                                            <segue destination="eJc-Q2-bFo" kind="show" identifier="ShowSelectTeamMemberView" id="tee-20-bE9"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell tag="2" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AppointmentDateTimeCell" textLabel="vCr-f8-yGB" detailTextLabel="Kjt-aW-6QA" style="IBUITableViewCellStyleSubtitle" id="bAx-zP-k2g">
@@ -1209,7 +1218,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="1Sl-FA-bXf" kind="push" identifier="ShowDateTimeView" id="0TP-j7-fpu"/>
+                                            <segue destination="1Sl-FA-bXf" kind="show" identifier="ShowDateTimeView" id="0TP-j7-fpu"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell tag="3" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AppointmentDurationCell" textLabel="UbG-JZ-0IP" detailTextLabel="znv-JI-VvK" style="IBUITableViewCellStyleSubtitle" id="R0g-dh-pUa">
@@ -1237,7 +1246,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="ab5-ge-Inb" kind="push" identifier="ShowDurationView" id="FOA-am-aA5"/>
+                                            <segue destination="ab5-ge-Inb" kind="show" identifier="ShowDurationView" id="FOA-am-aA5"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1269,7 +1278,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="4NX-D9-rMq" kind="push" identifier="ShowTreatmentView" id="R8V-De-Dms"/>
+                                            <segue destination="4NX-D9-rMq" kind="show" identifier="ShowTreatmentView" id="R8V-De-Dms"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1301,7 +1310,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="eJc-Q2-bFo" kind="push" identifier="ShowSelectChargeTypeView" id="gRV-XD-HjM"/>
+                                            <segue destination="eJc-Q2-bFo" kind="show" identifier="ShowSelectChargeTypeView" id="gRV-XD-HjM"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1333,7 +1342,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="iax-jv-TZ9" kind="push" identifier="ShowNoteView" id="3cN-SL-h7X"/>
+                                            <segue destination="iax-jv-TZ9" kind="show" identifier="ShowNoteView" id="3cN-SL-h7X"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1364,21 +1373,21 @@
                         <outlet property="patientCell" destination="Krf-td-Ptm" id="m7G-ZY-K6P"/>
                         <outlet property="teamMemberCell" destination="xKu-eL-1MQ" id="FUO-Fd-Vek"/>
                         <outlet property="treatmentCell" destination="TAc-7G-YB2" id="Y1w-7Y-0Qd"/>
-                        <segue destination="qpY-6R-P1T" kind="push" identifier="ShowAddTeamMemberView" id="wTs-Kg-5kZ"/>
-                        <segue destination="laO-G5-XOT" kind="push" identifier="ShowAddPatientView" id="vzS-KW-FW4"/>
-                        <segue destination="1bw-X6-ZdK" kind="push" identifier="ShowAddChargeTypeView" id="o9p-J1-c0i"/>
+                        <segue destination="qpY-6R-P1T" kind="show" identifier="ShowAddTeamMemberView" id="wTs-Kg-5kZ"/>
+                        <segue destination="laO-G5-XOT" kind="show" identifier="ShowAddPatientView" id="vzS-KW-FW4"/>
+                        <segue destination="1bw-X6-ZdK" kind="show" identifier="ShowAddChargeTypeView" id="o9p-J1-c0i"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qFN-Nc-Jwc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3995" y="-444"/>
+            <point key="canvasLocation" x="7721" y="-437"/>
         </scene>
         <!--Add Patient View Controller-->
         <scene sceneID="Hwh-SS-Hg7">
             <objects>
                 <tableViewController id="laO-G5-XOT" customClass="AddPatientViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" id="yQn-Fa-ScF">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1408,7 +1417,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Q33-Al-T7l" kind="popover" identifier="ShowPatientSalutationPopover" popoverAnchorView="K4h-Op-7sY" id="h96-P9-m8u">
+                                            <segue destination="Q33-Al-T7l" kind="popoverPresentation" identifier="ShowPatientSalutationPopover" popoverAnchorView="K4h-Op-7sY" id="h96-P9-m8u">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
                                             </segue>
                                         </connections>
@@ -1510,7 +1519,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="jVV-8V-uVQ" kind="push" identifier="ShowDateOfBirthView" id="c91-IV-IW2"/>
+                                            <segue destination="jVV-8V-uVQ" kind="show" identifier="ShowDateOfBirthView" id="c91-IV-IW2"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1561,7 +1570,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="eJc-Q2-bFo" kind="push" identifier="ShowCalendarSelectionView" id="KLs-PX-I4f"/>
+                                            <segue destination="eJc-Q2-bFo" kind="show" identifier="ShowCalendarSelectionView" id="KLs-PX-I4f"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AppointmentReminderAlertCell" id="n7C-Yj-eRK">
@@ -1586,7 +1595,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="eJc-Q2-bFo" kind="push" identifier="ShowAppointmentAlertView" id="Y42-8c-LlY"/>
+                                            <segue destination="eJc-Q2-bFo" kind="show" identifier="ShowAppointmentAlertView" id="Y42-8c-LlY"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CheckupReminderSwitchCell" id="RbJ-su-R0W">
@@ -1633,7 +1642,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="eJc-Q2-bFo" kind="push" identifier="ShowCheckupIntervalView" id="mt3-Vt-Xf4"/>
+                                            <segue destination="eJc-Q2-bFo" kind="show" identifier="ShowCheckupIntervalView" id="mt3-Vt-Xf4"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CheckupReminderAlertCell" id="SlS-OJ-406" userLabel="CheckupReminderAlertCell">
@@ -1658,7 +1667,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="eJc-Q2-bFo" kind="push" identifier="ShowCheckupAlertView" id="sav-PF-aGp"/>
+                                            <segue destination="eJc-Q2-bFo" kind="show" identifier="ShowCheckupAlertView" id="sav-PF-aGp"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1697,7 +1706,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1JR-Og-xZh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4820" y="-1174"/>
+            <point key="canvasLocation" x="4310" y="-2352"/>
         </scene>
         <!--Date Of Birth View Controller-->
         <scene sceneID="gZZ-SD-8kY">
@@ -1708,7 +1717,7 @@
                         <viewControllerLayoutGuide type="bottom" id="l5D-MX-NWo"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TqD-mX-x83">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Date of Birth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="H53-y3-tdD">
@@ -1740,7 +1749,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1sG-Z8-v3x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6433" y="-1235"/>
+            <point key="canvasLocation" x="5114" y="-2340"/>
         </scene>
         <!--Date Time View Controller-->
         <scene sceneID="mDD-Mb-r8c">
@@ -1785,7 +1794,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ie7-Dv-Pj8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6433" y="-556"/>
+            <point key="canvasLocation" x="8761" y="-750"/>
         </scene>
         <!--Bill View Controller-->
         <scene sceneID="ClC-Q0-RAv">
@@ -1796,16 +1805,16 @@
                         <viewControllerLayoutGuide type="bottom" id="naQ-Ts-wUn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vof-as-ObI">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="576"/>
+                        <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bill Amount" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKG-ei-4ro" userLabel="Bill Amount Label">
-                                <rect key="frame" x="16" y="20" width="125" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bill" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKG-ei-4ro" userLabel="Bill Amount Label">
+                                <rect key="frame" x="17" y="20" width="125" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter amount" adjustsFontSizeToFit="NO" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XxC-Ti-8IW" userLabel="Bill Amount Text Field">
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter bill amount" adjustsFontSizeToFit="NO" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XxC-Ti-8IW" userLabel="Bill Amount Text Field">
                                 <rect key="frame" x="149" y="15" width="375" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -1814,37 +1823,37 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amount Paid" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kx-jn-4Ub" userLabel="Amount Paid Label">
-                                <rect key="frame" x="16" y="60" width="125" height="20"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCa-Be-RfU" userLabel="Amount Paid Value">
-                                <rect key="frame" x="157" y="60" width="367" height="20"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Balance" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5Y-wf-Dew" userLabel="Balance Label">
                                 <rect key="frame" x="16" y="100" width="125" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUX-bX-ANM" userLabel="Balance Value">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCa-Be-RfU" userLabel="Amount Paid Value">
                                 <rect key="frame" x="157" y="100" width="367" height="20"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fully Paid" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWf-lf-M0l" userLabel="Fully Paid Label">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Balance" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5Y-wf-Dew" userLabel="Balance Label">
                                 <rect key="frame" x="16" y="140" width="125" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUX-bX-ANM" userLabel="Balance Value">
+                                <rect key="frame" x="157" y="140" width="367" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fully Paid" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWf-lf-M0l" userLabel="Fully Paid Label">
+                                <rect key="frame" x="16" y="180" width="125" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="bGe-yB-tEz" userLabel="Fully Paid Button">
-                                <rect key="frame" x="149" y="136" width="123" height="29"/>
+                                <rect key="frame" x="149" y="176" width="123" height="29"/>
                                 <segments>
                                     <segment title="Yes"/>
                                     <segment title="No"/>
@@ -1854,13 +1863,13 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Payment Transaction" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umv-Rc-FjF" userLabel="Payment Transaction Label">
-                                <rect key="frame" x="16" y="180" width="125" height="20"/>
+                                <rect key="frame" x="16" y="220" width="125" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter amount" adjustsFontSizeToFit="NO" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zeY-g6-hAk" userLabel="Transaction Text Field">
-                                <rect key="frame" x="149" y="175" width="345" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter transaction amount" adjustsFontSizeToFit="NO" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zeY-g6-hAk" userLabel="Transaction Text Field">
+                                <rect key="frame" x="149" y="215" width="345" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
@@ -1868,7 +1877,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cj8-4h-19G" userLabel="Add Transaction Buton">
-                                <rect key="frame" x="502" y="179" width="22" height="22"/>
+                                <rect key="frame" x="502" y="219" width="22" height="22"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1877,13 +1886,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Transaction History" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5WX-AU-XEB" userLabel="Transaction History Label">
-                                <rect key="frame" x="16" y="220" width="125" height="20"/>
+                                <rect key="frame" x="16" y="260" width="125" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DWY-bo-WZt" userLabel="Transaction Table View">
-                                <rect key="frame" x="149" y="220" width="375" height="336"/>
+                                <rect key="frame" x="149" y="260" width="375" height="296"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="PaymentTransactionCellIdentifier" textLabel="75C-Mp-l7y" detailTextLabel="cvE-oi-3W7" style="IBUITableViewCellStyleValue1" id="3IN-wD-F8n">
@@ -1913,6 +1922,18 @@
                                     <outlet property="delegate" destination="ol5-9O-qOW" id="xb6-hJ-Ntx"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bill Amount" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4E8-4a-ACX" userLabel="Amount Paid Label">
+                                <rect key="frame" x="16" y="60" width="125" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgX-8U-3Mk" userLabel="Amount Paid Value">
+                                <rect key="frame" x="157" y="60" width="367" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1932,11 +1953,9 @@
                     <connections>
                         <outlet property="addTransactionButton" destination="cj8-4h-19G" id="h4N-e9-C6a"/>
                         <outlet property="amountPaidLabel" destination="NCa-Be-RfU" id="gei-oX-Pjd"/>
-                        <outlet property="amountPaidTitleLabel" destination="4kx-jn-4Ub" id="41C-3e-rDO"/>
                         <outlet property="balanceLabel" destination="uUX-bX-ANM" id="cEc-4g-zWZ"/>
-                        <outlet property="balanceTitleLabel" destination="b5Y-wf-Dew" id="Cwd-zv-ttM"/>
+                        <outlet property="billAmountLabel" destination="cgX-8U-3Mk" id="yuJ-OF-S4o"/>
                         <outlet property="billAmountTextField" destination="XxC-Ti-8IW" id="lG1-QC-VSS"/>
-                        <outlet property="billAmountTitleLabel" destination="OKG-ei-4ro" id="vKb-9u-keh"/>
                         <outlet property="fullyPaidSegmentedControl" destination="bGe-yB-tEz" id="KOy-fW-Nj9"/>
                         <outlet property="paymentTransactionTextField" destination="zeY-g6-hAk" id="3M9-YX-Lvd"/>
                         <outlet property="transactionHistoryTableView" destination="DWY-bo-WZt" id="2h9-Zg-dMm"/>
@@ -1944,7 +1963,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TZq-uy-oWT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1889" y="167"/>
+            <point key="canvasLocation" x="1179" y="561"/>
         </scene>
         <!--Duration View Controller-->
         <scene sceneID="ZwL-3j-cFW">
@@ -1955,7 +1974,7 @@
                         <viewControllerLayoutGuide type="bottom" id="vp7-41-uU8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="g2D-bR-TPP">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" countDownDuration="600" minuteInterval="5" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAP-Ee-ZIv">
@@ -1987,14 +2006,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JrB-9U-Qdx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4993" y="690"/>
+            <point key="canvasLocation" x="9076" y="-232"/>
         </scene>
         <!--Multiple Selection List View Controller-->
         <scene sceneID="4U8-II-xkB">
             <objects>
                 <tableViewController id="4NX-D9-rMq" customClass="MultipleSelectionListViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="jMo-R6-NzS">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -2032,14 +2051,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AYG-2W-2rO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4419" y="545"/>
+            <point key="canvasLocation" x="8796" y="1311"/>
         </scene>
         <!--Single Selection List View Controller-->
         <scene sceneID="fg1-Gj-Bvy">
             <objects>
                 <tableViewController id="eJc-Q2-bFo" customClass="SingleSelectionListViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="01K-rD-Whh">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -2083,7 +2102,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="956-qG-1Mf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5529" y="917"/>
+            <point key="canvasLocation" x="7823" y="1409"/>
         </scene>
         <!--myTeeth-->
         <scene sceneID="50">
@@ -2098,14 +2117,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="49" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-435.5" y="764"/>
+            <point key="canvasLocation" x="-497" y="-18"/>
         </scene>
         <!--Notes View Controller-->
         <scene sceneID="88x-tY-bYV">
             <objects>
                 <tableViewController id="KPH-m2-H1E" customClass="NotesViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="HPQ-Lj-giC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -2133,7 +2152,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="GsX-aP-akv" kind="modal" identifier="showNoteDetailViewController" modalPresentationStyle="formSheet" id="lSt-XP-9YA"/>
+                                    <segue destination="GsX-aP-akv" kind="presentation" identifier="showNoteDetailViewController" modalPresentationStyle="formSheet" id="lSt-XP-9YA"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -2144,12 +2163,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="grB-9D-Vgv"/>
                     <connections>
-                        <segue destination="GsX-aP-akv" kind="modal" identifier="showNoteComposeView" modalPresentationStyle="formSheet" id="x7s-QD-2hj"/>
+                        <segue destination="GsX-aP-akv" kind="presentation" identifier="showNoteComposeView" modalPresentationStyle="formSheet" id="x7s-QD-2hj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IWg-st-jxx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5159" y="-3274"/>
+            <point key="canvasLocation" x="2686" y="-4573"/>
         </scene>
         <!--Note-->
         <scene sceneID="lSZ-iZ-3lO">
@@ -2160,10 +2179,10 @@
                         <viewControllerLayoutGuide type="bottom" id="fhq-tr-ZQ4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="15X-wa-8GU">
-                        <rect key="frame" x="0.0" y="44" width="540" height="576"/>
+                        <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C50-Dy-aFN">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C50-Dy-aFN">
                                 <rect key="frame" x="20" y="20" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="0X8-Fl-ecU"/>
@@ -2173,7 +2192,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0TP-Wc-TZI">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0TP-Wc-TZI">
                                 <rect key="frame" x="20" y="49" width="472" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="472" id="xfW-2Z-jCX"/>
@@ -2187,7 +2206,7 @@
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blueDot.png" translatesAutoresizingMaskIntoConstraints="NO" id="MvG-2j-qgs">
                                 <rect key="frame" x="512" y="59" width="8" height="8"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gst-pk-GbZ">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Note" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gst-pk-GbZ">
                                 <rect key="frame" x="20" y="87" width="42" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="uZ1-XE-5b1"/>
@@ -2211,7 +2230,7 @@
                                 </connections>
                             </textView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMM-qJ-E9X">
-                                <rect key="frame" x="0.0" y="532" width="540" height="44"/>
+                                <rect key="frame" x="0.0" y="512" width="600" height="44"/>
                                 <items>
                                     <barButtonItem title="Flag" id="l7W-TN-Gzo">
                                         <connections>
@@ -2263,7 +2282,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5zB-9w-Y0y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6435" y="-3274"/>
+            <point key="canvasLocation" x="4483" y="-4567"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qbt-3h-v3T">
@@ -2281,7 +2300,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bqo-8u-FDD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5664" y="-2291"/>
+            <point key="canvasLocation" x="2833" y="-1394"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="udX-4s-LOq">
@@ -2299,14 +2318,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mAM-dw-bVM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3172" y="-1246"/>
+            <point key="canvasLocation" x="3390" y="-2379"/>
         </scene>
         <!--Charge Types-->
         <scene sceneID="OsY-Ig-siF">
             <objects>
                 <tableViewController id="xrn-XX-ZlF" customClass="ChargeTypeManagement_iPad" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9oK-22-sOC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -2326,7 +2345,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="KRB-ep-wFO" kind="modal" identifier="ShowEditChargeTypeView" modalPresentationStyle="formSheet" id="DLe-HL-bNK"/>
+                                    <segue destination="KRB-ep-wFO" kind="presentation" identifier="ShowEditChargeTypeView" modalPresentationStyle="formSheet" id="DLe-HL-bNK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -2337,12 +2356,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Charge Types" id="nhw-Gp-WH2"/>
                     <connections>
-                        <segue destination="KRB-ep-wFO" kind="modal" identifier="ShowAddChargeTypeView" modalPresentationStyle="formSheet" id="TI2-5P-puo"/>
+                        <segue destination="KRB-ep-wFO" kind="presentation" identifier="ShowAddChargeTypeView" modalPresentationStyle="formSheet" id="TI2-5P-puo"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZg-id-a4u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4292" y="-4322"/>
+            <point key="canvasLocation" x="3185" y="-3389"/>
         </scene>
         <!--Charge Type Detail View Controller i Pad-->
         <scene sceneID="D6n-y6-3oi">
@@ -2353,10 +2372,10 @@
                         <viewControllerLayoutGuide type="bottom" id="kmv-XJ-RNd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6eC-Js-ylu">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="576"/>
+                        <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6w6-DV-Hk8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6w6-DV-Hk8">
                                 <rect key="frame" x="20" y="20" width="500" height="219"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -2472,15 +2491,15 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="6w6-DV-Hk8" id="s70-71-jBB"/>
-                        <segue destination="eJc-Q2-bFo" kind="push" id="F9U-K3-JCU"/>
-                        <segue destination="eJc-Q2-bFo" kind="push" identifier="ShowSelectServiceProviderView" id="rEW-cF-abi"/>
-                        <segue destination="eJc-Q2-bFo" kind="push" identifier="ShowSelectPaymentTypeView" id="tzk-Zs-ecr"/>
-                        <segue destination="eJc-Q2-bFo" kind="push" identifier="ShowSelectPaymentMethodView" id="yGS-VS-36K"/>
+                        <segue destination="eJc-Q2-bFo" kind="show" id="F9U-K3-JCU"/>
+                        <segue destination="eJc-Q2-bFo" kind="show" identifier="ShowSelectServiceProviderView" id="rEW-cF-abi"/>
+                        <segue destination="eJc-Q2-bFo" kind="show" identifier="ShowSelectPaymentTypeView" id="tzk-Zs-ecr"/>
+                        <segue destination="eJc-Q2-bFo" kind="show" identifier="ShowSelectPaymentMethodView" id="yGS-VS-36K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NHi-Ex-pBJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5914" y="-4382"/>
+            <point key="canvasLocation" x="5567" y="-3397"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tdy-rW-UCA">
@@ -2498,14 +2517,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GSH-9h-Je8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3259" y="-406"/>
+            <point key="canvasLocation" x="2018" y="-18"/>
         </scene>
         <!--Categories-->
         <scene sceneID="i7X-lP-TXR">
             <objects>
                 <tableViewController id="XnT-oZ-9CG" customClass="TreatmentCategoriesViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cja-H9-OKd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -2533,7 +2552,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="giu-xz-xTf" kind="modal" identifier="ShowEditTreatmentCategoryView" modalPresentationStyle="formSheet" id="BCk-Lc-71f"/>
+                                    <segue destination="giu-xz-xTf" kind="presentation" identifier="ShowEditTreatmentCategoryView" modalPresentationStyle="formSheet" id="BCk-Lc-71f"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -2544,12 +2563,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Categories" id="0yS-ZD-vNe"/>
                     <connections>
-                        <segue destination="giu-xz-xTf" kind="modal" identifier="ShowAddTreatmentCategoryView" modalPresentationStyle="formSheet" id="GjE-9p-Obf"/>
+                        <segue destination="giu-xz-xTf" kind="presentation" identifier="ShowAddTreatmentCategoryView" modalPresentationStyle="formSheet" id="GjE-9p-Obf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1be-er-gUb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3271" y="818"/>
+            <point key="canvasLocation" x="3555" y="-671"/>
         </scene>
         <!--Appointment Notes-->
         <scene sceneID="WZE-oq-9Vx">
@@ -2560,7 +2579,7 @@
                         <viewControllerLayoutGuide type="bottom" id="nfg-EN-ns5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="UIb-uR-K9l">
-                        <rect key="frame" x="0.0" y="64" width="540" height="576"/>
+                        <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Q1-kj-a8F">
@@ -2595,7 +2614,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qDe-mq-3YQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3779" y="377"/>
+            <point key="canvasLocation" x="9568" y="556"/>
         </scene>
         <!--Add Treatment Category View Controller-->
         <scene sceneID="p9t-KY-EKE">
@@ -2696,14 +2715,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gS3-XE-IDB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3694" y="1218"/>
+            <point key="canvasLocation" x="4986" y="-655"/>
         </scene>
         <!--Treatment Items-->
         <scene sceneID="sjs-uW-sbl">
             <objects>
                 <tableViewController id="NgK-Ea-LKN" customClass="TreatmentItemsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="mju-aV-6wc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -2724,7 +2743,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Phh-MH-h5v" kind="modal" identifier="ShowEditTreatmentItemView" modalPresentationStyle="formSheet" id="HAa-Kw-kmH"/>
+                                    <segue destination="Phh-MH-h5v" kind="presentation" identifier="ShowEditTreatmentItemView" modalPresentationStyle="formSheet" id="HAa-Kw-kmH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -2735,19 +2754,19 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Treatment Items" id="EZS-u3-pR0"/>
                     <connections>
-                        <segue destination="Phh-MH-h5v" kind="modal" identifier="ShowAddTreatmentItemView" modalPresentationStyle="formSheet" id="QxN-3o-xYL"/>
+                        <segue destination="Phh-MH-h5v" kind="presentation" identifier="ShowAddTreatmentItemView" modalPresentationStyle="formSheet" id="QxN-3o-xYL"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mxc-Ym-pFG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2417" y="1956"/>
+            <point key="canvasLocation" x="2808" y="1402"/>
         </scene>
         <!--Appointment View Controller-->
         <scene sceneID="gsu-Kl-p30">
             <objects>
                 <tableViewController id="Pln-Ej-fLC" customClass="AppointmentViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="22" sectionFooterHeight="22" id="eCv-In-Ljf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -2784,7 +2803,7 @@
                                     <outlet property="cellDateTimeLabel" destination="tdp-ni-Uek" id="BB9-3N-e67"/>
                                     <outlet property="cellNameLabel" destination="7C4-6F-apX" id="ffd-Ol-dIE"/>
                                     <outlet property="cellTickButton" destination="1i3-h8-pCg" id="iPr-QD-FcN"/>
-                                    <segue destination="IPZ-qb-HfI" kind="modal" identifier="ShowEditAppointmentView" modalPresentationStyle="formSheet" id="rh9-e1-m2g"/>
+                                    <segue destination="IPZ-qb-HfI" kind="presentation" identifier="ShowEditAppointmentView" modalPresentationStyle="formSheet" id="rh9-e1-m2g"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -2795,20 +2814,20 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="Erk-wb-SB2"/>
                     <connections>
-                        <segue destination="IPZ-qb-HfI" kind="modal" identifier="ShowAddAppointmentView" modalPresentationStyle="formSheet" id="gdQ-6k-Ejr"/>
-                        <segue destination="Tt2-Qa-u8Y" kind="modal" identifier="ShowBillView" modalPresentationStyle="formSheet" id="uWR-jh-ICQ"/>
+                        <segue destination="IPZ-qb-HfI" kind="presentation" identifier="ShowAddAppointmentView" modalPresentationStyle="formSheet" id="gdQ-6k-Ejr"/>
+                        <segue destination="Tt2-Qa-u8Y" kind="presentation" identifier="ShowBillView" modalPresentationStyle="formSheet" id="uWR-jh-ICQ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bbs-7w-3ci" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1553" y="-806"/>
+            <point key="canvasLocation" x="813" y="-449"/>
         </scene>
         <!--Categories & Items-->
         <scene sceneID="fE6-gx-sej">
             <objects>
                 <tableViewController id="uOc-kS-UKt" customClass="TreatmentCategoriesItemsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="5DX-BR-fYm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -2831,7 +2850,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="XnT-oZ-9CG" kind="push" identifier="ShowTreatmentCategoriesView" id="Hga-1u-o3p"/>
+                                            <segue destination="XnT-oZ-9CG" kind="show" identifier="ShowTreatmentCategoriesView" id="Hga-1u-o3p"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -2855,7 +2874,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="NgK-Ea-LKN" kind="push" identifier="ShowTreatmentItemsView" id="DYO-gB-lft"/>
+                                            <segue destination="NgK-Ea-LKN" kind="show" identifier="ShowTreatmentItemsView" id="DYO-gB-lft"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -2870,18 +2889,18 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1RZ-Ip-z67" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2591" y="336"/>
+            <point key="canvasLocation" x="2833" y="-484"/>
         </scene>
         <!--Add Treatment Item View Controller-->
         <scene sceneID="IrP-i7-pAW">
             <objects>
                 <tableViewController id="XxW-WL-Gf5" customClass="AddTreatmentItemViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="1KO-1M-hzP">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <label key="tableFooterView" hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="12" contentMode="left" text="* please complete the required fields" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="yhl-Xa-Z73">
-                            <rect key="frame" x="0.0" y="230" width="540" height="44"/>
+                            <rect key="frame" x="0.0" y="208" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration">
                                 <accessibilityTraits key="traits" none="YES" staticText="YES" notEnabled="YES"/>
@@ -2959,7 +2978,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="eJc-Q2-bFo" kind="push" identifier="ShowSelectTreatmentCategoryView" id="MaM-k7-lnP"/>
+                                            <segue destination="eJc-Q2-bFo" kind="show" identifier="ShowSelectTreatmentCategoryView" id="MaM-k7-lnP"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -2985,7 +3004,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PmJ-LS-RAL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3720" y="1956"/>
+            <point key="canvasLocation" x="4714" y="1337"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uAV-wh-qFh">
@@ -3003,7 +3022,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q86-rD-oi6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3053" y="1956"/>
+            <point key="canvasLocation" x="3689" y="1381"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="K6g-ik-anN">
@@ -3023,7 +3042,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MTP-DF-4b0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3027" y="1218"/>
+            <point key="canvasLocation" x="4280" y="-740"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="klH-di-SDZ">
@@ -3041,7 +3060,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="msh-b9-3h7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="467" y="2089"/>
+            <point key="canvasLocation" x="488" y="1432"/>
         </scene>
         <!--Single Selection Popover Content View Controller-->
         <scene sceneID="gf5-o7-K0a">
@@ -3082,7 +3101,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2H-Ph-haL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1186" y="2925"/>
+            <point key="canvasLocation" x="-55" y="1845"/>
         </scene>
         <!--Single Selection Popover Content View Controller-->
         <scene sceneID="AYY-aX-Fmx">
@@ -3124,7 +3143,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="snp-Bp-NWW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5344" y="-268"/>
+            <point key="canvasLocation" x="4256" y="-1456"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Hjf-9S-ycc">
@@ -3142,7 +3161,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fFy-3u-c6Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-904" y="3287"/>
+            <point key="canvasLocation" x="-755" y="2409"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NI9-zz-HWf">
@@ -3160,7 +3179,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jvr-4b-na6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5761" y="-3274"/>
+            <point key="canvasLocation" x="3620" y="-4573"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bJ0-8X-uFC">
@@ -3178,7 +3197,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gfN-QL-E7M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5162" y="-4382"/>
+            <point key="canvasLocation" x="4046" y="-3432"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="J72-4e-KRs">
@@ -3196,7 +3215,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HUD-DG-ntx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1137" y="187"/>
+            <point key="canvasLocation" x="392" y="357"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="C9w-Yx-2Vn">
@@ -3214,7 +3233,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fec-1L-vb4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1698" y="-3348"/>
+            <point key="canvasLocation" x="-122" y="-3298"/>
         </scene>
     </scenes>
     <resources>
@@ -3226,23 +3245,18 @@
         <image name="ui_tick_off.png" width="30" height="30"/>
         <image name="ui_tick_on.png" width="30" height="30"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
-    </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="UwO-G3-M9o"/>
-        <segue reference="QxN-3o-xYL"/>
-        <segue reference="GjE-9p-Obf"/>
-        <segue reference="oI2-QC-b5g"/>
-        <segue reference="DLe-HL-bNK"/>
-        <segue reference="xD0-xt-Qbw"/>
+        <segue reference="rh9-e1-m2g"/>
+        <segue reference="o9p-J1-c0i"/>
         <segue reference="vzS-KW-FW4"/>
         <segue reference="wTs-Kg-5kZ"/>
-        <segue reference="o9p-J1-c0i"/>
-        <segue reference="h96-P9-m8u"/>
-        <segue reference="rEW-cF-abi"/>
+        <segue reference="mt3-Vt-Xf4"/>
+        <segue reference="AkX-O7-3c9"/>
+        <segue reference="xD0-xt-Qbw"/>
+        <segue reference="GjE-9p-Obf"/>
+        <segue reference="QxN-3o-xYL"/>
+        <segue reference="DLe-HL-bNK"/>
+        <segue reference="oI2-QC-b5g"/>
         <segue reference="lSt-XP-9YA"/>
     </inferredMetricsTieBreakers>
 </document>
