@@ -14,7 +14,10 @@
 #import "TeamMember+Utils.h"
 #import "AddAppointmentViewController.h"
 #import "BillViewController.h"
+#import "ChargeType+Utils.h"
+#import "PaymentMethod+Utils.h"
 #import "AppDelegate.h"
+#import "Constants.h"
 
 static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifier";
 
@@ -22,6 +25,7 @@ static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifi
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) Appointment *selectedAppointment;
+@property (strong, nonatomic) NSIndexPath *indexPathForCheckedAppointment;
 
 @end
 
@@ -66,6 +70,8 @@ static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifi
         
         self.navigationItem.rightBarButtonItem.enabled = NO;
     }
+    
+    self.indexPathForCheckedAppointment = nil;
 }
 
 - (void)addAppointment {
@@ -127,23 +133,28 @@ static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifi
     // Get appointment
     CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
+    self.indexPathForCheckedAppointment = indexPath;
     Appointment *appointment = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     
     // If appointment date and time has passed, mark appointment as attended
     if ([appointment.dateTime compare:[NSDate date]] == NSOrderedAscending) {
         
         // Request to create bill if payment method is pay per appointment or pay per course of treatment
-        // if ...
-        [self requestBillForAppointment:appointment atIndexPath:indexPath withTickButton:(UIButton *)sender];
-        
-        // else ... (plus use this in create bill alert, too)
-        /*[appointment setAttended:@YES];
-         
-         NSError *error = nil;
-         if (![self.managedObjectContext save:&error]) {
-         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-         abort();
-         }*/
+        if ([appointment.chargeType.paymentMethod.methodName isEqualToString:kPayPerAppointment] ||
+            [appointment.chargeType.paymentMethod.methodName isEqualToString:kPayPerCourse]) {
+            
+            [self requestBillForAppointment:appointment atIndexPath:indexPath withTickButton:(UIButton *)sender];
+            
+        } else {
+            
+            [appointment setAttended:@YES];
+             
+             NSError *error = nil;
+             if (![self.managedObjectContext save:&error]) {
+                 NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                 abort();
+             }
+        }
         
     } else {
         
@@ -498,15 +509,31 @@ static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifi
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     
     // Reset check box
-    
+    AppointmentCell *appointmentCell = (AppointmentCell *)[self.tableView cellForRowAtIndexPath:self.indexPathForCheckedAppointment];
+    [appointmentCell setCellTickButtonSelectedState:NO];
+    self.indexPathForCheckedAppointment = nil;
 }
 
 - (void)billViewControllerDidFinishWithBill:(Bill *)bill {
     
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     
-    // Set appointment - bill relationship and save context
+    // Set appointment's relationship to bill
+    Appointment *appointment = [[self fetchedResultsController] objectAtIndexPath:self.indexPathForCheckedAppointment];
+    [appointment setBill:bill];
     
+    // Mark appointment as attended
+    [appointment setAttended:@YES];
+    
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    self.indexPathForCheckedAppointment = nil;
+    
+    [self.tableView reloadData];
 }
 
 @end

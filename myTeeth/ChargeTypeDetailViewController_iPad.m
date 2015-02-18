@@ -20,10 +20,6 @@ static NSString *kChargeTypeCellIdentifier          = @"ChargeTypeCellIdentifier
 static NSString *kChargeTypeNameCellIdentifier      = @"ChargeTypeNameCellIdentifier";
 static NSString *kChargeTypeAmountCellIdentifier    = @"ChargeTypeAmountCellIdentifier";
 
-static NSString *kPayPerAppointment                 = @"Pay per Appointment";
-static NSString *kPayPerCourseOfTreatment           = @"Pay per Course of Treatment";
-static NSString *kExempt                            = @"None (Exempt)";
-
 static NSUInteger const kChargeTypeNameRow  = 0;
 static NSUInteger const kServiceProviderRow = 1;
 static NSUInteger const kPaymentTypeRow     = 2;
@@ -557,7 +553,7 @@ static NSUInteger const kPaymentAmountRow   = 4;
                 amountCell.amountDetailLabel.textColor = [UIColor blackColor];
                 amountCell.amountDetailLabel.text = NSLocalizedString(@"Enter an amount when completing an appointment", @"Appointment amount");
                 
-            } else if ([paymentMethodRowData[@"rowDetailString"] isEqualToString:kPayPerCourseOfTreatment]) {
+            } else if ([paymentMethodRowData[@"rowDetailString"] isEqualToString:kPayPerCourse]) {
                 
                 amountCell.amountTextField.hidden = YES;
                 amountCell.amountDetailLabel.hidden = NO;
@@ -569,7 +565,7 @@ static NSUInteger const kPaymentAmountRow   = 4;
                 amountCell.amountDetailLabel.hidden = YES;
                 amountCell.amountTextField.hidden = NO;
                 
-                if ([paymentMethodRowData[@"rowDetailString"] isEqualToString:kExempt]) {
+                if ([paymentMethodRowData[@"rowDetailString"] isEqualToString:kPayExempt]) {
                     
                     amountCell.amountTextField.text = @"";
                     amountCell.userInteractionEnabled = NO;

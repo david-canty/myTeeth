@@ -30,3 +30,7 @@ extern NSString * const kOptional;
 extern NSString * const kState;
 extern NSString * const kPrivate;
 extern NSString * const kStatePrivate;
+
+extern NSString * const kPayPerAppointment;
+extern NSString * const kPayPerCourse;
+extern NSString * const kPayExempt;

@@ -32,3 +32,7 @@ NSString * const kOptional = @"Optional";
 NSString * const kState = @"State";
 NSString * const kPrivate = @"Private";
 NSString * const kStatePrivate = @"State and Private";
+
+NSString * const kPayPerAppointment = @"Pay per Appointment";
+NSString * const kPayPerCourse = @"Pay per Course of Treatment";
+NSString * const kPayExempt = @"None (Exempt)";

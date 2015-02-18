@@ -3246,17 +3246,17 @@
         <image name="ui_tick_on.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rh9-e1-m2g"/>
-        <segue reference="o9p-J1-c0i"/>
+        <segue reference="UwO-G3-M9o"/>
+        <segue reference="oI2-QC-b5g"/>
+        <segue reference="lSt-XP-9YA"/>
+        <segue reference="QxN-3o-xYL"/>
+        <segue reference="GjE-9p-Obf"/>
         <segue reference="vzS-KW-FW4"/>
         <segue reference="wTs-Kg-5kZ"/>
+        <segue reference="o9p-J1-c0i"/>
         <segue reference="mt3-Vt-Xf4"/>
         <segue reference="AkX-O7-3c9"/>
         <segue reference="xD0-xt-Qbw"/>
-        <segue reference="GjE-9p-Obf"/>
-        <segue reference="QxN-3o-xYL"/>
         <segue reference="DLe-HL-bNK"/>
-        <segue reference="oI2-QC-b5g"/>
-        <segue reference="lSt-XP-9YA"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -113,12 +113,6 @@
 		1FB2AC7F1A2DD23100D1AE1D /* img_tooth_reference.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB2AC7C1A2DD23100D1AE1D /* img_tooth_reference.png */; };
 		1FB2AC801A2DD23100D1AE1D /* img_tooth_reference@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB2AC7D1A2DD23100D1AE1D /* img_tooth_reference@2x.png */; };
 		1FB2AC811A2DD23100D1AE1D /* img_tooth_reference@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB2AC7E1A2DD23100D1AE1D /* img_tooth_reference@3x.png */; };
-		1FB3359D1A1D26E1007B5475 /* ui_tick_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB335961A1D26E1007B5475 /* ui_tick_off.png */; };
-		1FB3359E1A1D26E1007B5475 /* ui_tick_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB335971A1D26E1007B5475 /* ui_tick_off@2x.png */; };
-		1FB3359F1A1D26E1007B5475 /* ui_tick_off@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB335981A1D26E1007B5475 /* ui_tick_off@3x.png */; };
-		1FB335A01A1D26E1007B5475 /* ui_tick_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB335991A1D26E1007B5475 /* ui_tick_on.png */; };
-		1FB335A11A1D26E1007B5475 /* ui_tick_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB3359A1A1D26E1007B5475 /* ui_tick_on@2x.png */; };
-		1FB335A21A1D26E1007B5475 /* ui_tick_on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB3359B1A1D26E1007B5475 /* ui_tick_on@3x.png */; };
 		1FB906BB1A5F143000ADD00B /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB906BA1A5F143000ADD00B /* InfoViewController.m */; };
 		1FB92B121A93AD6D00861EB0 /* Bill.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB92B111A93AD6D00861EB0 /* Bill.m */; };
 		1FB987901A55DB36003FAC5D /* ChargeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9878F1A55DB36003FAC5D /* ChargeType.m */; };
@@ -127,6 +121,7 @@
 		1FBBBA2B1A2BA4FF001BD85C /* btn_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBBBA281A2BA4FF001BD85C /* btn_settings.png */; };
 		1FBBBA2C1A2BA4FF001BD85C /* btn_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBBBA291A2BA4FF001BD85C /* btn_settings@2x.png */; };
 		1FBBBA2D1A2BA4FF001BD85C /* btn_settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBBBA2A1A2BA4FF001BD85C /* btn_settings@3x.png */; };
+		1FBDA6E41A94DE9D00E43BD2 /* TreatmentHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBDA6E31A94DE9D00E43BD2 /* TreatmentHistoryTableViewController.m */; };
 		1FC41B211A3CA81F00B823AE /* Appointment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC41B201A3CA81F00B823AE /* Appointment.m */; };
 		1FF690A01A27896E008202DE /* LL1_front.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FF690581A27896E008202DE /* LL1_front.png */; };
 		1FF690A11A27896E008202DE /* LL1_front@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FF690591A27896E008202DE /* LL1_front@2x.png */; };
@@ -407,12 +402,6 @@
 		1FB2AC7C1A2DD23100D1AE1D /* img_tooth_reference.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_tooth_reference.png; sourceTree = "<group>"; };
 		1FB2AC7D1A2DD23100D1AE1D /* img_tooth_reference@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_tooth_reference@2x.png"; sourceTree = "<group>"; };
 		1FB2AC7E1A2DD23100D1AE1D /* img_tooth_reference@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_tooth_reference@3x.png"; sourceTree = "<group>"; };
-		1FB335961A1D26E1007B5475 /* ui_tick_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_tick_off.png; sourceTree = "<group>"; };
-		1FB335971A1D26E1007B5475 /* ui_tick_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ui_tick_off@2x.png"; sourceTree = "<group>"; };
-		1FB335981A1D26E1007B5475 /* ui_tick_off@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ui_tick_off@3x.png"; sourceTree = "<group>"; };
-		1FB335991A1D26E1007B5475 /* ui_tick_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_tick_on.png; sourceTree = "<group>"; };
-		1FB3359A1A1D26E1007B5475 /* ui_tick_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ui_tick_on@2x.png"; sourceTree = "<group>"; };
-		1FB3359B1A1D26E1007B5475 /* ui_tick_on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ui_tick_on@3x.png"; sourceTree = "<group>"; };
 		1FB906B91A5F143000ADD00B /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
 		1FB906BA1A5F143000ADD00B /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		1FB92B101A93AD6D00861EB0 /* Bill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bill.h; sourceTree = "<group>"; };
@@ -426,6 +415,8 @@
 		1FBBBA281A2BA4FF001BD85C /* btn_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_settings.png; sourceTree = "<group>"; };
 		1FBBBA291A2BA4FF001BD85C /* btn_settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_settings@2x.png"; sourceTree = "<group>"; };
 		1FBBBA2A1A2BA4FF001BD85C /* btn_settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_settings@3x.png"; sourceTree = "<group>"; };
+		1FBDA6E21A94DE9D00E43BD2 /* TreatmentHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreatmentHistoryTableViewController.h; sourceTree = "<group>"; };
+		1FBDA6E31A94DE9D00E43BD2 /* TreatmentHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreatmentHistoryTableViewController.m; sourceTree = "<group>"; };
 		1FC41B1F1A3CA81F00B823AE /* Appointment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appointment.h; sourceTree = "<group>"; };
 		1FC41B201A3CA81F00B823AE /* Appointment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appointment.m; sourceTree = "<group>"; };
 		1FF690581A27896E008202DE /* LL1_front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LL1_front.png; sourceTree = "<group>"; };
@@ -735,12 +726,6 @@
 			isa = PBXGroup;
 			children = (
 				55A315FE18AD35AF0032994B /* blueDot.png */,
-				1FB335961A1D26E1007B5475 /* ui_tick_off.png */,
-				1FB335971A1D26E1007B5475 /* ui_tick_off@2x.png */,
-				1FB335981A1D26E1007B5475 /* ui_tick_off@3x.png */,
-				1FB335991A1D26E1007B5475 /* ui_tick_on.png */,
-				1FB3359A1A1D26E1007B5475 /* ui_tick_on@2x.png */,
-				1FB3359B1A1D26E1007B5475 /* ui_tick_on@3x.png */,
 				1F3D613C1A212348003B25D1 /* btn_reminders.png */,
 				1F3D613D1A212348003B25D1 /* btn_reminders@2x.png */,
 				1F3D613E1A212348003B25D1 /* btn_reminders@3x.png */,
@@ -935,6 +920,15 @@
 			name = Patient;
 			sourceTree = "<group>";
 		};
+		1FBDA6E11A94DE5C00E43BD2 /* Treatment History */ = {
+			isa = PBXGroup;
+			children = (
+				1FBDA6E21A94DE9D00E43BD2 /* TreatmentHistoryTableViewController.h */,
+				1FBDA6E31A94DE9D00E43BD2 /* TreatmentHistoryTableViewController.m */,
+			);
+			name = "Treatment History";
+			sourceTree = "<group>";
+		};
 		1FF34E15196DCC24003CC6C7 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -1042,6 +1036,7 @@
 				1F9725DE18EB47BB00165184 /* Team Member */,
 				1FA1884718EC934100AD313E /* Patient */,
 				1F9C5FEF19F042CF00405093 /* Appointment */,
+				1FBDA6E11A94DE5C00E43BD2 /* Treatment History */,
 				1F97109618EDE2C30008BAC0 /* Treatment Categories and Items */,
 				1F97920218EF2F310028B692 /* Note Detail */,
 				1F98CC2119AD04680021896D /* Charge Type Management */,
@@ -1236,7 +1231,6 @@
 				1FF690D91A27896E008202DE /* UR4_front.png in Resources */,
 				1F327B8D1A277D250029C697 /* UL8_front@2x.png in Resources */,
 				1F7B61541A30B9F2001ACD9E /* btn_patient@2x.png in Resources */,
-				1FB335A11A1D26E1007B5475 /* ui_tick_on@2x.png in Resources */,
 				1F7B614F1A30B8CD001ACD9E /* btn_reception@3x.png in Resources */,
 				1FF690D11A27896E008202DE /* UR1_front@2x.png in Resources */,
 				1FF690B41A27896E008202DE /* LL7_front@3x.png in Resources */,
@@ -1260,13 +1254,11 @@
 				1F327B881A277D250029C697 /* UL6_front@3x.png in Resources */,
 				1FF690BD1A27896E008202DE /* LR2_front@3x.png in Resources */,
 				1FF690E01A27896E008202DE /* UR6_front@2x.png in Resources */,
-				1FB335A01A1D26E1007B5475 /* ui_tick_on.png in Resources */,
 				1FF690DD1A27896E008202DE /* UR5_front@2x.png in Resources */,
 				1FA5B50719B2332700586A88 /* Payment Types.plist in Resources */,
 				1FB2AC7F1A2DD23100D1AE1D /* img_tooth_reference.png in Resources */,
 				1F327B771A277D250029C697 /* UL1_front.png in Resources */,
 				1FF690DE1A27896E008202DE /* UR5_front@3x.png in Resources */,
-				1FB3359F1A1D26E1007B5475 /* ui_tick_off@3x.png in Resources */,
 				1FF690B81A27896E008202DE /* LR1_front.png in Resources */,
 				1FF690D81A27896E008202DE /* UR3_front@3x.png in Resources */,
 				55E2B70D18041F8000360759 /* Images.xcassets in Resources */,
@@ -1278,9 +1270,7 @@
 				1FF690B01A27896E008202DE /* LL6_front@2x.png in Resources */,
 				1FF690AF1A27896E008202DE /* LL6_front.png in Resources */,
 				55E2B6FF18041F8000360759 /* Main_iPhone.storyboard in Resources */,
-				1FB3359D1A1D26E1007B5475 /* ui_tick_off.png in Resources */,
 				1FF690A61A27896E008202DE /* LL3_front.png in Resources */,
-				1FB335A21A1D26E1007B5475 /* ui_tick_on@3x.png in Resources */,
 				1FF690AA1A27896E008202DE /* LL4_front@2x.png in Resources */,
 				1FF690DA1A27896E008202DE /* UR4_front@2x.png in Resources */,
 				1FF690B91A27896E008202DE /* LR1_front@2x.png in Resources */,
@@ -1334,7 +1324,6 @@
 				1FF690CE1A27896E008202DE /* LR8_front@2x.png in Resources */,
 				1FF690AC1A27896E008202DE /* LL5_front.png in Resources */,
 				1FF690C91A27896E008202DE /* LR6_front@3x.png in Resources */,
-				1FB3359E1A1D26E1007B5475 /* ui_tick_off@2x.png in Resources */,
 				1FB2AC771A2DCAA600D1AE1D /* btn_teeth@2x.png in Resources */,
 				1F327B861A277D250029C697 /* UL6_front.png in Resources */,
 				1FF690AD1A27896E008202DE /* LL5_front@2x.png in Resources */,
@@ -1407,6 +1396,7 @@
 				552E95C0180AA41C00EC706C /* NoteDetailViewController.m in Sources */,
 				1F98357719B34D8000AF93E5 /* PaymentMethod+Utils.m in Sources */,
 				1F07EFA9196F16C000128021 /* TeamMember+Utils.m in Sources */,
+				1FBDA6E41A94DE9D00E43BD2 /* TreatmentHistoryTableViewController.m in Sources */,
 				1FB987901A55DB36003FAC5D /* ChargeType.m in Sources */,
 				1F9725E818EB491000165184 /* TeamMemberController.m in Sources */,
 				1FBB5D5D1A1E22820003CDF0 /* DentalPractice.m in Sources */,
