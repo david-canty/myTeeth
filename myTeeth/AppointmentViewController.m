@@ -19,7 +19,7 @@
 #import "AppDelegate.h"
 #import "Constants.h"
 
-static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifier";
+static NSString *KAppointmentTableCellIdentifier = @"AppointmentTableCellIdentifier";
 
 @interface AppointmentViewController () <NSFetchedResultsControllerDelegate, AddAppointmentViewControllerDelegate, BillViewControllerDelegate>
 
@@ -106,7 +106,7 @@ static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifi
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    AppointmentCell *cell = (AppointmentCell *)[tableView dequeueReusableCellWithIdentifier:appointmentTableCellIdentifier];
+    AppointmentCell *cell = (AppointmentCell *)[tableView dequeueReusableCellWithIdentifier:KAppointmentTableCellIdentifier];
     
     [self configureCell:cell atIndexPath:indexPath];
     
@@ -305,31 +305,50 @@ static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifi
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
         NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-        
-        // Delete appointment calendar event
         Appointment *appointment = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        NSString *appointmentEventId = appointment.eventId;
-        if (appointmentEventId != nil) {
-            
-            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            EKEvent *appointmentEvent = [appDelegate.eventStore eventWithIdentifier:appointmentEventId];
-            
-            if (appointmentEvent != nil) {
-                NSError *error;
-                [appDelegate.eventStore removeEvent:appointmentEvent span:EKSpanThisEvent commit:YES error:&error];
-            }
-        }
         
-        [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+        // Alert user that events and bills will be deleted
+        UIAlertController *deleteAppointmentAlert = [UIAlertController alertControllerWithTitle:@"Delete Appointment"
+                                                                                  message:@"\nDeleting this appointment will also delete all of its associated items, e.g., calendar events, bill transactions.\n\nAre you sure you wish to delete this appointment from your history?"
+                                                                           preferredStyle:UIAlertControllerStyleAlert];
         
-        NSError *error = nil;
-        if (![context save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive
+                                                         handler:^(UIAlertAction *action) {
+                                                             
+                                                             // Delete appointment calendar event
+                                                             NSString *appointmentEventId = appointment.eventId;
+                                                             if (appointmentEventId != nil) {
+                                                                 
+                                                                 AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                                                                 EKEvent *appointmentEvent = [appDelegate.eventStore eventWithIdentifier:appointmentEventId];
+                                                                 
+                                                                 if (appointmentEvent != nil) {
+                                                                     NSError *error;
+                                                                     [appDelegate.eventStore removeEvent:appointmentEvent span:EKSpanThisEvent commit:YES error:&error];
+                                                                 }
+                                                             }
+                                                             
+                                                             // Bill and transactions deleted via cascade delete rule
+                                                             
+                                                             [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+                                                             
+                                                             NSError *error = nil;
+                                                             if (![context save:&error]) {
+                                                                 // Replace this implementation with code to handle the error appropriately.
+                                                                 // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                                                                 NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                                                                 abort();
+                                                             }
+                                                         }];
+        [deleteAppointmentAlert addAction:okAction];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+        [deleteAppointmentAlert addAction:cancelAction];
+        
+        [self presentViewController:deleteAppointmentAlert animated:YES completion:nil];
+        
     }
 }
 
@@ -374,7 +393,7 @@ static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifi
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     
     // Only show appointments that have not been attended
-    NSPredicate *attendedPredicate = [NSPredicate predicateWithFormat:@"attended = %@",[NSNumber numberWithBool: NO]];
+    NSPredicate *attendedPredicate = [NSPredicate predicateWithFormat:@"attended = %@", @NO];
     [fetchRequest setPredicate:attendedPredicate];
     
     // Edit the section name key path and cache name if appropriate.
@@ -452,6 +471,7 @@ static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifi
     [self.tableView endUpdates];
 }
 
+#pragma mark - Seques
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([[segue identifier] isEqualToString:@"ShowEditAppointmentView"]) {
@@ -464,7 +484,7 @@ static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifi
         // Set appointment to be edited
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         self.selectedAppointment = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        controller.editingAppointment = self.selectedAppointment;
+        controller.appointment = self.selectedAppointment;
     }
     
     if ([[segue identifier] isEqualToString:@"ShowAddAppointmentView"]) {
@@ -487,7 +507,7 @@ static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifi
 #pragma mark - Add appointment delegate
 - (void)addAppointmentViewControllerDidCancel:(AddAppointmentViewController *)controller {
     
-    if (controller.editingAppointment) {
+    if (controller.appointment) {
         
         [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     }
@@ -496,7 +516,7 @@ static NSString *appointmentTableCellIdentifier = @"AppointmentTableCellIdentifi
 
 - (void)addAppointmentViewControllerDidFinish:(AddAppointmentViewController *)controller {
     
-    if (controller.editingAppointment) {
+    if (controller.appointment) {
         
         [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     }

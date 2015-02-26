@@ -18,7 +18,8 @@
 
 @property (weak, nonatomic) id <AddAppointmentViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) Appointment *editingAppointment;
+@property (strong, nonatomic) Appointment *appointment;
+@property (assign, nonatomic) BOOL viewingAppointment;
 
 @end
 

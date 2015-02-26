@@ -16,6 +16,7 @@
 #import "PatientViewController.h"
 #import "AddAppointmentViewController.h"
 #import "AppointmentViewController.h"
+#import "AppointmentHistoryViewController.h"
 #import "TreatmentCategoriesItemsViewController.h"
 #import "NotesViewController.h"
 #import "ChargeTypeManagement_iPad.h"
@@ -148,7 +149,7 @@
 #define PATIENT_DETAILS             2
 #define ADD_APPOINTMENT             0
 #define SCHEDULED_APPOINTMENTS      1
-#define TREATMENT_HISTORY           0
+#define APPOINTMENT_HISTORY         0
 #define TREATMENT_CATEGORIES_ITEMS  1
 #define BILLS                       0
 #define NOTES                       0
@@ -258,6 +259,11 @@
     if ([[segue identifier] isEqualToString:@"ShowAppointmentView"]) {
         AppointmentViewController *controller = (AppointmentViewController *)[segue destinationViewController];
         controller.navigationItem.title = NSLocalizedString(@"Appointments", @"Appointments");
+        controller.managedObjectContext = self.managedObjectContext;
+    }
+    if ([[segue identifier] isEqualToString:@"ShowAppointmentHistoryView"]) {
+        AppointmentHistoryViewController *controller = (AppointmentHistoryViewController *)[segue destinationViewController];
+        controller.navigationItem.title = NSLocalizedString(@"Appointment History", @"Appointment History");
         controller.managedObjectContext = self.managedObjectContext;
     }
     if ([[segue identifier] isEqualToString:@"ShowTreatmentCategoriesItemsView"]) {

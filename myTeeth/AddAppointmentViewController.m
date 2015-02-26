@@ -49,7 +49,6 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *chargeTypeCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *notesCell;
 
-- (IBAction)cancel:(id)sender;
 - (IBAction)done:(id)sender;
 
 @end
@@ -61,6 +60,8 @@ static NSTimeInterval const kDefaultDuration = 600;
 - (void)awakeFromNib {
     
     [super awakeFromNib];
+    
+    self.viewingAppointment = NO;
 }
 
 - (void)viewDidLoad {
@@ -70,25 +71,25 @@ static NSTimeInterval const kDefaultDuration = 600;
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // Pre-populate values if editing appointment
-    if (self.editingAppointment) {
+    if (self.appointment) {
         
         // Patient
-        self.selectedPatient = @{@"displayName" : [self.editingAppointment.patient fullNameWithTitle],
-                                 @"uniqueId" : self.editingAppointment.patient.uniqueId};
+        self.selectedPatient = @{@"displayName" : [self.appointment.patient fullNameWithTitle],
+                                 @"uniqueId" : self.appointment.patient.uniqueId};
         
         // Team Member
-        self.selectedTeamMember = @{@"displayName" : [self.editingAppointment.teamMember fullNameWithTitle],
-                                    @"uniqueId" : self.editingAppointment.teamMember.uniqueId};
+        self.selectedTeamMember = @{@"displayName" : [self.appointment.teamMember fullNameWithTitle],
+                                    @"uniqueId" : self.appointment.teamMember.uniqueId};
         
         // Date and Time
-        self.selectedDate = self.editingAppointment.dateTime;
+        self.selectedDate = self.appointment.dateTime;
         
         // Duration
-        self.selectedDuration = (NSTimeInterval)[self.editingAppointment.duration doubleValue];
+        self.selectedDuration = (NSTimeInterval)[self.appointment.duration doubleValue];
         
         // Treatment
         NSMutableArray *selectedTreatmentItems = [@[] mutableCopy];
-        for (TreatmentItem *treatmentItem in self.editingAppointment.treatmentItems) {
+        for (TreatmentItem *treatmentItem in self.appointment.treatmentItems) {
             
             NSDictionary *treatmentItemDict = @{@"displayName" : treatmentItem.itemName,
                                                 @"uniqueId" : treatmentItem.uniqueId,
@@ -98,11 +99,11 @@ static NSTimeInterval const kDefaultDuration = 600;
         self.selectedTreatmentItems = selectedTreatmentItems;
         
         // Charge Type
-        self.selectedChargeType = @{@"displayName" : self.editingAppointment.chargeType.typeName,
-                                    @"uniqueId" : self.editingAppointment.chargeType.uniqueId};
+        self.selectedChargeType = @{@"displayName" : self.appointment.chargeType.typeName,
+                                    @"uniqueId" : self.appointment.chargeType.uniqueId};
         
         // Notes
-        self.noteString = self.editingAppointment.note.note;
+        self.noteString = self.appointment.note.note;
     }
 }
 
@@ -111,7 +112,7 @@ static NSTimeInterval const kDefaultDuration = 600;
     [super viewWillAppear:animated];
     
     // Pre-populate fields if editing appointment
-    if (self.editingAppointment) {
+    if (self.appointment) {
 
         // Patient
         [self displaySelectedPatient];
@@ -163,6 +164,34 @@ static NSTimeInterval const kDefaultDuration = 600;
         // Default duration
         self.selectedDuration = kDefaultDuration;
         [self displaySelectedDuration];
+    }
+    
+    if (self.viewingAppointment) {
+        
+        // Disable fields when viewing
+        self.patientCell.userInteractionEnabled = NO;
+        self.patientCell.accessoryType = UITableViewCellAccessoryNone;
+        self.teamMemberCell.userInteractionEnabled = NO;
+        self.teamMemberCell.accessoryType = UITableViewCellAccessoryNone;
+        self.dateTimeCell.userInteractionEnabled = NO;
+        self.dateTimeCell.accessoryType = UITableViewCellAccessoryNone;
+        self.durationCell.userInteractionEnabled = NO;
+        self.durationCell.accessoryType = UITableViewCellAccessoryNone;
+        self.treatmentCell.userInteractionEnabled = NO;
+        self.treatmentCell.accessoryType = UITableViewCellAccessoryNone;
+        self.chargeTypeCell.userInteractionEnabled = NO;
+        self.chargeTypeCell.accessoryType = UITableViewCellAccessoryNone;
+        
+        UIBarButtonItem *billButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Bill", @"Bill") style:UIBarButtonItemStyleBordered target:self action:@selector(billButtonTapped:)];
+        NSArray *toolbarItems = @[billButton];
+        [self setToolbarItems:toolbarItems];
+        [self.navigationController setToolbarHidden:NO animated:NO];
+        
+    } else {
+        
+        // Only add cancel button if we are adding or editing an appointment
+        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+        self.navigationItem.leftBarButtonItem = cancelButton;
     }
 }
 
@@ -695,13 +724,21 @@ static NSTimeInterval const kDefaultDuration = 600;
 
 - (void)noteViewControllerDelegateDidFinish:(NoteViewController_iPad *)controller withNote:(NSString *)note {
     
+    if (![note isEqualToString:self.noteString]) {
+        
+        // Add cancel button in case we need to discard note edits
+        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+        self.navigationItem.leftBarButtonItem = cancelButton;
+    }
+    
     self.noteString = note;
     [self displayNote];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Add appointment delegate methods
-- (IBAction)cancel:(id)sender {
+- (void)cancel:(id)sender {
     
     // Call delegate did cancel
     [[self delegate] addAppointmentViewControllerDidCancel:self];
@@ -714,9 +751,9 @@ static NSTimeInterval const kDefaultDuration = 600;
         // Save appointment
         Appointment *appointment;
         
-        if (self.editingAppointment) {
+        if (self.appointment) {
             
-            appointment = self.editingAppointment;
+            appointment = self.appointment;
             
         } else {
         
@@ -867,6 +904,16 @@ static NSTimeInterval const kDefaultDuration = 600;
     wobble.repeatCount = 2.0f;
     wobble.duration = 0.10f;
     [cellToWobble.detailTextLabel.layer addAnimation:wobble forKey:nil];
+}
+
+#pragma mark - Toolbar button actions
+- (void)billButtonTapped:(id)sender {
+    
+    // remove check box from cell - new cell needed
+    
+    // Push bill view controller (show Cancel button if changes made)
+    
+
 }
 
 @end

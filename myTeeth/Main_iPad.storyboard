@@ -734,14 +734,14 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="My Treatment" id="UpB-qA-ldh">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReceptionTreatmentHistoryCell" textLabel="cXM-wx-hBY" style="IBUITableViewCellStyleDefault" id="cfA-GA-Gjx">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReceptionAppointmentHistoryCell" textLabel="cXM-wx-hBY" style="IBUITableViewCellStyleDefault" id="cfA-GA-Gjx">
                                         <rect key="frame" x="0.0" y="435" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cfA-GA-Gjx" id="hSx-g6-JSM">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Treatment History" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cXM-wx-hBY">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Appointment History" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cXM-wx-hBY">
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
@@ -751,6 +751,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="NRc-hs-zVG" kind="show" identifier="ShowAppointmentHistoryView" id="ZpG-xi-KiK"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReceptionTreatmentCategoriesItemsCell" textLabel="aeW-36-lKp" style="IBUITableViewCellStyleDefault" id="ibp-eG-y2b">
                                         <rect key="frame" x="0.0" y="479" width="320" height="44"/>
@@ -1354,11 +1357,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="scF-um-yjT">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="QE4-q1-Dit">
-                            <connections>
-                                <action selector="cancel:" destination="j9I-Z7-hMv" id="qCs-T7-jAZ"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="I9W-dm-jPm">
                             <connections>
                                 <action selector="done:" destination="j9I-Z7-hMv" id="hTY-px-5FP"/>
@@ -2372,7 +2370,7 @@
                         <viewControllerLayoutGuide type="bottom" id="kmv-XJ-RNd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6eC-Js-ylu">
-                        <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6w6-DV-Hk8">
@@ -2579,7 +2577,7 @@
                         <viewControllerLayoutGuide type="bottom" id="nfg-EN-ns5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="UIb-uR-K9l">
-                        <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Q1-kj-a8F">
@@ -2820,7 +2818,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bbs-7w-3ci" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="813" y="-449"/>
+            <point key="canvasLocation" x="717" y="-473"/>
         </scene>
         <!--Categories & Items-->
         <scene sceneID="fE6-gx-sej">
@@ -3235,6 +3233,66 @@
             </objects>
             <point key="canvasLocation" x="-122" y="-3298"/>
         </scene>
+        <!--Appointment History View Controller-->
+        <scene sceneID="xya-KN-E0O">
+            <objects>
+                <tableViewController id="NRc-hs-zVG" customClass="AppointmentHistoryViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="22" sectionFooterHeight="22" id="iOl-fW-BOQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AppointmentHistoryTableCellIdentifier" id="gWP-cV-x5t" customClass="AppointmentCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gWP-cV-x5t" id="4IC-wA-jpp">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6E-Ay-RW2">
+                                            <rect key="frame" x="60" y="5" width="219" height="20"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date and Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4e-XM-46G">
+                                            <rect key="frame" x="60" y="30" width="219" height="20"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeK-Kh-ebj">
+                                            <rect key="frame" x="15" y="12" width="30" height="30"/>
+                                            <state key="normal" backgroundImage="ui_tick_off.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="selected" backgroundImage="ui_tick_on.png"/>
+                                            <connections>
+                                                <action selector="cellTickButtonTapped:" destination="gWP-cV-x5t" eventType="touchUpInside" id="9Xs-f2-jPe"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cellDateTimeLabel" destination="n4e-XM-46G" id="214-8h-XJc"/>
+                                    <outlet property="cellNameLabel" destination="b6E-Ay-RW2" id="bpL-xs-qUG"/>
+                                    <outlet property="cellTickButton" destination="yeK-Kh-ebj" id="Pnj-zl-Amd"/>
+                                    <segue destination="IPZ-qb-HfI" kind="presentation" identifier="ShowViewAppointmentView" modalPresentationStyle="formSheet" id="xft-wP-J1F"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="NRc-hs-zVG" id="gwj-xs-bTe"/>
+                            <outlet property="delegate" destination="NRc-hs-zVG" id="DOh-9Y-S5t"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="wgb-Cd-zMt"/>
+                    <connections>
+                        <segue destination="IPZ-qb-HfI" kind="presentation" identifier="ShowAddAppointmentView" modalPresentationStyle="formSheet" id="f0h-rS-fwW"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="giT-re-mWx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1071" y="-351"/>
+        </scene>
     </scenes>
     <resources>
         <image name="blueDot.png" width="8" height="8"/>
@@ -3246,17 +3304,17 @@
         <image name="ui_tick_on.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UwO-G3-M9o"/>
-        <segue reference="oI2-QC-b5g"/>
+        <segue reference="wTs-Kg-5kZ"/>
+        <segue reference="xft-wP-J1F"/>
+        <segue reference="xD0-xt-Qbw"/>
         <segue reference="lSt-XP-9YA"/>
+        <segue reference="oI2-QC-b5g"/>
+        <segue reference="DLe-HL-bNK"/>
         <segue reference="QxN-3o-xYL"/>
         <segue reference="GjE-9p-Obf"/>
-        <segue reference="vzS-KW-FW4"/>
-        <segue reference="wTs-Kg-5kZ"/>
+        <segue reference="tee-20-bE9"/>
         <segue reference="o9p-J1-c0i"/>
-        <segue reference="mt3-Vt-Xf4"/>
+        <segue reference="vzS-KW-FW4"/>
         <segue reference="AkX-O7-3c9"/>
-        <segue reference="xD0-xt-Qbw"/>
-        <segue reference="DLe-HL-bNK"/>
     </inferredMetricsTieBreakers>
 </document>
