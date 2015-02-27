@@ -9,7 +9,7 @@
 #import "AppointmentHistoryViewController.h"
 #import "Appointment+Utils.h"
 #import "TeamMember+Utils.h"
-#import "AppointmentCell.h"
+#import "AppointmentHistoryCell.h"
 #import "AddAppointmentViewController.h"
 
 static NSString *kAppointmentHistoryTableCellIdentifier = @"AppointmentHistoryTableCellIdentifier";
@@ -54,18 +54,16 @@ static NSString *kAppointmentHistoryTableCellIdentifier = @"AppointmentHistoryTa
 #pragma mark - Table view data source
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    AppointmentCell *cell = (AppointmentCell *)[tableView dequeueReusableCellWithIdentifier:kAppointmentHistoryTableCellIdentifier];
+    AppointmentHistoryCell *cell = (AppointmentHistoryCell *)[tableView dequeueReusableCellWithIdentifier:kAppointmentHistoryTableCellIdentifier];
     
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
 }
 
-- (void)configureCell:(AppointmentCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+- (void)configureCell:(AppointmentHistoryCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     
     Appointment *appointment = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-    
-    [cell.cellTickButton addTarget:self action:@selector(cellTickButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     cell.cellNameLabel.text = [appointment.teamMember fullNameWithTitle];
     

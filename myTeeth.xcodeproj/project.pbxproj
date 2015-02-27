@@ -115,6 +115,7 @@
 		1FB2AC811A2DD23100D1AE1D /* img_tooth_reference@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB2AC7E1A2DD23100D1AE1D /* img_tooth_reference@3x.png */; };
 		1FB906BB1A5F143000ADD00B /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB906BA1A5F143000ADD00B /* InfoViewController.m */; };
 		1FB92B121A93AD6D00861EB0 /* Bill.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB92B111A93AD6D00861EB0 /* Bill.m */; };
+		1FB96C681A9F919F00723106 /* AppointmentHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB96C671A9F919F00723106 /* AppointmentHistoryCell.m */; };
 		1FB987901A55DB36003FAC5D /* ChargeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9878F1A55DB36003FAC5D /* ChargeType.m */; };
 		1FBB5D5D1A1E22820003CDF0 /* DentalPractice.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB5D5C1A1E22820003CDF0 /* DentalPractice.m */; };
 		1FBB6DBE1A62C4F500AE06D9 /* PaymentTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB6DBD1A62C4F500AE06D9 /* PaymentTransaction.m */; };
@@ -406,6 +407,8 @@
 		1FB906BA1A5F143000ADD00B /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		1FB92B101A93AD6D00861EB0 /* Bill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bill.h; sourceTree = "<group>"; };
 		1FB92B111A93AD6D00861EB0 /* Bill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bill.m; sourceTree = "<group>"; };
+		1FB96C661A9F919F00723106 /* AppointmentHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentHistoryCell.h; sourceTree = "<group>"; };
+		1FB96C671A9F919F00723106 /* AppointmentHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentHistoryCell.m; sourceTree = "<group>"; };
 		1FB9878E1A55DB36003FAC5D /* ChargeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeType.h; sourceTree = "<group>"; };
 		1FB9878F1A55DB36003FAC5D /* ChargeType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeType.m; sourceTree = "<group>"; };
 		1FBB5D5B1A1E22820003CDF0 /* DentalPractice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DentalPractice.h; sourceTree = "<group>"; };
@@ -925,6 +928,8 @@
 			children = (
 				1FBF77061A9B8732008CAB20 /* AppointmentHistoryViewController.h */,
 				1FBF77071A9B8732008CAB20 /* AppointmentHistoryViewController.m */,
+				1FB96C661A9F919F00723106 /* AppointmentHistoryCell.h */,
+				1FB96C671A9F919F00723106 /* AppointmentHistoryCell.m */,
 			);
 			name = "Appointment History";
 			sourceTree = "<group>";
@@ -1401,6 +1406,7 @@
 				1F9725E818EB491000165184 /* TeamMemberController.m in Sources */,
 				1FBB5D5D1A1E22820003CDF0 /* DentalPractice.m in Sources */,
 				1F1FFE041A378D8900B96563 /* PaymentType.m in Sources */,
+				1FB96C681A9F919F00723106 /* AppointmentHistoryCell.m in Sources */,
 				1F200AD31A46D965008B6C2E /* Country.m in Sources */,
 				1F947C9419311D26000C24E5 /* ToothDetailViewController.m in Sources */,
 				1F9725E718EB491000165184 /* AddTeamMemberViewController.m in Sources */,

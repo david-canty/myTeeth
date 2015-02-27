@@ -276,6 +276,18 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
     }
 }
 
+- (NSDecimalNumber *)calculateAmountPaid {
+    
+    NSDecimalNumber *amountPaid = [NSDecimalNumber zero];
+    
+    for (PaymentTransaction *paymentTransaction in self.paymentTransactions) {
+        
+        amountPaid = [amountPaid decimalNumberByAdding:paymentTransaction.transactionAmount];
+    }
+    
+    return amountPaid;
+}
+
 - (void)updateAmountPaidAndBalance {
     
     // Update bill amount
@@ -288,7 +300,7 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
     }
     
     // Update amount paid label
-    NSDecimalNumber *amountPaid = [self.bill.paymentTransactions valueForKeyPath:@"@sum.transactionAmount"];
+    NSDecimalNumber *amountPaid = [self calculateAmountPaid];
     [self updateCurrencyLabel:self.amountPaidLabel withString:[amountPaid stringValue]];
     
     // Update balance label
@@ -301,13 +313,25 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
         // Disable fields
         [self disableFields];
         
-    } else if ([balance compare:[NSDecimalNumber zero]] ==  NSOrderedSame) {
+    } else if ([self.billAmount compare:[NSDecimalNumber zero]] == NSOrderedSame &&
+               [balance compare:[NSDecimalNumber zero]] ==  NSOrderedSame) {
         
         // Set fully paid control to No
         self.fullyPaidSegmentedControl.selectedSegmentIndex = 1;
         
         // Disable fields
         [self disableFields];
+        
+    }  else if ([self.billAmount compare:[NSDecimalNumber zero]] != NSOrderedSame &&
+                [self.billAmount compare:amountPaid] == NSOrderedSame &&
+                [balance compare:[NSDecimalNumber zero]] ==  NSOrderedSame) {
+        
+        // Set fully paid control to Yes
+        self.fullyPaidSegmentedControl.selectedSegmentIndex = 0;
+        
+        // Disable fields
+        [self disableFields];
+        self.billAmountTextField.enabled = NO;
         
     } else if ([balance compare:[NSDecimalNumber zero]] ==  NSOrderedDescending) {
         
@@ -352,14 +376,6 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
         
         [self.managedObjectContext deleteObject:transaction];
         
-        NSError *error = nil;
-        if (![self.managedObjectContext save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
-        
         [self.paymentTransactions removeObject:transaction];
         [self.transactionHistoryTableView reloadData];
         
@@ -372,7 +388,7 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
         [self updateAmountPaidAndBalance];
         
         // Enable bill amount field if no transactions
-        NSDecimalNumber *amountPaid = [self.bill.paymentTransactions valueForKeyPath:@"@sum.transactionAmount"];
+        NSDecimalNumber *amountPaid = [self calculateAmountPaid];
         if ([amountPaid isEqualToNumber:[NSDecimalNumber zero]]) {
             
             self.billAmountTextField.enabled = YES;
@@ -472,7 +488,7 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
         self.billAmount = [NSDecimalNumber decimalNumberWithString:self.billAmountTextField.text];
         
         // Amount paid
-        NSDecimalNumber *amountPaid = [self.bill.paymentTransactions valueForKeyPath:@"@sum.transactionAmount"];
+        NSDecimalNumber *amountPaid = [self calculateAmountPaid];
         
         // Balance = bill amount - amount paid
         NSDecimalNumber *balance = [self.billAmount decimalNumberBySubtracting:amountPaid];
@@ -513,7 +529,8 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
 - (IBAction)addTransactionTapped:(id)sender {
     
     // Amount paid
-    NSDecimalNumber *amountPaid = [self.bill.paymentTransactions valueForKeyPath:@"@sum.transactionAmount"];
+    //NSDecimalNumber *amountPaid = [self.bill.paymentTransactions valueForKeyPath:@"@sum.transactionAmount"];
+    NSDecimalNumber *amountPaid = [self calculateAmountPaid];
     
     // Balance = bill amount - amount paid
     NSDecimalNumber *balance = [self.billAmount decimalNumberBySubtracting:amountPaid];
@@ -536,7 +553,7 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
             self.billAmountTextField.enabled = NO;
             
             // Check if balance is zero
-            NSDecimalNumber *amountPaid = [self.bill.paymentTransactions valueForKeyPath:@"@sum.transactionAmount"];
+            NSDecimalNumber *amountPaid = [self calculateAmountPaid];
             NSDecimalNumber *balance = [self.billAmount decimalNumberBySubtracting:amountPaid];
             if ([balance isEqualToNumber:[NSDecimalNumber zero]]) {
                 
@@ -562,23 +579,7 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
 
 - (IBAction)cancelTapped:(id)sender {
     
-    if (self.paymentTransactions.count > 0) {
-        
-        // Remove any payment transactions
-        for (PaymentTransaction *paymentTransaction in self.paymentTransactions) {
-            
-            [self.managedObjectContext deleteObject:paymentTransaction];
-        }
-        
-        NSError *error = nil;
-        if (![self.managedObjectContext save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
-    }
-    
+    [self.managedObjectContext rollback];
     [self.delegate billViewControllerDidCancel];
 }
 
@@ -606,23 +607,9 @@ static NSString *paymentTransactionCellIdentifier = @"PaymentTransactionCellIden
         self.bill.billAmount = self.billAmount;
         
         // Payment transactions
-        for (PaymentTransaction *paymentTransaction in self.bill.paymentTransactions) {
-            
-            [self.managedObjectContext deleteObject:paymentTransaction];  // Remove existing
-        }
-        
         for (PaymentTransaction *paymentTransaction in self.paymentTransactions) {
             
-            [self.bill addPaymentTransactionsObject:paymentTransaction]; // Add new
-        }
-        
-        // Save the context.
-        NSError *error = nil;
-        if (![self.managedObjectContext save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
+            [self.bill addPaymentTransactionsObject:paymentTransaction];
         }
         
         [self.delegate billViewControllerDidFinishWithBill:self.bill];

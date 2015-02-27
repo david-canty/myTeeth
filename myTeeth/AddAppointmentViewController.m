@@ -7,6 +7,7 @@
 //
 
 #import "AddAppointmentViewController.h"
+#import "AppDelegate.h"
 #import "Constants.h"
 #import "SingleSelectionListViewController.h"
 #import "MultipleSelectionListViewController.h"
@@ -23,9 +24,9 @@
 #import "AddPatientViewController.h"
 #import "AddTeamMemberViewController.h"
 #import "ChargeTypeDetailViewController_iPad.h"
-#import "AppDelegate.h"
+#import "BillViewController.h"
 
-@interface AddAppointmentViewController () <SingleSelectionListViewControllerDelegate, MultipleSelectionListViewControllerDelegate, DateTimeViewControllerDelegate, DurationViewControllerDelegate, NSFetchedResultsControllerDelegate, NoteViewControllerDelegate, AddPatientViewControllerDelegate, AddTeamMemberViewControllerDelegate, ChargeTypeDetailViewControllerDelegate>
+@interface AddAppointmentViewController () <SingleSelectionListViewControllerDelegate, MultipleSelectionListViewControllerDelegate, DateTimeViewControllerDelegate, DurationViewControllerDelegate, NSFetchedResultsControllerDelegate, NoteViewControllerDelegate, AddPatientViewControllerDelegate, AddTeamMemberViewControllerDelegate, ChargeTypeDetailViewControllerDelegate, BillViewControllerDelegate>
 
 @property (strong, nonatomic) AppDelegate *appDelegate;
 @property (strong, nonatomic) NSArray *patientList;
@@ -375,6 +376,17 @@ static NSTimeInterval const kDefaultDuration = 600;
         noteViewController.navigationItem.title = NSLocalizedString(@"Note", @"Appointment Note");
         noteViewController.delegate = self;
         noteViewController.noteString = self.noteString;
+    }
+    
+    if ([[segue identifier] isEqualToString:@"ShowBillView"]) {
+        
+        BillViewController *billViewController = (BillViewController *)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        billViewController.navigationItem.title = NSLocalizedString(@"Bill", @"Bill");
+        billViewController.managedObjectContext = self.managedObjectContext;
+        
+        billViewController.bill = self.appointment.bill;
+        
+        billViewController.delegate = self;
     }
 }
 
@@ -740,8 +752,8 @@ static NSTimeInterval const kDefaultDuration = 600;
 #pragma mark - Add appointment delegate methods
 - (void)cancel:(id)sender {
     
-    // Call delegate did cancel
-    [[self delegate] addAppointmentViewControllerDidCancel:self];
+    [self.managedObjectContext rollback];
+    [self.delegate addAppointmentViewControllerDidCancel:self];
 }
 
 - (IBAction)done:(id)sender {
@@ -909,11 +921,24 @@ static NSTimeInterval const kDefaultDuration = 600;
 #pragma mark - Toolbar button actions
 - (void)billButtonTapped:(id)sender {
     
-    // remove check box from cell - new cell needed
-    
-    // Push bill view controller (show Cancel button if changes made)
-    
+    // Push bill view controller
+    [self performSegueWithIdentifier:@"ShowBillView" sender:nil];
+}
 
+#pragma mark - Bill delegate
+- (void)billViewControllerDidCancel {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)billViewControllerDidFinishWithBill:(Bill *)bill {
+    
+    [self.appointment setBill:bill];
+    
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+    self.navigationItem.leftBarButtonItem = cancelButton;
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

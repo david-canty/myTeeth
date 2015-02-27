@@ -1374,6 +1374,7 @@
                         <segue destination="qpY-6R-P1T" kind="show" identifier="ShowAddTeamMemberView" id="wTs-Kg-5kZ"/>
                         <segue destination="laO-G5-XOT" kind="show" identifier="ShowAddPatientView" id="vzS-KW-FW4"/>
                         <segue destination="1bw-X6-ZdK" kind="show" identifier="ShowAddChargeTypeView" id="o9p-J1-c0i"/>
+                        <segue destination="Tt2-Qa-u8Y" kind="show" identifier="ShowBillView" id="rLz-Ur-plX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qFN-Nc-Jwc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1961,7 +1962,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TZq-uy-oWT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1179" y="561"/>
+            <point key="canvasLocation" x="10557" y="1373"/>
         </scene>
         <!--Duration View Controller-->
         <scene sceneID="ZwL-3j-cFW">
@@ -2515,7 +2516,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GSH-9h-Je8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2018" y="-18"/>
+            <point key="canvasLocation" x="2018" y="-78"/>
         </scene>
         <!--Categories-->
         <scene sceneID="i7X-lP-TXR">
@@ -3213,7 +3214,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HUD-DG-ntx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="392" y="357"/>
+            <point key="canvasLocation" x="9784" y="1373"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="C9w-Yx-2Vn">
@@ -3242,39 +3243,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AppointmentHistoryTableCellIdentifier" id="gWP-cV-x5t" customClass="AppointmentCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AppointmentHistoryTableCellIdentifier" id="gWP-cV-x5t" customClass="AppointmentHistoryCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gWP-cV-x5t" id="4IC-wA-jpp">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6E-Ay-RW2">
-                                            <rect key="frame" x="60" y="5" width="219" height="20"/>
+                                            <rect key="frame" x="15" y="5" width="220" height="20"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date and Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4e-XM-46G">
-                                            <rect key="frame" x="60" y="30" width="219" height="20"/>
+                                            <rect key="frame" x="15" y="30" width="220" height="20"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeK-Kh-ebj">
-                                            <rect key="frame" x="15" y="12" width="30" height="30"/>
-                                            <state key="normal" backgroundImage="ui_tick_off.png">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="selected" backgroundImage="ui_tick_on.png"/>
-                                            <connections>
-                                                <action selector="cellTickButtonTapped:" destination="gWP-cV-x5t" eventType="touchUpInside" id="9Xs-f2-jPe"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="cellDateTimeLabel" destination="n4e-XM-46G" id="214-8h-XJc"/>
-                                    <outlet property="cellNameLabel" destination="b6E-Ay-RW2" id="bpL-xs-qUG"/>
-                                    <outlet property="cellTickButton" destination="yeK-Kh-ebj" id="Pnj-zl-Amd"/>
+                                    <outlet property="cellDateTimeLabel" destination="n4e-XM-46G" id="uLq-eH-gXD"/>
+                                    <outlet property="cellNameLabel" destination="b6E-Ay-RW2" id="7ri-5c-fR5"/>
                                     <segue destination="IPZ-qb-HfI" kind="presentation" identifier="ShowViewAppointmentView" modalPresentationStyle="formSheet" id="xft-wP-J1F"/>
                                 </connections>
                             </tableViewCell>
@@ -3304,17 +3294,18 @@
         <image name="ui_tick_on.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wTs-Kg-5kZ"/>
-        <segue reference="xft-wP-J1F"/>
         <segue reference="xD0-xt-Qbw"/>
-        <segue reference="lSt-XP-9YA"/>
-        <segue reference="oI2-QC-b5g"/>
-        <segue reference="DLe-HL-bNK"/>
-        <segue reference="QxN-3o-xYL"/>
-        <segue reference="GjE-9p-Obf"/>
+        <segue reference="xft-wP-J1F"/>
+        <segue reference="wTs-Kg-5kZ"/>
         <segue reference="tee-20-bE9"/>
         <segue reference="o9p-J1-c0i"/>
+        <segue reference="rLz-Ur-plX"/>
         <segue reference="vzS-KW-FW4"/>
         <segue reference="AkX-O7-3c9"/>
+        <segue reference="lSt-XP-9YA"/>
+        <segue reference="QxN-3o-xYL"/>
+        <segue reference="GjE-9p-Obf"/>
+        <segue reference="oI2-QC-b5g"/>
+        <segue reference="DLe-HL-bNK"/>
     </inferredMetricsTieBreakers>
 </document>
