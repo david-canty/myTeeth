@@ -55,7 +55,6 @@
 		1F3D61431A212348003B25D1 /* btn_reminders@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3D613D1A212348003B25D1 /* btn_reminders@2x.png */; };
 		1F3D61441A212348003B25D1 /* btn_reminders@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3D613E1A212348003B25D1 /* btn_reminders@3x.png */; };
 		1F4A68951A3DDCAF004D79E8 /* BillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4A68941A3DDCAF004D79E8 /* BillViewController.m */; };
-		1F582C1A1A3CA2B100421F78 /* TreatmentCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F582C191A3CA2B100421F78 /* TreatmentCourse.m */; };
 		1F59CE091A372161007AB5C0 /* ServiceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F59CE081A372161007AB5C0 /* ServiceProvider.m */; };
 		1F59CE0F1A3721D8007AB5C0 /* ChargeType+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F59CE0E1A3721D8007AB5C0 /* ChargeType+Utils.m */; };
 		1F6EFDCE1A272EB20012E18B /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6EFDCD1A272EB20012E18B /* Patient.m */; };
@@ -113,9 +112,13 @@
 		1FB2AC7F1A2DD23100D1AE1D /* img_tooth_reference.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB2AC7C1A2DD23100D1AE1D /* img_tooth_reference.png */; };
 		1FB2AC801A2DD23100D1AE1D /* img_tooth_reference@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB2AC7D1A2DD23100D1AE1D /* img_tooth_reference@2x.png */; };
 		1FB2AC811A2DD23100D1AE1D /* img_tooth_reference@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FB2AC7E1A2DD23100D1AE1D /* img_tooth_reference@3x.png */; };
+		1FB51AD41AA21FFC007778FC /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB51AD31AA21FFC007778FC /* CourseViewController.m */; };
 		1FB906BB1A5F143000ADD00B /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB906BA1A5F143000ADD00B /* InfoViewController.m */; };
+		1FB90D611AA46FDE00186128 /* TreatmentCourse+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB90D601AA46FDE00186128 /* TreatmentCourse+Utils.m */; };
+		1FB90D641AA4814900186128 /* TreatmentCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB90D631AA4814900186128 /* TreatmentCourseViewController.swift */; };
 		1FB92B121A93AD6D00861EB0 /* Bill.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB92B111A93AD6D00861EB0 /* Bill.m */; };
 		1FB96C681A9F919F00723106 /* AppointmentHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB96C671A9F919F00723106 /* AppointmentHistoryCell.m */; };
+		1FB97FF71AA3A04A00957FA2 /* TreatmentCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB97FF61AA3A04A00957FA2 /* TreatmentCourse.m */; };
 		1FB987901A55DB36003FAC5D /* ChargeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9878F1A55DB36003FAC5D /* ChargeType.m */; };
 		1FBB5D5D1A1E22820003CDF0 /* DentalPractice.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB5D5C1A1E22820003CDF0 /* DentalPractice.m */; };
 		1FBB6DBE1A62C4F500AE06D9 /* PaymentTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB6DBD1A62C4F500AE06D9 /* PaymentTransaction.m */; };
@@ -304,8 +307,6 @@
 		1F3D613E1A212348003B25D1 /* btn_reminders@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_reminders@3x.png"; sourceTree = "<group>"; };
 		1F4A68931A3DDCAF004D79E8 /* BillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillViewController.h; sourceTree = "<group>"; };
 		1F4A68941A3DDCAF004D79E8 /* BillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillViewController.m; sourceTree = "<group>"; };
-		1F582C181A3CA2B100421F78 /* TreatmentCourse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreatmentCourse.h; sourceTree = "<group>"; };
-		1F582C191A3CA2B100421F78 /* TreatmentCourse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreatmentCourse.m; sourceTree = "<group>"; };
 		1F59CE071A372161007AB5C0 /* ServiceProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceProvider.h; sourceTree = "<group>"; };
 		1F59CE081A372161007AB5C0 /* ServiceProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceProvider.m; sourceTree = "<group>"; };
 		1F59CE0D1A3721D8007AB5C0 /* ChargeType+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ChargeType+Utils.h"; sourceTree = "<group>"; };
@@ -403,12 +404,20 @@
 		1FB2AC7C1A2DD23100D1AE1D /* img_tooth_reference.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_tooth_reference.png; sourceTree = "<group>"; };
 		1FB2AC7D1A2DD23100D1AE1D /* img_tooth_reference@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_tooth_reference@2x.png"; sourceTree = "<group>"; };
 		1FB2AC7E1A2DD23100D1AE1D /* img_tooth_reference@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_tooth_reference@3x.png"; sourceTree = "<group>"; };
+		1FB51AD21AA21FFC007778FC /* CourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
+		1FB51AD31AA21FFC007778FC /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
 		1FB906B91A5F143000ADD00B /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
 		1FB906BA1A5F143000ADD00B /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
+		1FB90D5F1AA46FDE00186128 /* TreatmentCourse+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TreatmentCourse+Utils.h"; sourceTree = "<group>"; };
+		1FB90D601AA46FDE00186128 /* TreatmentCourse+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TreatmentCourse+Utils.m"; sourceTree = "<group>"; };
+		1FB90D621AA4814900186128 /* myTeeth-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myTeeth-Bridging-Header.h"; sourceTree = "<group>"; };
+		1FB90D631AA4814900186128 /* TreatmentCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreatmentCourseViewController.swift; sourceTree = "<group>"; };
 		1FB92B101A93AD6D00861EB0 /* Bill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bill.h; sourceTree = "<group>"; };
 		1FB92B111A93AD6D00861EB0 /* Bill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bill.m; sourceTree = "<group>"; };
 		1FB96C661A9F919F00723106 /* AppointmentHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentHistoryCell.h; sourceTree = "<group>"; };
 		1FB96C671A9F919F00723106 /* AppointmentHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentHistoryCell.m; sourceTree = "<group>"; };
+		1FB97FF51AA3A04A00957FA2 /* TreatmentCourse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreatmentCourse.h; sourceTree = "<group>"; };
+		1FB97FF61AA3A04A00957FA2 /* TreatmentCourse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreatmentCourse.m; sourceTree = "<group>"; };
 		1FB9878E1A55DB36003FAC5D /* ChargeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeType.h; sourceTree = "<group>"; };
 		1FB9878F1A55DB36003FAC5D /* ChargeType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeType.m; sourceTree = "<group>"; };
 		1FBB5D5B1A1E22820003CDF0 /* DentalPractice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DentalPractice.h; sourceTree = "<group>"; };
@@ -771,6 +780,9 @@
 				1F97109118EDDD4D0008BAC0 /* DurationViewController.m */,
 				1F98563919AA65C100D94256 /* NoteViewController_iPad.h */,
 				1F98563A19AA65C100D94256 /* NoteViewController_iPad.m */,
+				1FB51AD21AA21FFC007778FC /* CourseViewController.h */,
+				1FB51AD31AA21FFC007778FC /* CourseViewController.m */,
+				1FB90D631AA4814900186128 /* TreatmentCourseViewController.swift */,
 			);
 			name = "Add Appointment";
 			sourceTree = "<group>";
@@ -826,6 +838,8 @@
 				1FBB5D5C1A1E22820003CDF0 /* DentalPractice.m */,
 				1FC41B1F1A3CA81F00B823AE /* Appointment.h */,
 				1FC41B201A3CA81F00B823AE /* Appointment.m */,
+				1FB97FF51AA3A04A00957FA2 /* TreatmentCourse.h */,
+				1FB97FF61AA3A04A00957FA2 /* TreatmentCourse.m */,
 				1FB92B101A93AD6D00861EB0 /* Bill.h */,
 				1FB92B111A93AD6D00861EB0 /* Bill.m */,
 				1FBB6DBC1A62C4F500AE06D9 /* PaymentTransaction.h */,
@@ -834,8 +848,6 @@
 				1FA19E3119799A95006ADDB1 /* TreatmentItem.m */,
 				1FA19E3919799A95006ADDB1 /* TreatmentCategory.h */,
 				1FA19E3A19799A95006ADDB1 /* TreatmentCategory.m */,
-				1F582C181A3CA2B100421F78 /* TreatmentCourse.h */,
-				1F582C191A3CA2B100421F78 /* TreatmentCourse.m */,
 				1FA19E4519799CCE006ADDB1 /* TeamMember.h */,
 				1FA19E4619799CCE006ADDB1 /* TeamMember.m */,
 				1F6EFDCC1A272EB20012E18B /* Patient.h */,
@@ -937,6 +949,8 @@
 		1FF34E15196DCC24003CC6C7 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				1FB90D5F1AA46FDE00186128 /* TreatmentCourse+Utils.h */,
+				1FB90D601AA46FDE00186128 /* TreatmentCourse+Utils.m */,
 				1FA12EB3191E521500D5951D /* Patient+Utils.h */,
 				1FA12EB4191E521500D5951D /* Patient+Utils.m */,
 				1F07EFA7196F16C000128021 /* TeamMember+Utils.h */,
@@ -1016,6 +1030,7 @@
 			children = (
 				55E2B6FA18041F8000360759 /* AppDelegate.h */,
 				55E2B6FB18041F8000360759 /* AppDelegate.m */,
+				1FB90D621AA4814900186128 /* myTeeth-Bridging-Header.h */,
 				1F20FDFA18E9E9A2006A3408 /* Selection Lists */,
 				1F2D794718F061600006D3C5 /* Notes */,
 			);
@@ -1378,6 +1393,7 @@
 				1F2B50201A0F97AC00E1D1AC /* Salutation.m in Sources */,
 				1FB906BB1A5F143000ADD00B /* InfoViewController.m in Sources */,
 				1F978227193506E200136268 /* SingleSelectionPopoverContentViewController.m in Sources */,
+				1FB51AD41AA21FFC007778FC /* CourseViewController.m in Sources */,
 				1FA9DDB91A211AAF00BF300E /* SettingsViewController.m in Sources */,
 				1F220B2C1A389AA10015AEB3 /* ChargeTypeNameCell.m in Sources */,
 				556468C0180443910060016F /* MainViewController.m in Sources */,
@@ -1389,6 +1405,7 @@
 				1F98CC2019AD04610021896D /* ChargeTypeManagement_iPad.m in Sources */,
 				1F2B50291A0F990E00E1D1AC /* Salutation+Utils.m in Sources */,
 				1F98563B19AA65C100D94256 /* NoteViewController_iPad.m in Sources */,
+				1FB97FF71AA3A04A00957FA2 /* TreatmentCourse.m in Sources */,
 				1F20FDFF18E9EA06006A3408 /* MultipleSelectionListViewController.m in Sources */,
 				1F4A68951A3DDCAF004D79E8 /* BillViewController.m in Sources */,
 				1FA1885118EC98A500AD313E /* AddPatientViewController.m in Sources */,
@@ -1409,7 +1426,9 @@
 				1FB96C681A9F919F00723106 /* AppointmentHistoryCell.m in Sources */,
 				1F200AD31A46D965008B6C2E /* Country.m in Sources */,
 				1F947C9419311D26000C24E5 /* ToothDetailViewController.m in Sources */,
+				1FB90D611AA46FDE00186128 /* TreatmentCourse+Utils.m in Sources */,
 				1F9725E718EB491000165184 /* AddTeamMemberViewController.m in Sources */,
+				1FB90D641AA4814900186128 /* TreatmentCourseViewController.swift in Sources */,
 				1F9C333618F7100D00BA1347 /* NoteDetailViewControllerPhone.m in Sources */,
 				1F98357419B34D6800AF93E5 /* PaymentType+Utils.m in Sources */,
 				1FA12EB5191E521500D5951D /* Patient+Utils.m in Sources */,
@@ -1439,7 +1458,6 @@
 				1F98CC1D19ACFEBA0021896D /* Note+Utils.m in Sources */,
 				1FBB6DBE1A62C4F500AE06D9 /* PaymentTransaction.m in Sources */,
 				1FB2AC7B1A2DCE7200D1AE1D /* ToothReferenceViewController.m in Sources */,
-				1F582C1A1A3CA2B100421F78 /* TreatmentCourse.m in Sources */,
 				55E2B6F818041F8000360759 /* main.m in Sources */,
 				1F9710AF18EDEC3B0008BAC0 /* AddTreatmentItemViewController.m in Sources */,
 				1F6EFDCE1A272EB20012E18B /* Patient.m in Sources */,
@@ -1576,13 +1594,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myTeeth/myTeeth-Prefix.pch";
 				INFOPLIST_FILE = "myTeeth/myTeeth-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "myTeeth/myTeeth-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1593,13 +1616,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myTeeth/myTeeth-Prefix.pch";
 				INFOPLIST_FILE = "myTeeth/myTeeth-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "myTeeth/myTeeth-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

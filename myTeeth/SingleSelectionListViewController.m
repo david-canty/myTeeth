@@ -125,8 +125,11 @@ static NSString *kSelectionListCellIdentifier = @"SelectionListCellIdentifier";
         UITableViewCell *newCell = [tableView cellForRowAtIndexPath:indexPath];
         newCell.accessoryType = UITableViewCellAccessoryCheckmark;
         
-        UITableViewCell *oldCell = [tableView cellForRowAtIndexPath: _lastIndexPath];
-        oldCell.accessoryType = UITableViewCellAccessoryNone;
+        if (_lastIndexPath != nil) {
+            
+            UITableViewCell *oldCell = [tableView cellForRowAtIndexPath: _lastIndexPath];
+            oldCell.accessoryType = UITableViewCellAccessoryNone;
+        }
         
         NSUInteger newIndex[] = {0, newRow};
         _lastIndexPath = [[NSIndexPath alloc] initWithIndexes:newIndex length:2];

@@ -2,8 +2,8 @@
 //  TreatmentCourse.h
 //  myTeeth
 //
-//  Created by David Canty on 13/12/2014.
-//  Copyright (c) 2014 David Canty. All rights reserved.
+//  Created by David Canty on 01/03/2015.
+//  Copyright (c) 2015 David Canty. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSString * courseName;
 @property (nonatomic, retain) NSString * uniqueId;
+@property (nonatomic, retain) NSNumber * completed;
 @property (nonatomic, retain) NSSet *appointments;
 @end
 

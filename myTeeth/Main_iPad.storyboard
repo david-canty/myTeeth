@@ -1284,6 +1284,34 @@
                                             <segue destination="4NX-D9-rMq" kind="show" identifier="ShowTreatmentView" id="R8V-De-Dms"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell tag="4" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AppointmentCourseCell" textLabel="cTW-0x-o5j" detailTextLabel="eHs-yV-MDB" style="IBUITableViewCellStyleSubtitle" id="rzQ-nc-rDF">
+                                        <rect key="frame" x="0.0" y="323" width="540" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rzQ-nc-rDF" id="Ez9-n8-xch">
+                                            <rect key="frame" x="0.0" y="0.0" width="507" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Course" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cTW-0x-o5j">
+                                                    <rect key="frame" x="15" y="4" width="72" height="19"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Optional" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eHs-yV-MDB">
+                                                    <rect key="frame" x="15" y="23" width="83" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                    <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="NCq-Il-eWD" kind="show" identifier="ShowCourseView" id="6uT-jF-lXC"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Appointment Charges" id="8q5-Zv-5ZK">
@@ -1371,6 +1399,7 @@
                         <outlet property="patientCell" destination="Krf-td-Ptm" id="m7G-ZY-K6P"/>
                         <outlet property="teamMemberCell" destination="xKu-eL-1MQ" id="FUO-Fd-Vek"/>
                         <outlet property="treatmentCell" destination="TAc-7G-YB2" id="Y1w-7Y-0Qd"/>
+                        <outlet property="treatmentCourseCell" destination="rzQ-nc-rDF" id="Tsz-bU-0tN"/>
                         <segue destination="qpY-6R-P1T" kind="show" identifier="ShowAddTeamMemberView" id="wTs-Kg-5kZ"/>
                         <segue destination="laO-G5-XOT" kind="show" identifier="ShowAddPatientView" id="vzS-KW-FW4"/>
                         <segue destination="1bw-X6-ZdK" kind="show" identifier="ShowAddChargeTypeView" id="o9p-J1-c0i"/>
@@ -1750,6 +1779,92 @@
             </objects>
             <point key="canvasLocation" x="5114" y="-2340"/>
         </scene>
+        <!--Treatment Course View Controller-->
+        <scene sceneID="Jh8-mi-6JD">
+            <objects>
+                <viewController id="NCq-Il-eWD" customClass="TreatmentCourseViewController" customModule="myTeeth" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xrf-1H-LbW"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bxz-rs-ciW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N3G-CE-y41">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Course" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ND1-UO-R8I" userLabel="Course Label">
+                                <rect key="frame" x="16" y="30" width="90" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Course name" adjustsFontSizeToFit="NO" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Mn5-E2-FRR" userLabel="Course Name Text Field">
+                                <rect key="frame" x="114" y="25" width="345" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="NCq-Il-eWD" id="hVu-Ri-VWR"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Courses" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yK-xZ-Xyl" userLabel="Courses Label">
+                                <rect key="frame" x="16" y="70" width="90" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Mzb-OG-BUd" userLabel="Courses Table View">
+                                <rect key="frame" x="114" y="70" width="375" height="296"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="CourseCellIdentifier" textLabel="nj1-5T-vJr" style="IBUITableViewCellStyleDefault" id="cKb-dU-8c0">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cKb-dU-8c0" id="KeU-RF-mjH">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nj1-5T-vJr" userLabel="Name">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="NCq-Il-eWD" id="E90-1m-n3g"/>
+                                    <outlet property="delegate" destination="NCq-Il-eWD" id="9V5-zM-cEs"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCx-Et-g2F" userLabel="Add Course Buton">
+                                <rect key="frame" x="467" y="29" width="22" height="22"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addCourseTapped:" destination="NCq-Il-eWD" eventType="touchUpInside" id="9hZ-G2-Fw1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="j84-EA-WmG">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="FT4-KL-40b">
+                            <connections>
+                                <action selector="doneTapped:" destination="NCq-Il-eWD" id="m0N-UT-Dnx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="courseNameTextField" destination="Mn5-E2-FRR" id="c6i-z5-tUj"/>
+                        <outlet property="courseTableView" destination="Mzb-OG-BUd" id="AdQ-tf-1Yw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D7R-px-HJh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8594" y="-1196"/>
+        </scene>
         <!--Date Time View Controller-->
         <scene sceneID="mDD-Mb-r8c">
             <objects>
@@ -1793,7 +1908,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ie7-Dv-Pj8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8761" y="-750"/>
+            <point key="canvasLocation" x="9573" y="-750"/>
         </scene>
         <!--Bill View Controller-->
         <scene sceneID="ClC-Q0-RAv">

@@ -129,8 +129,9 @@
         <relationship name="treatmentItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TreatmentItem" inverseName="treatmentCategory" inverseEntity="TreatmentItem" syncable="YES"/>
     </entity>
     <entity name="TreatmentCourse" representedClassName="TreatmentCourse" syncable="YES">
-        <attribute name="courseName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="uniqueId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="completed" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="courseName" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="uniqueId" attributeType="String" syncable="YES"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="course" inverseEntity="Appointment" syncable="YES"/>
     </entity>
     <entity name="TreatmentItem" representedClassName="TreatmentItem" syncable="YES">
@@ -156,7 +157,7 @@
         <element name="TeamMember" positionX="-13041" positionY="-18081" width="128" height="163"/>
         <element name="Tooth" positionX="-13275" positionY="-17476" width="128" height="133"/>
         <element name="TreatmentCategory" positionX="-12699" positionY="-17467" width="128" height="88"/>
-        <element name="TreatmentCourse" positionX="-12825" positionY="-17602" width="128" height="88"/>
+        <element name="TreatmentCourse" positionX="-12825" positionY="-17602" width="128" height="103"/>
         <element name="TreatmentItem" positionX="-12870" positionY="-17482" width="128" height="103"/>
     </elements>
 </model>

@@ -25,8 +25,12 @@
 #import "AddTeamMemberViewController.h"
 #import "ChargeTypeDetailViewController_iPad.h"
 #import "BillViewController.h"
+#import "TreatmentCourse.h"
 
-@interface AddAppointmentViewController () <SingleSelectionListViewControllerDelegate, MultipleSelectionListViewControllerDelegate, DateTimeViewControllerDelegate, DurationViewControllerDelegate, NSFetchedResultsControllerDelegate, NoteViewControllerDelegate, AddPatientViewControllerDelegate, AddTeamMemberViewControllerDelegate, ChargeTypeDetailViewControllerDelegate, BillViewControllerDelegate>
+//#import "CourseViewController.h"
+#import "myTeeth-Swift.h"
+
+@interface AddAppointmentViewController () <SingleSelectionListViewControllerDelegate, MultipleSelectionListViewControllerDelegate, DateTimeViewControllerDelegate, DurationViewControllerDelegate, NSFetchedResultsControllerDelegate, NoteViewControllerDelegate, AddPatientViewControllerDelegate, AddTeamMemberViewControllerDelegate, ChargeTypeDetailViewControllerDelegate, BillViewControllerDelegate, TreatmentCourseViewControllerDelegate/*, CourseViewControllerDelegate*/>
 
 @property (strong, nonatomic) AppDelegate *appDelegate;
 @property (strong, nonatomic) NSArray *patientList;
@@ -39,6 +43,7 @@
 @property (strong, nonatomic) NSDate *selectedDate;
 @property (assign, nonatomic) NSTimeInterval selectedDuration;
 @property (strong, nonatomic) NSArray *selectedTreatmentItems;
+@property (strong, nonatomic) TreatmentCourse *selectedTreatmentCourse;
 @property (strong, nonatomic) NSDictionary *selectedChargeType;
 @property (copy, nonatomic) NSString *noteString;
 
@@ -47,6 +52,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *dateTimeCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *durationCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *treatmentCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *treatmentCourseCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *chargeTypeCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *notesCell;
 
@@ -99,6 +105,9 @@ static NSTimeInterval const kDefaultDuration = 600;
         }
         self.selectedTreatmentItems = selectedTreatmentItems;
         
+        // Treatement course
+        self.selectedTreatmentCourse = self.appointment.course;
+        
         // Charge Type
         self.selectedChargeType = @{@"displayName" : self.appointment.chargeType.typeName,
                                     @"uniqueId" : self.appointment.chargeType.uniqueId};
@@ -129,6 +138,9 @@ static NSTimeInterval const kDefaultDuration = 600;
         
         // Treatment
         [self displaySelectedTreatmentItems];
+        
+        // Treatment course
+        [self displayCourse];
         
         // Charge Type
         [self displaySelectedChargeType];
@@ -180,6 +192,8 @@ static NSTimeInterval const kDefaultDuration = 600;
         self.durationCell.accessoryType = UITableViewCellAccessoryNone;
         self.treatmentCell.userInteractionEnabled = NO;
         self.treatmentCell.accessoryType = UITableViewCellAccessoryNone;
+        self.treatmentCourseCell.userInteractionEnabled = NO;
+        self.treatmentCourseCell.accessoryType = UITableViewCellAccessoryNone;
         self.chargeTypeCell.userInteractionEnabled = NO;
         self.chargeTypeCell.accessoryType = UITableViewCellAccessoryNone;
         
@@ -388,6 +402,25 @@ static NSTimeInterval const kDefaultDuration = 600;
         
         billViewController.delegate = self;
     }
+    
+    if ([[segue identifier] isEqualToString:@"ShowCourseView"]) {
+        
+        TreatmentCourseViewController *treatmentCourseViewController = (TreatmentCourseViewController *)[segue destinationViewController];
+        treatmentCourseViewController.navigationItem.title = NSLocalizedString(@"Treatment Courses", @"Treatment Courses");
+    
+        treatmentCourseViewController.selectedCourse = self.selectedTreatmentCourse;
+    
+        treatmentCourseViewController.delegate = self;
+        
+//        CourseViewController *courseViewController = (CourseViewController *)[segue destinationViewController];
+//        courseViewController.navigationItem.title = NSLocalizedString(@"Treatment Courses", @"Treatment Courses");
+//        courseViewController.managedObjectContext = self.managedObjectContext;
+//        
+//        courseViewController.selectedCourse = self.selectedTreatmentCourse;
+//        
+//        courseViewController.delegate = self;
+
+    }
 }
 
 - (void)addPatientViewControllerDidFinishWithPatient:(Patient *)patient {
@@ -511,18 +544,19 @@ static NSTimeInterval const kDefaultDuration = 600;
 
 #pragma mark - Delegate methods
 
-// table sections
+// Table sections
 #define APPPOINTMENT_DETAILS 0
 #define PROPOSED_TREATMENT 1
 #define APPOINTMENT_CHARGES 2
 #define APPOINTMENT_NOTES 3
 
-// table section rows
+// Table section rows
 #define PATIENT 0
 #define TEAM_MEMBER 1
 #define DATE_AND_TIME 2
 #define DURATION 3
 #define TREATMENT 0
+#define COURSE 1
 #define CHARGE_TYPE 0
 #define NOTES 0
 
@@ -688,6 +722,22 @@ static NSTimeInterval const kDefaultDuration = 600;
     cell.detailTextLabel.text = selectedTreatmentItemsString;
 }
 
+- (void)displayCourse {
+    
+    NSUInteger index[] = {PROPOSED_TREATMENT, COURSE};
+    NSIndexPath *indexPath = [[NSIndexPath alloc] initWithIndexes:index length:2];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    
+    if (self.selectedTreatmentCourse != nil) {
+        
+        cell.detailTextLabel.text = self.selectedTreatmentCourse.courseName;
+        
+    } else {
+        
+        cell.detailTextLabel.text = kOptional;
+    }
+}
+
 - (void)displayNote {
     
     NSUInteger index[] = {APPOINTMENT_NOTES, NOTES};
@@ -796,6 +846,12 @@ static NSTimeInterval const kDefaultDuration = 600;
             
             TreatmentItem *treatmentItem = [TreatmentItem treatmentItemWithUniqueID:treatmentItemDict[@"uniqueId"]];
             [appointment addTreatmentItemsObject:treatmentItem];
+        }
+        
+        // Treatment course
+        if (self.selectedTreatmentCourse != nil) {
+            
+            [appointment setCourse:self.selectedTreatmentCourse];
         }
         
         // Charge type
@@ -938,6 +994,14 @@ static NSTimeInterval const kDefaultDuration = 600;
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
     self.navigationItem.leftBarButtonItem = cancelButton;
     
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Course delegate
+- (void)courseViewControllerDidFinishWithCourse:(TreatmentCourse *)course {
+    
+    self.selectedTreatmentCourse = course;
+    [self displayCourse];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
