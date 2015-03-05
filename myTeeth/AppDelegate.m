@@ -8,12 +8,18 @@
 
 #import "AppDelegate.h"
 #import "MasterViewController.h"
+#import "DetailViewController.h"
 #import "MainViewController.h"
 #import "ServiceProvider+Utils.h"
 #import "PaymentType+Utils.h"
 #import "PaymentMethod+Utils.h"
 #import "JobTitle+Utils.h"
 #import "Salutation+Utils.h"
+#import "TraitOverrideViewController.h"
+
+@interface AppDelegate () <UISplitViewControllerDelegate>
+
+@end
 
 @implementation AppDelegate
 
@@ -25,22 +31,30 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // Override point for customization after application launch.
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
-        splitViewController.delegate = (id)navigationController.topViewController;
-        
-        UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
-        MasterViewController *controller = (MasterViewController *)masterNavigationController.topViewController;
-        controller.managedObjectContext = self.managedObjectContext;
-        controller.persistentStoreCoordinator = self.persistentStoreCoordinator;
-    } else {
-        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-        //MasterViewController *controller = (MasterViewController *)navigationController.topViewController;
-        //controller.managedObjectContext = self.managedObjectContext;
-        MainViewController *controller = (MainViewController *)navigationController.topViewController;
-        controller.managedObjectContext = self.managedObjectContext;
-    }
+//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+//        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+//        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
+//        splitViewController.delegate = (id)navigationController.topViewController;
+//        
+//        UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
+//        MasterViewController *controller = (MasterViewController *)masterNavigationController.topViewController;
+//        controller.managedObjectContext = self.managedObjectContext;
+//        controller.persistentStoreCoordinator = self.persistentStoreCoordinator;
+//    }
+    
+    UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+    UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
+    navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem;
+    splitViewController.delegate = self;
+    
+    TraitOverrideViewController *traitController = [[TraitOverrideViewController alloc] init];
+    traitController.viewController = splitViewController;
+    self.window.rootViewController = traitController;
+    
+    UINavigationController *mainNavigationController = splitViewController.viewControllers[0];
+    MasterViewController *controller = (MasterViewController *)mainNavigationController.topViewController;
+    controller.managedObjectContext = self.managedObjectContext;
+    controller.persistentStoreCoordinator = self.persistentStoreCoordinator;
     
     // Load service providers, payment types, payment methods, job titles, and salutations
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -66,6 +80,20 @@
     [defaults registerDefaults:@{@"DefaultLocaleId" : @"en_GB"}];
     
     return YES;
+}
+
+#pragma mark - Split view
+- (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController {
+    
+    if ([secondaryViewController isKindOfClass:[UINavigationController class]] && [[(UINavigationController *)secondaryViewController topViewController] isKindOfClass:[DetailViewController class]]) {
+        
+        // Return YES to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
+        return YES;
+        
+    } else {
+        
+        return NO;
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

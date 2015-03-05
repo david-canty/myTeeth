@@ -58,6 +58,7 @@
 		1F59CE091A372161007AB5C0 /* ServiceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F59CE081A372161007AB5C0 /* ServiceProvider.m */; };
 		1F59CE0F1A3721D8007AB5C0 /* ChargeType+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F59CE0E1A3721D8007AB5C0 /* ChargeType+Utils.m */; };
 		1F6EFDCE1A272EB20012E18B /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6EFDCD1A272EB20012E18B /* Patient.m */; };
+		1F75EDF41AA8789D00947E08 /* TraitOverrideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F75EDF31AA8789D00947E08 /* TraitOverrideViewController.m */; };
 		1F7B614D1A30B8CD001ACD9E /* btn_reception.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7B614A1A30B8CD001ACD9E /* btn_reception.png */; };
 		1F7B614E1A30B8CD001ACD9E /* btn_reception@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7B614B1A30B8CD001ACD9E /* btn_reception@2x.png */; };
 		1F7B614F1A30B8CD001ACD9E /* btn_reception@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7B614C1A30B8CD001ACD9E /* btn_reception@3x.png */; };
@@ -75,7 +76,7 @@
 		1F9710A718EDE4D40008BAC0 /* AddTreatmentCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9710A618EDE4D40008BAC0 /* AddTreatmentCategoryViewController.m */; };
 		1F9710AF18EDEC3B0008BAC0 /* AddTreatmentItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9710AC18EDEC3B0008BAC0 /* AddTreatmentItemViewController.m */; };
 		1F9710B018EDEC3B0008BAC0 /* TreatmentItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9710AE18EDEC3B0008BAC0 /* TreatmentItemsViewController.m */; };
-		1F9710B218EDED860008BAC0 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F9710B118EDED860008BAC0 /* Main_iPad.storyboard */; };
+		1F9710B218EDED860008BAC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F9710B118EDED860008BAC0 /* Main.storyboard */; };
 		1F9725E718EB491000165184 /* AddTeamMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9725E418EB491000165184 /* AddTeamMemberViewController.m */; };
 		1F9725E818EB491000165184 /* TeamMemberController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9725E518EB491000165184 /* TeamMemberController.m */; };
 		1F978227193506E200136268 /* SingleSelectionPopoverContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F978226193506E200136268 /* SingleSelectionPopoverContentViewController.m */; };
@@ -218,7 +219,6 @@
 		55E2B6F618041F8000360759 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55E2B6F418041F8000360759 /* InfoPlist.strings */; };
 		55E2B6F818041F8000360759 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E2B6F718041F8000360759 /* main.m */; };
 		55E2B6FC18041F8000360759 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E2B6FB18041F8000360759 /* AppDelegate.m */; };
-		55E2B6FF18041F8000360759 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55E2B6FD18041F8000360759 /* Main_iPhone.storyboard */; };
 		55E2B70518041F8000360759 /* myTeeth.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55E2B70318041F8000360759 /* myTeeth.xcdatamodeld */; };
 		55E2B70818041F8000360759 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E2B70718041F8000360759 /* MasterViewController.m */; };
 		55E2B70B18041F8000360759 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E2B70A18041F8000360759 /* DetailViewController.m */; };
@@ -313,6 +313,8 @@
 		1F59CE0E1A3721D8007AB5C0 /* ChargeType+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ChargeType+Utils.m"; sourceTree = "<group>"; };
 		1F6EFDCC1A272EB20012E18B /* Patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patient.h; sourceTree = "<group>"; };
 		1F6EFDCD1A272EB20012E18B /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
+		1F75EDF21AA8789D00947E08 /* TraitOverrideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraitOverrideViewController.h; sourceTree = "<group>"; };
+		1F75EDF31AA8789D00947E08 /* TraitOverrideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraitOverrideViewController.m; sourceTree = "<group>"; };
 		1F7B614A1A30B8CD001ACD9E /* btn_reception.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_reception.png; sourceTree = "<group>"; };
 		1F7B614B1A30B8CD001ACD9E /* btn_reception@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_reception@2x.png"; sourceTree = "<group>"; };
 		1F7B614C1A30B8CD001ACD9E /* btn_reception@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_reception@3x.png"; sourceTree = "<group>"; };
@@ -341,7 +343,7 @@
 		1F9710AC18EDEC3B0008BAC0 /* AddTreatmentItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTreatmentItemViewController.m; sourceTree = "<group>"; };
 		1F9710AD18EDEC3B0008BAC0 /* TreatmentItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreatmentItemsViewController.h; sourceTree = "<group>"; };
 		1F9710AE18EDEC3B0008BAC0 /* TreatmentItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreatmentItemsViewController.m; sourceTree = "<group>"; };
-		1F9710B118EDED860008BAC0 /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
+		1F9710B118EDED860008BAC0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1F9725E318EB491000165184 /* AddTeamMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTeamMemberViewController.h; sourceTree = "<group>"; };
 		1F9725E418EB491000165184 /* AddTeamMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTeamMemberViewController.m; sourceTree = "<group>"; };
 		1F9725E518EB491000165184 /* TeamMemberController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamMemberController.m; sourceTree = "<group>"; };
@@ -531,7 +533,6 @@
 		55E2B6F918041F8000360759 /* myTeeth-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myTeeth-Prefix.pch"; sourceTree = "<group>"; };
 		55E2B6FA18041F8000360759 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		55E2B6FB18041F8000360759 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		55E2B6FE18041F8000360759 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		55E2B70418041F8000360759 /* myTeeth.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myTeeth.xcdatamodel; sourceTree = "<group>"; };
 		55E2B70618041F8000360759 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		55E2B70718041F8000360759 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
@@ -1030,6 +1031,8 @@
 			children = (
 				55E2B6FA18041F8000360759 /* AppDelegate.h */,
 				55E2B6FB18041F8000360759 /* AppDelegate.m */,
+				1F75EDF21AA8789D00947E08 /* TraitOverrideViewController.h */,
+				1F75EDF31AA8789D00947E08 /* TraitOverrideViewController.m */,
 				1FB90D621AA4814900186128 /* myTeeth-Bridging-Header.h */,
 				1F20FDFA18E9E9A2006A3408 /* Selection Lists */,
 				1F2D794718F061600006D3C5 /* Notes */,
@@ -1156,8 +1159,7 @@
 		55E2B738180421C600360759 /* Architecure */ = {
 			isa = PBXGroup;
 			children = (
-				55E2B6FD18041F8000360759 /* Main_iPhone.storyboard */,
-				1F9710B118EDED860008BAC0 /* Main_iPad.storyboard */,
+				1F9710B118EDED860008BAC0 /* Main.storyboard */,
 				55E2B70318041F8000360759 /* myTeeth.xcdatamodeld */,
 				1F46A3C918E89CF900684A74 /* Resources */,
 				1F9725E218EB486A00165184 /* Model Objects */,
@@ -1289,7 +1291,6 @@
 				1F327B841A277D250029C697 /* UL5_front@2x.png in Resources */,
 				1FF690B01A27896E008202DE /* LL6_front@2x.png in Resources */,
 				1FF690AF1A27896E008202DE /* LL6_front.png in Resources */,
-				55E2B6FF18041F8000360759 /* Main_iPhone.storyboard in Resources */,
 				1FF690A61A27896E008202DE /* LL3_front.png in Resources */,
 				1FF690AA1A27896E008202DE /* LL4_front@2x.png in Resources */,
 				1FF690DA1A27896E008202DE /* UR4_front@2x.png in Resources */,
@@ -1338,7 +1339,7 @@
 				1F327B781A277D250029C697 /* UL1_front@2x.png in Resources */,
 				1F327B7C1A277D250029C697 /* UL2_front@3x.png in Resources */,
 				55A315FF18AD35AF0032994B /* blueDot.png in Resources */,
-				1F9710B218EDED860008BAC0 /* Main_iPad.storyboard in Resources */,
+				1F9710B218EDED860008BAC0 /* Main.storyboard in Resources */,
 				1F7B61551A30B9F2001ACD9E /* btn_patient@3x.png in Resources */,
 				1FF690CC1A27896E008202DE /* LR7_front@3x.png in Resources */,
 				1FF690CE1A27896E008202DE /* LR8_front@2x.png in Resources */,
@@ -1416,6 +1417,7 @@
 				1FA19E3B19799A95006ADDB1 /* TreatmentCategory.m in Sources */,
 				1F20706E1A39AC690040BFA3 /* ChargeTypeAmountCell.m in Sources */,
 				552E95C0180AA41C00EC706C /* NoteDetailViewController.m in Sources */,
+				1F75EDF41AA8789D00947E08 /* TraitOverrideViewController.m in Sources */,
 				1F98357719B34D8000AF93E5 /* PaymentMethod+Utils.m in Sources */,
 				1FBF77081A9B8732008CAB20 /* AppointmentHistoryViewController.m in Sources */,
 				1F07EFA9196F16C000128021 /* TeamMember+Utils.m in Sources */,
@@ -1496,14 +1498,6 @@
 				55E2B6F518041F8000360759 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		55E2B6FD18041F8000360759 /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				55E2B6FE18041F8000360759 /* Base */,
-			);
-			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 		55E2B71D18041F8000360759 /* InfoPlist.strings */ = {
@@ -1601,6 +1595,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myTeeth/myTeeth-Prefix.pch";
 				INFOPLIST_FILE = "myTeeth/myTeeth-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1623,6 +1618,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myTeeth/myTeeth-Prefix.pch";
 				INFOPLIST_FILE = "myTeeth/myTeeth-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

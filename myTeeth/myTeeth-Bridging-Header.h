@@ -3,4 +3,5 @@
 //
 
 #import "AppDelegate.h"
+#import "Appointment+Utils.h"
 #import "TreatmentCourse+Utils.h"
