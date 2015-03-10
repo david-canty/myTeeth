@@ -14,8 +14,6 @@
 #import "ToothDetailViewController.h"
 #import "SingleSelectionPopoverContentViewController.h"
 
-static float const kCollectionViewLandscapeAdjustment = 95.0f;
-
 static NSUInteger const kUpperLeftStartIndex = 0;
 static NSUInteger const kUpperRightStartIndex = 8;
 static NSUInteger const kLowerLeftStartIndex = 16;
@@ -271,18 +269,11 @@ typedef NS_ENUM(NSInteger, TeethTableSection) {
 
 - (void)centerTeethCollectionViews {
     
-    if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeLeft ||
-        [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeRight) {
-        
-        [self.upperTeethCollectionView setContentOffset:CGPointMake(self.upperTeethCollectionView.frame.size.width + kCollectionViewLandscapeAdjustment, 0) animated:YES];
-        [self.lowerTeethCollectionView setContentOffset:CGPointMake(self.lowerTeethCollectionView.frame.size.width + kCollectionViewLandscapeAdjustment, 0) animated:YES];
-        
-    } else {
-        
-        [self.upperTeethCollectionView setContentOffset:CGPointMake(self.upperTeethCollectionView.frame.size.width, 0) animated:YES];
-        [self.lowerTeethCollectionView setContentOffset:CGPointMake(self.lowerTeethCollectionView.frame.size.width, 0) animated:YES];
-
-    }
+    CGFloat newUpperOffsetX = (self.upperTeethCollectionView.contentSize.width - self.upperTeethCollectionView.frame.size.width) / 2;
+    [self.upperTeethCollectionView setContentOffset:CGPointMake(newUpperOffsetX, 0) animated:YES];
+    
+    CGFloat newLowerOffsetX = (self.lowerTeethCollectionView.contentSize.width - self.lowerTeethCollectionView.frame.size.width) / 2;
+    [self.lowerTeethCollectionView setContentOffset:CGPointMake(newLowerOffsetX, 0) animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

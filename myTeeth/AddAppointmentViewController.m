@@ -197,7 +197,7 @@ static NSTimeInterval const kDefaultDuration = 600;
         self.chargeTypeCell.userInteractionEnabled = NO;
         self.chargeTypeCell.accessoryType = UITableViewCellAccessoryNone;
         
-        UIBarButtonItem *billButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Bill", @"Bill") style:UIBarButtonItemStyleBordered target:self action:@selector(billButtonTapped:)];
+        UIBarButtonItem *billButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Bill", @"Bill") style:UIBarButtonItemStylePlain target:self action:@selector(billButtonTapped:)];
         NSArray *toolbarItems = @[billButton];
         [self setToolbarItems:toolbarItems];
         [self.navigationController setToolbarHidden:NO animated:NO];
@@ -526,7 +526,7 @@ static NSTimeInterval const kDefaultDuration = 600;
 
 - (NSDate *)roundDate:(NSDate *)dateToRound {
 	// Create a NSDate object and a NSDateComponets object for us to use
-	NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSMinuteCalendarUnit | NSSecondCalendarUnit fromDate:dateToRound];
+	NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitMinute | NSCalendarUnitSecond fromDate:dateToRound];
 	
 	// Extract the number of minutes and find the remainder when divided the time interval
 	NSInteger remainder = [dateComponents minute] % kMinuteInterval; // gives us the remainder when divided by interval (for example, 25 would be 0, but 23 would give a remainder of 3

@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "MasterViewController.h"
 #import "DetailViewController.h"
-#import "MainViewController.h"
 #import "ServiceProvider+Utils.h"
 #import "PaymentType+Utils.h"
 #import "PaymentMethod+Utils.h"

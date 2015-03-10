@@ -21,6 +21,7 @@
 #import "NotesViewController.h"
 #import "ChargeTypeManagement_iPad.h"
 #import "DentalPractice+Utils.h"
+#import "BillsViewController.h"
 
 @interface MasterViewController () <AddAppointmentViewControllerDelegate, ABPeoplePickerNavigationControllerDelegate, ABNewPersonViewControllerDelegate, ABPersonViewControllerDelegate>
 
@@ -270,13 +271,18 @@
         TreatmentCategoriesItemsViewController *controller = (TreatmentCategoriesItemsViewController *)[segue destinationViewController];
         controller.managedObjectContext = self.managedObjectContext;
     }
-    if ([[segue identifier] isEqualToString:@"ShowNotesView"]) {
-        NotesViewController *notesVC = (NotesViewController *)[segue destinationViewController];
-        notesVC.managedObjectContext = self.managedObjectContext;
+    if ([[segue identifier] isEqualToString:@"ShowBillsView"]) {
+        BillsViewController *controller = (BillsViewController *)[segue destinationViewController];
+        controller.navigationItem.title = NSLocalizedString(@"Bills", @"Bills");
+        controller.managedObjectContext = self.managedObjectContext;
     }
     if ([[segue identifier] isEqualToString:@"ShowChargeTypeManagement"]) {
         ChargeTypeManagement_iPad *chargeVC = (ChargeTypeManagement_iPad *)[segue destinationViewController];
         chargeVC.managedObjectContext = self.managedObjectContext;
+    }
+    if ([[segue identifier] isEqualToString:@"ShowNotesView"]) {
+        NotesViewController *notesVC = (NotesViewController *)[segue destinationViewController];
+        notesVC.managedObjectContext = self.managedObjectContext;
     }
     if ([[segue identifier] isEqualToString:@"ShowSettingsView"]) {
         

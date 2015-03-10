@@ -12,6 +12,7 @@
 #import "Appointment+Utils.h"
 #import "AppointmentCell.h"
 #import "TeamMember+Utils.h"
+#import "Patient+Utils.h"
 #import "AddAppointmentViewController.h"
 #import "BillViewController.h"
 #import "ChargeType+Utils.h"
@@ -122,6 +123,7 @@ static NSString *KAppointmentTableCellIdentifier = @"AppointmentTableCellIdentif
     cell.cellNameLabel.text = [appointment.teamMember fullNameWithTitle];
     
     NSDateFormatter *outputDateFormatter = [[NSDateFormatter alloc] init];
+    outputDateFormatter.locale = [NSLocale currentLocale];
     [outputDateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
     [outputDateFormatter setDateFormat:@"eee d MMM yyyy 'at' h:mm a"];
     NSString *dateTimeString = [outputDateFormatter stringFromDate:appointment.dateTime];
@@ -385,10 +387,8 @@ static NSString *KAppointmentTableCellIdentifier = @"AppointmentTableCellIdentif
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Appointment" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
-    // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     
-    // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateTime" ascending:NO];
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     
@@ -396,16 +396,12 @@ static NSString *KAppointmentTableCellIdentifier = @"AppointmentTableCellIdentif
     NSPredicate *attendedPredicate = [NSPredicate predicateWithFormat:@"attended = %@", @NO];
     [fetchRequest setPredicate:attendedPredicate];
     
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"patient.firstName" cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }

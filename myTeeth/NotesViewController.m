@@ -7,7 +7,6 @@
 //
 
 #import "NotesViewController.h"
-#import "NoteDetailViewControllerPhone.h"
 #import "NoteDetailViewControllerPad.h"
 #import "Note.h"
 
@@ -94,53 +93,30 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
     if ([[segue identifier] isEqualToString:@"showNoteDetailViewController"]) {
+        
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-            NoteDetailViewControllerPhone *noteDetailVC = segue.destinationViewController;
-            noteDetailVC.noteTitleText = [object valueForKey:@"title"];
-            noteDetailVC.noteText = [object valueForKey:@"note"];
-            noteDetailVC.isFlagged = [[object valueForKey:@"flagged"] boolValue];
-            noteDetailVC.delegate = self;
-        }
-        
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-            UINavigationController *noteDetailNavVC = [segue destinationViewController];
-            NoteDetailViewControllerPad *noteDetailVC = (NoteDetailViewControllerPad *)[noteDetailNavVC topViewController];
-            noteDetailVC.noteTitleText = [object valueForKey:@"title"];
-            noteDetailVC.noteText = [object valueForKey:@"note"];
-            noteDetailVC.isFlagged = [[object valueForKey:@"flagged"] boolValue];
-            noteDetailVC.delegate = self;
-        }
+        UINavigationController *noteDetailNavVC = [segue destinationViewController];
+        NoteDetailViewControllerPad *noteDetailVC = (NoteDetailViewControllerPad *)[noteDetailNavVC topViewController];
+        noteDetailVC.noteTitleText = [object valueForKey:@"title"];
+        noteDetailVC.noteText = [object valueForKey:@"note"];
+        noteDetailVC.isFlagged = [[object valueForKey:@"flagged"] boolValue];
+        noteDetailVC.delegate = self;
 
         _selectedNoteIndexPath = indexPath;
     }
+    
     if ([[segue identifier] isEqualToString:@"showNoteComposeView"]) {
         
         self.selectedNoteIndexPath = nil;
-        
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
             
-            UINavigationController *noteDetailNavVC = [segue destinationViewController];
-            NoteDetailViewControllerPad *noteDetailVC = (NoteDetailViewControllerPad *)[noteDetailNavVC topViewController];
-            noteDetailVC.isAdding = YES;
-            noteDetailVC.delegate = self;
-            
-        } else {
-        
-            UINavigationController *noteDetailNavVC = [segue destinationViewController];
-            NoteDetailViewController *noteDetailVC = (NoteDetailViewController *)[noteDetailNavVC topViewController];
-            noteDetailVC.isAdding = YES;
-            noteDetailVC.delegate = self;
-            
-            // to do -
-            // view / edit
-            // - validate and save active field as soon as keyboard dismissed or active field changes
-            
-        }
-
+        UINavigationController *noteDetailNavVC = [segue destinationViewController];
+        NoteDetailViewControllerPad *noteDetailVC = (NoteDetailViewControllerPad *)[noteDetailNavVC topViewController];
+        noteDetailVC.isAdding = YES;
+        noteDetailVC.delegate = self;
     }
 }
 
