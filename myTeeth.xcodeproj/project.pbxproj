@@ -56,6 +56,7 @@
 		1F3D61421A212348003B25D1 /* btn_reminders.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3D613C1A212348003B25D1 /* btn_reminders.png */; };
 		1F3D61431A212348003B25D1 /* btn_reminders@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3D613D1A212348003B25D1 /* btn_reminders@2x.png */; };
 		1F3D61441A212348003B25D1 /* btn_reminders@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3D613E1A212348003B25D1 /* btn_reminders@3x.png */; };
+		1F445FE01AAF2D47000D1480 /* Bill+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F445FDF1AAF2D47000D1480 /* Bill+Utils.m */; };
 		1F4A68951A3DDCAF004D79E8 /* BillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4A68941A3DDCAF004D79E8 /* BillViewController.m */; };
 		1F59CE091A372161007AB5C0 /* ServiceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F59CE081A372161007AB5C0 /* ServiceProvider.m */; };
 		1F59CE0F1A3721D8007AB5C0 /* ChargeType+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F59CE0E1A3721D8007AB5C0 /* ChargeType+Utils.m */; };
@@ -309,6 +310,8 @@
 		1F3D613C1A212348003B25D1 /* btn_reminders.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_reminders.png; sourceTree = "<group>"; };
 		1F3D613D1A212348003B25D1 /* btn_reminders@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_reminders@2x.png"; sourceTree = "<group>"; };
 		1F3D613E1A212348003B25D1 /* btn_reminders@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_reminders@3x.png"; sourceTree = "<group>"; };
+		1F445FDE1AAF2D47000D1480 /* Bill+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bill+Utils.h"; sourceTree = "<group>"; };
+		1F445FDF1AAF2D47000D1480 /* Bill+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Bill+Utils.m"; sourceTree = "<group>"; };
 		1F4A68931A3DDCAF004D79E8 /* BillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillViewController.h; sourceTree = "<group>"; };
 		1F4A68941A3DDCAF004D79E8 /* BillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillViewController.m; sourceTree = "<group>"; };
 		1F59CE071A372161007AB5C0 /* ServiceProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceProvider.h; sourceTree = "<group>"; };
@@ -993,6 +996,8 @@
 				1F39B4691A1E59F000F1AEDC /* DentalPractice+Utils.m */,
 				1F23BFCF1A45AAEC00822167 /* Country+Utils.h */,
 				1F23BFD01A45AAEC00822167 /* Country+Utils.m */,
+				1F445FDE1AAF2D47000D1480 /* Bill+Utils.h */,
+				1F445FDF1AAF2D47000D1480 /* Bill+Utils.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1446,6 +1451,7 @@
 				1F2B50231A0F97AD00E1D1AC /* JobTitle.m in Sources */,
 				1F1FFDFE1A378A3E00B96563 /* PaymentMethod.m in Sources */,
 				1F9C5FF219F0435100405093 /* AppointmentViewController.m in Sources */,
+				1F445FE01AAF2D47000D1480 /* Bill+Utils.m in Sources */,
 				1F97AFE819A90B9B00C58FF2 /* Appointment+Utils.m in Sources */,
 				1F2C27A41A40CA29005266D6 /* CurrencySelectionViewController.m in Sources */,
 				1F98CC1D19ACFEBA0021896D /* Note+Utils.m in Sources */,
