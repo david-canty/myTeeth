@@ -966,6 +966,7 @@
                                     <outlet property="amountLabel" destination="19y-Sh-1zs" id="bWL-iT-s76"/>
                                     <outlet property="appointmentLabel" destination="0mG-qu-Jdq" id="Vsy-Pe-XBk"/>
                                     <outlet property="balanceLabel" destination="u57-x6-eTd" id="MKP-x6-QZu"/>
+                                    <segue destination="Tt2-Qa-u8Y" kind="presentation" identifier="ShowBillView" modalPresentationStyle="formSheet" id="auQ-Qr-1Lw"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -2288,7 +2289,7 @@
                         <viewControllerLayoutGuide type="bottom" id="naQ-Ts-wUn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vof-as-ObI">
-                        <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bill" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKG-ei-4ro" userLabel="Bill Amount Label">
@@ -3778,18 +3779,18 @@
         <image name="ui_tick_on.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vzS-KW-FW4"/>
-        <segue reference="UwO-G3-M9o"/>
-        <segue reference="GjE-9p-Obf"/>
         <segue reference="QxN-3o-xYL"/>
-        <segue reference="xD0-xt-Qbw"/>
-        <segue reference="oI2-QC-b5g"/>
+        <segue reference="UwO-G3-M9o"/>
         <segue reference="lSt-XP-9YA"/>
-        <segue reference="DLe-HL-bNK"/>
-        <segue reference="o9p-J1-c0i"/>
-        <segue reference="rLz-Ur-plX"/>
-        <segue reference="tee-20-bE9"/>
+        <segue reference="auQ-Qr-1Lw"/>
+        <segue reference="oI2-QC-b5g"/>
+        <segue reference="xD0-xt-Qbw"/>
         <segue reference="wTs-Kg-5kZ"/>
+        <segue reference="vzS-KW-FW4"/>
+        <segue reference="o9p-J1-c0i"/>
+        <segue reference="tee-20-bE9"/>
         <segue reference="AkX-O7-3c9"/>
+        <segue reference="DLe-HL-bNK"/>
+        <segue reference="GjE-9p-Obf"/>
     </inferredMetricsTieBreakers>
 </document>

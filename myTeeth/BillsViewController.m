@@ -11,12 +11,13 @@
 #import "Bill+Utils.h"
 #import "Appointment+Utils.h"
 #import "Patient+Utils.h"
+#import "BillViewController.h"
 
 static NSString *kBillsTableCellIdentifier = @"BillsTableCellIdentifier";
 static NSString *kTableViewSectionHeaderViewIdentifier = @"TableViewSectionHeaderViewIdentifier";
 static NSString *kTableViewSectionFooterViewIdentifier = @"TableViewSectionFooterViewIdentifier";
 
-@interface BillsViewController () <NSFetchedResultsControllerDelegate>
+@interface BillsViewController () <NSFetchedResultsControllerDelegate, BillViewControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
@@ -211,15 +212,30 @@ static NSString *kTableViewSectionFooterViewIdentifier = @"TableViewSectionFoote
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
         NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-        [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
         
-        NSError *error = nil;
-        if (![context save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
+        // Alert user that bill and transactions will be deleted
+        UIAlertController *deleteBillAlert = [UIAlertController alertControllerWithTitle:@"Delete Bill"
+                                                                                        message:@"\nAll associated transactions will be deleted and you will need to create a new bill for the respective appointment.\n\nAre you sure you wish to delete this bill?"
+                                                                                 preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive
+                                                         handler:^(UIAlertAction *action) {
+                                                             
+                                                             [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+                                                             
+                                                             NSError *error = nil;
+                                                             if (![context save:&error]) {
+                                                                 NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                                                                 abort();
+                                                             }
+                                                         }];
+        [deleteBillAlert addAction:okAction];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+        [deleteBillAlert addAction:cancelAction];
+        
+        [self presentViewController:deleteBillAlert animated:YES completion:nil];
+        
     }
 }
 
@@ -244,9 +260,17 @@ static NSString *kTableViewSectionFooterViewIdentifier = @"TableViewSectionFoote
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([[segue identifier] isEqualToString:@""]) {
+    if ([[segue identifier] isEqualToString:@"ShowBillView"]) {
         
+        BillViewController *billViewController = (BillViewController *)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        billViewController.navigationItem.title = NSLocalizedString(@"Bill", @"Bill");
+        billViewController.managedObjectContext = self.managedObjectContext;
+        billViewController.delegate = self;
         
+        // Fetch bill
+        NSIndexPath *selectedBillIndexPath = [self.tableView indexPathForSelectedRow];
+        Bill *selectedBill = [self.fetchedResultsController objectAtIndexPath:selectedBillIndexPath];
+        billViewController.bill = selectedBill;
     }
 }
 
@@ -335,6 +359,28 @@ static NSString *kTableViewSectionFooterViewIdentifier = @"TableViewSectionFoote
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self.tableView endUpdates];
+}
+
+#pragma mark - Bill delegate
+- (void)billViewControllerDidCancel {
+    
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
+- (void)billViewControllerDidFinishWithBill:(Bill *)bill {
+    
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    
+    // Save the context.
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
 }
 
 @end
